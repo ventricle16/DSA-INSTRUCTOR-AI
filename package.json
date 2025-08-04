@@ -1,0 +1,17 @@
+{
+  "name": "dsa-instructor-ai",
+  "version": "1.0.0",
+  "description": "DSA Instructor with Vercel Serverless Function",
+  "main": "index.html",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "node-fetch": "^2.7.0"
+  }
+}
+

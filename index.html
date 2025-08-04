@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DSA Instructor AI</title>
+    <style>
+        /* Import a modern font */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+
+        /* CSS Custom Properties (Variables) for easy theme changes */
+        :root {
+            --background-color: #000000;
+            --surface-color: #111111;
+            --primary-glow-color: rgba(99, 102, 241, 0.5);
+            --secondary-glow-color: rgba(255, 255, 255, 0.1);
+            --text-color: #f0f0f0;
+            --text-muted-color: #888888;
+            --accent-gradient: linear-gradient(90deg, #6366F1, #A855F7, #EC4899);
+            --ios-button-bg: #333333;
+            --ios-button-hover-bg: #444444;
+        }
+        
+        /* Light mode theme */
+        body.light-mode {
+            --background-color: #f0f2f5;
+            --surface-color: #ffffff;
+            --primary-glow-color: rgba(99, 102, 241, 0.3);
+            --secondary-glow-color: rgba(0, 0, 0, 0.1);
+            --text-color: #1c1c1e;
+            --text-muted-color: #6c6c70;
+            --ios-button-bg: #e5e5e7;
+            --ios-button-hover-bg: #dcdce0;
+        }
+
+        /* Keyframes for animations */
+        @keyframes gradient-animation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes fade-in {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 var(--primary-glow-color); }
+            70% { box-shadow: 0 0 0 10px rgba(99, 102, 241, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(99, 102, 241, 0); }
+        }
+
+        /* General Body Styles */
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        
+        .main-container {
+            display: flex;
+            width: 95%;
+            max-width: 1400px;
+            height: 95vh;
+            background-color: var(--surface-color);
+            border: 1px solid var(--secondary-glow-color);
+            border-radius: 24px;
+            box-shadow: 0 0 50px rgba(0, 0, 0, 0.6), 0 0 20px var(--primary-glow-color);
+            overflow: hidden;
+            backdrop-filter: blur(12px);
+        }
+
+        /* Sidebar Styles */
+        #sidebar {
+            width: 280px;
+            padding: 25px;
+            border-right: 1px solid var(--secondary-glow-color);
+            display: none; /* Initially hidden */
+            flex-direction: column;
+            animation: fade-in 0.5s ease;
+        }
+        
+        #profile-section {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        #profile-section .profile-pic {
+            width: 80px;
+            height: 80px;
+            background: var(--accent-gradient);
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5em;
+            font-weight: 700;
+            color: white;
+        }
+
+        #profile-section h2 {
+            margin: 0;
+            font-size: 1.4em;
+        }
+        
+        #sidebar-menu {
+            flex-grow: 1;
+        }
+        
+        #sidebar-menu .menu-item, #logout-btn {
+            padding: 15px 20px;
+            margin: 8px 0;
+            border-radius: 12px;
+            cursor: pointer;
+            background-color: var(--ios-button-bg);
+            border: 1px solid transparent;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transition: background-color 0.2s ease, border-color 0.2s ease;
+            width: 100%;
+            box-sizing: border-box;
+            text-align: left;
+            font-size: 1em;
+        }
+        
+        #sidebar-menu .menu-item:hover, #sidebar-menu .menu-item.active, #logout-btn:hover {
+            background-color: var(--ios-button-hover-bg);
+            color: var(--text-color);
+            border-color: var(--primary-glow-color);
+        }
+        
+        #logout-btn {
+            margin-top: 20px;
+            color: #ff6b6b;
+        }
+        
+        #logout-btn:hover {
+            border-color: #ff6b6b;
+        }
+
+
+        /* Main Chat Container */
+        #chat-container {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        /* Login Screen */
+        #login-screen {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            text-align: center;
+            animation: fade-in 0.5s ease;
+        }
+        
+        #login-screen h1, #login-screen p {
+            background: var(--accent-gradient);
+            background-size: 200% 200%;
+            color: transparent;
+            -webkit-background-clip: text;
+            background-clip: text;
+            animation: gradient-animation 5s ease infinite;
+        }
+        
+        #login-screen h1 { font-size: 3em; }
+        #login-screen p { font-size: 1.2em; margin-bottom: 30px; color: var(--text-muted-color); }
+        
+        #login-form input {
+            padding: 15px 25px;
+            border-radius: 30px;
+            border: 1px solid var(--secondary-glow-color);
+            background: transparent;
+            color: var(--text-color);
+            font-size: 1.1em;
+            width: 300px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        #login-form button {
+            background: var(--accent-gradient);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            padding: 15px 40px;
+            cursor: pointer;
+            font-size: 1.1em;
+            font-weight: 500;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        #login-form button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 10px #A855F7;
+        }
+        
+        #guest-mode-btn {
+            margin-top: 15px;
+            background: none;
+            border: none;
+            color: var(--text-muted-color);
+            cursor: pointer;
+            font-size: 0.9em;
+        }
+
+
+        /* Chat Header with Animated Gradient Text */
+        #chat-header {
+            padding: 20px 25px;
+            text-align: center;
+            border-bottom: 1px solid var(--secondary-glow-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        #logo {
+            width: 40px;
+            height: 40px;
+            background: var(--accent-gradient);
+            border-radius: 8px;
+        }
+
+        #chat-header h1 {
+            margin: 0;
+            font-size: 1.6em;
+            font-weight: 700;
+        }
+
+        /* Content Area */
+        .content-section {
+            display: none; /* Hidden by default */
+            flex-grow: 1;
+            overflow-y: auto;
+            padding: 30px;
+            animation: fade-in 0.5s ease;
+        }
+        
+        .content-section.active {
+            display: block;
+        }
+        
+        /* Dashboard specific styles */
+        #dashboard-content .widget {
+            background-color: var(--ios-button-bg);
+            padding: 25px;
+            border-radius: 16px;
+            margin-bottom: 25px;
+            border: 1px solid transparent;
+        }
+        
+        #dashboard-content h3 {
+            margin-top: 0;
+            border-bottom: 1px solid var(--secondary-glow-color);
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+        
+        /* Custom scrollbar */
+        .content-section::-webkit-scrollbar, #chat-box::-webkit-scrollbar { width: 6px; }
+        .content-section::-webkit-scrollbar-track, #chat-box::-webkit-scrollbar-track { background: transparent; }
+        .content-section::-webkit-scrollbar-thumb, #chat-box::-webkit-scrollbar-thumb { background-color: var(--secondary-glow-color); border-radius: 20px; }
+
+        /* General Message Styling */
+        .message {
+            padding: 15px 25px;
+            border-radius: 20px;
+            max-width: 80%;
+            line-height: 1.7;
+            font-size: 1em;
+            animation: fade-in 0.5s ease-out forwards;
+            white-space: pre-wrap; /* To correctly format code blocks */
+            word-wrap: break-word;
+        }
+        
+        .user-message {
+            background: #252525;
+            color: var(--text-color);
+            align-self: flex-end;
+            border-bottom-right-radius: 5px;
+            border: 1px solid var(--secondary-glow-color);
+        }
+
+        .ai-message {
+            background: transparent;
+            color: var(--text-muted-color);
+            align-self: flex-start;
+            border-bottom-left-radius: 5px;
+        }
+        
+        .ai-typing {
+            align-self: flex-start;
+            color: var(--text-muted-color);
+            font-style: italic;
+        }
+
+        /* Input Area */
+        #input-area {
+            padding: 20px;
+            border-top: 1px solid var(--secondary-glow-color);
+            background: rgba(0,0,0,0.2);
+        }
+
+        #input-form {
+            display: flex;
+            align-items: center;
+            background-color: var(--surface-color);
+            border: 1px solid var(--secondary-glow-color);
+            border-radius: 30px;
+            padding: 5px;
+            transition: box-shadow 0.3s ease;
+        }
+        
+        #input-form:focus-within {
+             box-shadow: 0 0 15px var(--primary-glow-color);
+             border-color: #6366F1;
+        }
+
+        #user-input-field {
+            flex-grow: 1;
+            border: none;
+            background: transparent;
+            color: var(--text-color);
+            padding: 15px 25px;
+            font-size: 1em;
+            outline: none;
+        }
+
+        #send-button {
+            background: var(--accent-gradient);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            padding: 12px 25px;
+            margin-right: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: 500;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        #send-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 10px #A855F7;
+        }
+        
+        #send-button.loading {
+            animation: pulse 1.5s infinite;
+        }
+        
+        /* Settings Page */
+        .settings-option {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: var(--ios-button-bg);
+            border-radius: 12px;
+            margin-bottom: 15px;
+        }
+        
+        .switch {
+          position: relative;
+          display: inline-block;
+          width: 51px;
+          height: 31px;
+        }
+
+        .switch input { 
+          opacity: 0;
+          width: 0;
+          height: 0;
+        }
+
+        .slider {
+          position: absolute;
+          cursor: pointer;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background-color: #ccc;
+          transition: .4s;
+          border-radius: 34px;
+        }
+
+        .slider:before {
+          position: absolute;
+          content: "";
+          height: 23px;
+          width: 23px;
+          left: 4px;
+          bottom: 4px;
+          background-color: white;
+          transition: .4s;
+          border-radius: 50%;
+        }
+
+        input:checked + .slider {
+          background-color: #6366F1;
+        }
+
+        input:focus + .slider {
+          box-shadow: 0 0 1px #6366F1;
+        }
+
+        input:checked + .slider:before {
+          transform: translateX(20px);
+        }
+        
+        /* Back Button Styles */
+        .back-btn {
+            background: var(--ios-button-bg);
+            border: 1px solid transparent;
+            color: var(--text-color);
+            padding: 10px 20px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: 500;
+            margin-bottom: 25px;
+            transition: background-color 0.2s ease, border-color 0.2s ease;
+        }
+        
+        .back-btn:hover {
+            background-color: var(--ios-button-hover-bg);
+            border-color: var(--primary-glow-color);
+        }
+        
+        /* --- NEW: Playground Game Styles --- */
+        .game-container {
+            background-color: var(--ios-button-bg);
+            padding: 25px;
+            border-radius: 16px;
+            margin-bottom: 25px;
+            border: 1px solid var(--secondary-glow-color);
+            text-align: center;
+        }
+        
+        .game-container h3 {
+            margin-top: 0;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--secondary-glow-color);
+            margin-bottom: 20px;
+        }
+
+        /* Stack Simulator styles */
+        #stack-game input, #stack-game button {
+            padding: 10px;
+            margin: 10px;
+            border: 1px solid var(--secondary-glow-color);
+            background: var(--surface-color);
+            color: var(--text-color);
+            border-radius: 8px;
+        }
+        #stack-game button {
+            cursor: pointer;
+            background: #6366F1;
+            color: white;
+        }
+        #stack-game .log { 
+            margin-top: 20px; 
+            font-family: monospace;
+            background: #000;
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        /* Monster Sort styles */
+        #monster-game .monsters {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        #monster-game .monster {
+            background: #39a0ed;
+            padding: 15px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.2s ease, background-color 0.2s ease;
+            user-select: none;
+        }
+        #monster-game .monster:hover {
+            transform: scale(1.1);
+        }
+        #monster-game .monster.selected {
+             background: #EC4899;
+             box-shadow: 0 0 10px #EC4899;
+        }
+
+    </style>
+    <!-- Chart.js for progress visualization -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+    <div class="main-container">
+        
+        <!-- Sidebar - Initially Hidden -->
+        <div id="sidebar">
+            <div id="profile-section">
+                <div class="profile-pic" id="user-initial"></div>
+                <h2 id="username-display"></h2>
+            </div>
+            <nav id="sidebar-menu">
+                <div class="menu-item active" data-content="dashboard-content"><span>📊</span> Dashboard</div>
+                <div class="menu-item" data-content="chat-content"><span>💬</span> Chat</div>
+                <div class="menu-item" data-content="history-content"><span>📜</span> History</div>
+                <div class="menu-item" data-content="tutorials-content"><span>🎬</span> Tutorials</div>
+                <div class="menu-item" data-content="playground-content"><span>🎮</span> Playground</div>
+                <div class="menu-item" data-content="settings-content"><span>⚙️</span> Settings</div>
+            </nav>
+            <div id="logout-section">
+                <button id="logout-btn"><span>🔓</span> Logout</button>
+            </div>
+        </div>
+
+        <!-- Main Content Area -->
+        <div id="chat-container">
+            <!-- Login Screen -->
+            <div id="login-screen">
+                <div id="logo" style="width: 80px; height: 80px; border-radius: 16px; margin-bottom: 20px;"></div>
+                <h1>DSA Instructor AI</h1>
+                <p>Your personal guide to mastering Data Structures & Algorithms.</p>
+                <form id="login-form">
+                    <input type="text" id="username-input" placeholder="Enter your name to begin" required autocomplete="off">
+                    <button type="submit">Login & Start Learning</button>
+                </form>
+                <button id="guest-mode-btn">Continue without login</button>
+            </div>
+            
+            <!-- This section holds all switchable content -->
+            <div id="main-content-area" style="display: none; flex-grow: 1; flex-direction: column; overflow: hidden;">
+                <!-- Chat View -->
+                <div id="chat-content" class="content-section">
+                    <div id="chat-header">
+                       <div id="logo"></div>
+                        <h1>DSA Instructor AI</h1>
+                    </div>
+                    <div id="chat-box" style="flex-grow: 1; padding: 30px; overflow-y: auto; display: flex; flex-direction: column; gap: 20px;">
+                        <div class="message ai-message">
+                            Ask me anything about Data Structures and Algorithms. For example, "Explain bubble sort."
+                        </div>
+                    </div>
+                    <div id="input-area">
+                        <form id="input-form">
+                            <input type="text" id="user-input-field" placeholder="Type your DSA question here..." required autocomplete="off">
+                            <button type="submit" id="send-button">Send</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Dashboard View -->
+                <div id="dashboard-content" class="content-section active">
+                    <h2>Dashboard</h2>
+                    <div class="widget">
+                        <h3>Progress Level</h3>
+                        <canvas id="progress-chart"></canvas>
+                    </div>
+                    <div class="widget">
+                        <h3>Questions Solved</h3>
+                        <p id="solved-count">0</p>
+                    </div>
+                    <div class="widget">
+                        <h3>Trending Topics</h3>
+                        <ul>
+                            <li>Big O Notation</li>
+                            <li>Recursion</li>
+                            <li>Dynamic Programming</li>
+                            <li>Graphs: DFS & BFS</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- History View -->
+                <div id="history-content" class="content-section">
+                    <h2>Chat History</h2>
+                    <button class="back-btn" data-target="dashboard-content">← Back to Dashboard</button>
+                    <div id="history-container">Your chat history will appear here.</div>
+                </div>
+
+                <!-- Tutorials View -->
+                <div id="tutorials-content" class="content-section">
+                    <h2>Short Tutorials</h2>
+                     <button class="back-btn" data-target="dashboard-content">← Back to Dashboard</button>
+                    <p>Coming Soon: A curated list of short videos explaining key DSA concepts.</p>
+                </div>
+                
+                <!-- Playground View -->
+                <div id="playground-content" class="content-section">
+                    <h2>DSA Playground</h2>
+                     <button class="back-btn" data-target="dashboard-content">← Back to Dashboard</button>
+
+                    <!-- Game 1: Stack Simulator -->
+                    <div id="stack-game" class="game-container">
+                        <h3>🌀 Stack Simulator – Undo/Redo Challenge</h3>
+                        <p>Type an action (e.g., "Wrote a line of code") and press Submit. Then use <strong>Ctrl+Z</strong> to Undo and <strong>Ctrl+Y</strong> to Redo.</p>
+                        <input id="actionInput" placeholder="Type an action..." />
+                        <button id="submitActionBtn">Submit</button>
+                        <div class="log" id="stack-log">
+                            <p><strong>Undo Stack:</strong> []</p>
+                            <p><strong>Redo Stack:</strong> []</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Game 2: Sort the Monsters -->
+                    <div id="monster-game" class="game-container">
+                        <h3>🐉 Sort the Monsters (Bubble Sort)</h3>
+                        <p>Click two monsters to compare them. If the first is larger than the second, they will swap. Sort them in ascending order!</p>
+                        <div class="monsters" id="monsters-container"></div>
+                         <button id="resetMonstersBtn" style="margin-top: 20px; padding: 10px 20px; border-radius: 8px; border: none; background: #A855F7; color: white; cursor: pointer;">Reset Monsters</button>
+                    </div>
+
+                    <div class="game-container" style="background-color: transparent; border: 1px dashed var(--secondary-glow-color);">
+                        <h3>🚀 Many More Games Coming Soon!</h3>
+                        <p>We're building more interactive games to make learning DSA fun and engaging.</p>
+                    </div>
+                </div>
+                
+                <!-- Settings View -->
+                <div id="settings-content" class="content-section">
+                    <h2>Settings</h2>
+                     <button class="back-btn" data-target="dashboard-content">← Back to Dashboard</button>
+                    <div class="settings-option">
+                        <span>Dark / Light Mode</span>
+                        <label class="switch">
+                          <input type="checkbox" id="theme-toggle">
+                          <span class="slider"></span>
+                        </label>
+                    </div>
+                     <div class="settings-option">
+                        <span>Clear Chat History</span>
+                        <button id="clear-history-btn" style="background: #e53e3e; color: white; border: none; padding: 10px 20px; border-radius: 12px; cursor: pointer;">Clear Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // --- HOW TO USE THIS CODE FOR VERCEL DEPLOYMENT ---
+        //
+        // 1.  CREATE THE SERVERLESS FUNCTION:
+        //     - In your project root, create a folder named `api`.
+        //     - Inside `api`, create a file named `call-ai.js`.
+        //     - Put the Vercel-compatible serverless function code into that file.
+        //
+        // 2.  SET ENVIRONMENT VARIABLE IN VERCEL:
+        //     - In your Vercel project dashboard, go to Settings -> Environment Variables.
+        //     - Add a variable with the Name `GOOGLE_API_KEY` and your actual API key as the Value.
+        //
+        // 3.  DEPLOY:
+        //     - Push this updated `index.html` and your `api` folder to GitHub to deploy.
+        //
+        // --- END OF INSTRUCTIONS ---
+
+
+        // --- DOM Elements ---
+        const loginScreen = document.getElementById('login-screen');
+        const loginForm = document.getElementById('login-form');
+        const usernameInput = document.getElementById('username-input');
+        const guestModeBtn = document.getElementById('guest-mode-btn');
+        const mainContentArea = document.getElementById('main-content-area');
+        const sidebar = document.getElementById('sidebar');
+        const logoutBtn = document.getElementById('logout-btn');
+        
+        const form = document.getElementById('input-form');
+        const userInput = document.getElementById('user-input-field');
+        const chatBox = document.getElementById('chat-box');
+        const sendButton = document.getElementById('send-button');
+
+        const menuItems = document.querySelectorAll('.menu-item');
+        const contentSections = document.querySelectorAll('.content-section');
+        const backButtons = document.querySelectorAll('.back-btn');
+        
+        const themeToggle = document.getElementById('theme-toggle');
+        const clearHistoryBtn = document.getElementById('clear-history-btn');
+        
+        let progressChart = null;
+
+        // --- The API Key is now removed from the front-end code for security ---
+        
+        // --- App State ---
+        let currentUser = null;
+        let userData = {};
+
+        // --- Event Listeners ---
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const username = usernameInput.value.trim();
+            if (username) {
+                loginUser(username);
+            }
+        });
+
+        guestModeBtn.addEventListener('click', () => {
+            loginUser(null); // Guest mode
+        });
+        
+        logoutBtn.addEventListener('click', () => {
+            if (confirm('Are you sure you want to logout?')) {
+                location.reload();
+            }
+        });
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const userMessage = userInput.value.trim();
+            if (!userMessage) return;
+
+            appendMessage(userMessage, 'user-message');
+            saveMessage('user', userMessage);
+            userInput.value = '';
+            setLoading(true);
+
+            try {
+                showTypingIndicator();
+                const aiResponse = await callGoogleGenAI(userMessage);
+                removeTypingIndicator();
+                appendMessage(aiResponse, 'ai-message');
+                saveMessage('ai', aiResponse);
+                updateDashboard();
+            } catch (error) {
+                removeTypingIndicator();
+                console.error("Detailed error from serverless function:", error);
+                appendMessage(error.message, 'ai-message');
+            } finally {
+                setLoading(false);
+            }
+        });
+
+        menuItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const contentId = item.getAttribute('data-content');
+                switchContent(contentId);
+            });
+        });
+        
+        backButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const targetContentId = button.getAttribute('data-target');
+                switchContent(targetContentId);
+            });
+        });
+        
+        themeToggle.addEventListener('change', () => {
+            document.body.classList.toggle('light-mode');
+            localStorage.setItem('dsa-theme', document.body.classList.contains('light-mode') ? 'light' : 'dark');
+            if (currentUser) updateDashboard();
+        });
+        
+        clearHistoryBtn.addEventListener('click', () => {
+            if (confirm('Are you sure you want to clear all chat history? This cannot be undone.')) {
+                if (currentUser && userData[currentUser]) {
+                    userData[currentUser].history = [];
+                    userData[currentUser].progress = {};
+                    saveUserData();
+                    alert('History cleared.');
+                    loadHistory();
+                    updateDashboard();
+                }
+            }
+        });
+
+        // --- Functions ---
+        function switchContent(contentId) {
+            menuItems.forEach(i => {
+                i.classList.toggle('active', i.getAttribute('data-content') === contentId);
+            });
+            
+            contentSections.forEach(section => {
+                section.classList.toggle('active', section.id === contentId);
+            });
+            
+            if (contentId === 'playground-content') {
+                initStackGame();
+                initMonsterGame();
+            }
+            if(contentId === 'history-content' && currentUser) loadHistory();
+            if(contentId === 'dashboard-content' && currentUser) updateDashboard();
+        }
+
+        function loginUser(username) {
+            currentUser = username;
+            loginScreen.style.display = 'none';
+            mainContentArea.style.display = 'flex';
+            
+            if (username) {
+                sidebar.style.display = 'flex';
+                document.getElementById('username-display').textContent = username;
+                document.getElementById('user-initial').textContent = username.charAt(0).toUpperCase();
+                
+                const savedData = JSON.parse(localStorage.getItem('dsaUserData')) || {};
+                userData = savedData;
+                if (!userData[username]) {
+                    userData[username] = { history: [], progress: {} };
+                }
+                loadChat();
+                switchContent('dashboard-content');
+            } else {
+                sidebar.style.display = 'none';
+                switchContent('chat-content');
+            }
+        }
+        
+        function appendMessage(message, className) {
+            const messageElement = document.createElement('div');
+            messageElement.classList.add('message', className);
+            messageElement.textContent = message;
+            chatBox.appendChild(messageElement);
+            scrollToBottom();
+        }
+        
+        function saveMessage(sender, text) {
+            if (!currentUser) return;
+            
+            const messageData = { sender, text, timestamp: new Date().toISOString() };
+            userData[currentUser].history.push(messageData);
+            
+            if (sender === 'user') {
+                 const date = new Date().toISOString().split('T')[0];
+                 if (!userData[currentUser].progress[date]) {
+                     userData[currentUser].progress[date] = 0;
+                 }
+                 userData[currentUser].progress[date]++;
+            }
+            saveUserData();
+        }
+        
+        function loadChat() {
+            if (!currentUser || !userData[currentUser]) return;
+            chatBox.innerHTML = '';
+            if (userData[currentUser].history.length === 0) {
+                 appendMessage('Ask me anything about Data Structures and Algorithms. For example, "Explain bubble sort."', 'ai-message');
+            } else {
+                 userData[currentUser].history.forEach(msg => {
+                    appendMessage(msg.text, `${msg.sender}-message`);
+                });
+            }
+        }
+        
+        function loadHistory() {
+            const historyContainer = document.getElementById('history-container');
+            historyContainer.innerHTML = '';
+            if (currentUser && userData[currentUser] && userData[currentUser].history.length > 0) {
+                 userData[currentUser].history.forEach(msg => {
+                     const historyItem = document.createElement('div');
+                     historyItem.classList.add('message', `${msg.sender}-message`);
+                     historyItem.style.animation = 'none';
+                     historyItem.textContent = `[${new Date(msg.timestamp).toLocaleTimeString()}] ${msg.sender === 'user' ? 'You' : 'AI'}: ${msg.text}`;
+                     historyContainer.appendChild(historyItem);
+                 });
+            } else {
+                historyContainer.textContent = 'No chat history found.';
+            }
+        }
+        
+        function saveUserData() {
+            if (!currentUser) return;
+            localStorage.setItem('dsaUserData', JSON.stringify(userData));
+        }
+
+        function showTypingIndicator() {
+            const typingElement = document.createElement('div');
+            typingElement.id = 'typing-indicator';
+            typingElement.classList.add('message', 'ai-typing');
+            typingElement.textContent = 'DSA Instructor is typing...';
+            chatBox.appendChild(typingElement);
+            scrollToBottom();
+        }
+        
+        function removeTypingIndicator() {
+            const typingElement = document.getElementById('typing-indicator');
+            if (typingElement) typingElement.remove();
+        }
+        
+        function setLoading(isLoading) {
+            userInput.disabled = isLoading;
+            sendButton.disabled = isLoading;
+            sendButton.textContent = isLoading ? 'Thinking' : 'Send';
+            sendButton.classList.toggle('loading', isLoading);
+        }
+        
+        function scrollToBottom() {
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+
+        // --- CORRECTED SECURE FUNCTION FOR VERCEL ---
+        // This function now securely calls your serverless function on Vercel.
+        async function callGoogleGenAI(prompt) {
+            const API_ENDPOINT = '/api/call-ai'; // Points to your Vercel function
+
+            const response = await fetch(API_ENDPOINT, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ prompt: prompt }),
+            });
+
+            const data = await response.json();
+
+            // Handle errors returned from your Vercel function
+            if (!response.ok) {
+                const errorMessage = data.error?.message || `Error: ${response.status}. See the function logs on Vercel for details.`;
+                throw new Error(errorMessage);
+            }
+
+            // Check for safety blocks or empty responses from the Google API
+            if (!data.candidates || data.candidates.length === 0 || !data.candidates[0].content || !data.candidates[0].content.parts) {
+                if (data.promptFeedback && data.promptFeedback.blockReason) {
+                    throw new Error(`Your request was blocked by Google. Reason: ${data.promptFeedback.blockReason}.`);
+                }
+                throw new Error("I'm sorry, the API returned an empty or invalid response.");
+            }
+            
+            return data.candidates[0].content.parts[0].text;
+        }
+        
+        function updateDashboard() {
+            if (!currentUser || !userData[currentUser] || !document.getElementById('dashboard-content').classList.contains('active')) return;
+            
+            const totalSolved = Object.values(userData[currentUser].progress).reduce((sum, count) => sum + count, 0);
+            document.getElementById('solved-count').textContent = totalSolved;
+            
+            const progressData = userData[currentUser].progress;
+            const sortedDates = Object.keys(progressData).sort();
+            
+            const chartLabels = sortedDates.slice(-30);
+            const chartDataPoints = chartLabels.map(date => progressData[date]);
+            
+            const isLight = document.body.classList.contains('light-mode');
+            const gridColor = isLight ? 'rgba(0, 0, 0, 0.1)' : 'rgba(255, 255, 255, 0.1)';
+            const textColor = isLight ? '#1c1c1e' : '#f0f0f0';
+
+            const ctx = document.getElementById('progress-chart').getContext('2d');
+            if(progressChart) progressChart.destroy();
+            
+            progressChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: chartLabels,
+                    datasets: [{
+                        label: 'Questions Solved per Day',
+                        data: chartDataPoints,
+                        fill: true,
+                        backgroundColor: 'rgba(99, 102, 241, 0.2)',
+                        borderColor: '#6366F1',
+                        tension: 0.3
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: { beginAtZero: true, grid: { color: gridColor }, ticks: { color: textColor, stepSize: 1 } },
+                        x: { grid: { color: gridColor }, ticks: { color: textColor } }
+                    },
+                    plugins: { legend: { labels: { color: textColor } } }
+                }
+            });
+        }
+        
+        // --- Game Logic (unchanged) ---
+        const undoStack = [];
+        const redoStack = [];
+        let stackGameInitialized = false;
+
+        function initStackGame() {
+            if (stackGameInitialized) return;
+            const actionInput = document.getElementById('actionInput');
+            const submitBtn = document.getElementById('submitActionBtn');
+            submitBtn.addEventListener('click', addStackAction);
+            actionInput.addEventListener('keydown', (e) => { if(e.key === 'Enter') addStackAction(); });
+            document.addEventListener("keydown", function(e) {
+                if(!document.getElementById('playground-content').classList.contains('active')) return;
+                if (e.ctrlKey && e.key.toLowerCase() === 'z') { e.preventDefault(); if (undoStack.length) redoStack.push(undoStack.pop()); updateStackLog(); }
+                if (e.ctrlKey && e.key.toLowerCase() === 'y') { e.preventDefault(); if (redoStack.length) undoStack.push(redoStack.pop()); updateStackLog(); }
+            });
+            stackGameInitialized = true;
+        }
+        
+        function addStackAction() {
+            const actionInput = document.getElementById('actionInput');
+            const action = actionInput.value;
+            if (action) { undoStack.push(action); redoStack.length = 0; updateStackLog(); actionInput.value = ''; }
+        }
+
+        function updateStackLog() {
+            const log = document.getElementById("stack-log");
+            log.innerHTML = `<p><strong>Undo Stack (Ctrl+Z):</strong> ${JSON.stringify(undoStack)}</p><p><strong>Redo Stack (Ctrl+Y):</strong> ${JSON.stringify(redoStack)}</p>`;
+        }
+        
+        let monsterValues = [];
+        let selectedMonsters = [];
+        let monsterGameInitialized = false;
+        
+        function initMonsterGame() {
+            if(monsterGameInitialized) return;
+            document.getElementById('resetMonstersBtn').addEventListener('click', setupMonsterGame);
+            setupMonsterGame();
+            monsterGameInitialized = true;
+        }
+        
+        function setupMonsterGame() {
+            monsterValues = [40, 10, 30, 50, 20];
+            selectedMonsters = [];
+            renderMonsters();
+        }
+
+        function renderMonsters() {
+            const container = document.getElementById('monsters-container');
+            container.innerHTML = '';
+            monsterValues.forEach((val, i) => {
+                const el = document.createElement('div');
+                el.className = 'monster';
+                el.innerText = val;
+                if (selectedMonsters.includes(i)) el.classList.add('selected');
+                el.onclick = () => selectMonster(i);
+                container.appendChild(el);
+            });
+        }
+
+        function selectMonster(index) {
+            const monsterElements = document.querySelectorAll('#monster-game .monster');
+            if (selectedMonsters.includes(index)) { selectedMonsters = selectedMonsters.filter(i => i !== index); monsterElements[index].classList.remove('selected'); return; }
+            if (selectedMonsters.length < 2) { selectedMonsters.push(index); monsterElements[index].classList.add('selected'); }
+            if (selectedMonsters.length === 2) {
+                const [i, j] = selectedMonsters;
+                if (Math.abs(i - j) === 1) { if (monsterValues[Math.min(i,j)] > monsterValues[Math.max(i,j)]) { [monsterValues[i], monsterValues[j]] = [monsterValues[j], monsterValues[i]]; } } else { alert("In Bubble Sort, you only compare adjacent elements!"); }
+                selectedMonsters = [];
+                setTimeout(() => { renderMonsters(); checkSorted(); }, 300);
+            }
+        }
+
+        function checkSorted() {
+            for (let i = 0; i < monsterValues.length - 1; i++) { if (monsterValues[i] > monsterValues[i + 1]) return; }
+            setTimeout(() => alert("🎉 All Monsters Sorted! Great Job!"), 300);
+        }
+
+        // --- Initial Load ---
+        function initialize() {
+            const savedTheme = localStorage.getItem('dsa-theme');
+            if (savedTheme === 'light') { document.body.classList.add('light-mode'); themeToggle.checked = false; } else { document.body.classList.remove('light-mode'); themeToggle.checked = true; }
+        }
+        
+        initialize();
+
+    </script>
+
+</body>
+</html>
