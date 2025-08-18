@@ -443,7 +443,7 @@
             border-color: var(--primary-glow-color);
         }
         
-        /* --- NEW: Playground Game Styles --- */
+        /* --- Playground Game Styles --- */
         .game-container {
             background-color: var(--ios-button-bg);
             padding: 25px;
@@ -480,6 +480,7 @@
             background: #000;
             padding: 15px;
             border-radius: 8px;
+            text-align: left;
         }
 
         /* Monster Sort styles */
@@ -488,6 +489,7 @@
             justify-content: center;
             gap: 10px;
             margin-top: 20px;
+            min-height: 60px;
         }
         #monster-game .monster {
             background: #39a0ed;
@@ -504,47 +506,47 @@
              background: #EC4899;
              box-shadow: 0 0 10px #EC4899;
         }
-        /* START: ADD THE NEW GAME CSS HERE */
+
+        /* Queue Quest Styles */
         #queue-game button {
-             padding: 10px 20px;
-             margin: 10px;
-             border: 1px solid var(--secondary-glow-color);
-             background: #2a9d8f;
-             color: white;
-             border-radius: 8px;
-             cursor: pointer;
-             transition: background-color 0.2s;
+            padding: 10px 20px;
+            margin: 10px;
+            border: 1px solid var(--secondary-glow-color);
+            background: #2a9d8f;
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.2s;
         }
         #queue-game button:hover {
-           background: #264653;
+            background: #264653;
         }
         #queue-game .queue-display {
-             display: flex;
-             justify-content: flex-start; /* Align customers to the start */
-             align-items: center;
-             min-height: 80px;
-             background: #000;
-             border-radius: 8px;
-             padding: 15px;
-             margin-top: 20px;
-             overflow-x: auto; /* Allow scrolling if many customers */
-             gap: 10px;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            min-height: 80px;
+            background: #000;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 20px;
+            overflow-x: auto;
+            gap: 10px;
         }
         #queue-game .customer {
-              background-color: #f4a261;
-              color: #000;
-              padding: 15px;
-              border-radius: 50%; /* Make them circles */
-              width: 30px;
-              height: 30px;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              font-weight: bold;
-              flex-shrink: 0; /* Prevent customers from shrinking */
-              animation: fade-in 0.3s ease;
-         }
-         /* END: NEW GAME CSS */
+            background-color: #f4a261;
+            color: #000;
+            padding: 15px;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+            animation: fade-in 0.3s ease;
+        }
 
     </style>
     <!-- Chart.js for progress visualization -->
@@ -647,7 +649,7 @@
                 <!-- Playground View -->
                 <div id="playground-content" class="content-section">
                     <h2>DSA Playground</h2>
-                     <button class="back-btn" data-target="dashboard-content">← Back to Dashboard</button>
+                    <button class="back-btn" data-target="dashboard-content">← Back to Dashboard</button>
 
                     <!-- Game 1: Stack Simulator -->
                     <div id="stack-game" class="game-container">
@@ -666,7 +668,18 @@
                         <h3>🐉 Sort the Monsters (Bubble Sort)</h3>
                         <p>Click two monsters to compare them. If the first is larger than the second, they will swap. Sort them in ascending order!</p>
                         <div class="monsters" id="monsters-container"></div>
-                         <button id="resetMonstersBtn" style="margin-top: 20px; padding: 10px 20px; border-radius: 8px; border: none; background: #A855F7; color: white; cursor: pointer;">Reset Monsters</button>
+                        <button id="resetMonstersBtn" style="margin-top: 20px; padding: 10px 20px; border-radius: 8px; border: none; background: #A855F7; color: white; cursor: pointer;">Reset Monsters</button>
+                    </div>
+
+                    <!-- Game 3: Queue Quest -->
+                    <div id="queue-game" class="game-container">
+                        <h3>🛒 Queue Quest – Service Counter</h3>
+                        <p>Customers are arriving! Use "Enqueue" to add them to the line and "Dequeue" to serve the customer at the front. Don't let the line get too long!</p>
+                        <button id="enqueueBtn">Enqueue New Customer</button>
+                        <button id="dequeueBtn">Dequeue Next Customer</button>
+                        <div class="queue-display" id="queue-display-box">
+                            <!-- This will be empty on load -->
+                        </div>
                     </div>
 
                     <div class="game-container" style="background-color: transparent; border: 1px dashed var(--secondary-glow-color);">
@@ -674,22 +687,7 @@
                         <p>We're building more interactive games to make learning DSA fun and engaging.</p>
                     </div>
                 </div>
-                     <!-- START: ADD THE NEW GAME HTML HERE -->
-                     <div id="queue-game" class="game-container">
-                         <h3>🛒 Queue Quest – Service Counter</h3>
-                         <p>Customers are arriving! Use "Enqueue" to add them to the line and "Dequeue" to serve the customer at the front. Don't let the line get too long!</p>
-                         <button id="enqueueBtn">Enqueue New Customer</button>
-                         <button id="dequeueBtn">Dequeue Next Customer</button>
-                         <div class="queue-display" id="queue-display-box">
-                   <!-- Customers will be added here by JavaScript -->
-                       </div>
-                     </div>
-                      <!-- END: NEW GAME HTML -->
-
-                     <div class="game-container" style="background-color: transparent; border: 1px dashed var(--secondary-glow-color);">
-                         
-                     
-                 </div>
+                
                 <!-- Settings View -->
                 <div id="settings-content" class="content-section">
                     <h2>Settings</h2>
@@ -711,23 +709,6 @@
     </div>
 
     <script>
-        // --- HOW TO USE THIS CODE FOR VERCEL DEPLOYMENT ---
-        //
-        // 1.  CREATE THE SERVERLESS FUNCTION:
-        //     - In your project root, create a folder named `api`.
-        //     - Inside `api`, create a file named `call-ai.js`.
-        //     - Put the Vercel-compatible serverless function code into that file.
-        //
-        // 2.  SET ENVIRONMENT VARIABLE IN VERCEL:
-        //     - In your Vercel project dashboard, go to Settings -> Environment Variables.
-        //     - Add a variable with the Name `GOOGLE_API_KEY` and your actual API key as the Value.
-        //
-        // 3.  DEPLOY:
-        //     - Push this updated `index.html` and your `api` folder to GitHub to deploy.
-        //
-        // --- END OF INSTRUCTIONS ---
-
-
         // --- DOM Elements ---
         const loginScreen = document.getElementById('login-screen');
         const loginForm = document.getElementById('login-form');
@@ -750,8 +731,6 @@
         const clearHistoryBtn = document.getElementById('clear-history-btn');
         
         let progressChart = null;
-
-        // --- The API Key is now removed from the front-end code for security ---
         
         // --- App State ---
         let currentUser = null;
@@ -959,10 +938,8 @@
             chatBox.scrollTop = chatBox.scrollHeight;
         }
 
-        // --- CORRECTED SECURE FUNCTION FOR VERCEL ---
-        // This function now securely calls your serverless function on Vercel.
         async function callGoogleGenAI(prompt) {
-            const API_ENDPOINT = '/api/call-ai'; // Points to your Vercel function
+            const API_ENDPOINT = '/api/call-ai';
 
             const response = await fetch(API_ENDPOINT, {
                 method: 'POST',
@@ -972,13 +949,11 @@
 
             const data = await response.json();
 
-            // Handle errors returned from your Vercel function
             if (!response.ok) {
                 const errorMessage = data.error?.message || `Error: ${response.status}. See the function logs on Vercel for details.`;
                 throw new Error(errorMessage);
             }
 
-            // Check for safety blocks or empty responses from the Google API
             if (!data.candidates || data.candidates.length === 0 || !data.candidates[0].content || !data.candidates[0].content.parts) {
                 if (data.promptFeedback && data.promptFeedback.blockReason) {
                     throw new Error(`Your request was blocked by Google. Reason: ${data.promptFeedback.blockReason}.`);
@@ -1032,7 +1007,8 @@
             });
         }
         
-        // --- Game Logic (unchanged) ---
+        // --- Game Logic ---
+        // --- Stack Game Logic ---
         const undoStack = [];
         const redoStack = [];
         let stackGameInitialized = false;
@@ -1062,14 +1038,15 @@
             log.innerHTML = `<p><strong>Undo Stack (Ctrl+Z):</strong> ${JSON.stringify(undoStack)}</p><p><strong>Redo Stack (Ctrl+Y):</strong> ${JSON.stringify(redoStack)}</p>`;
         }
         
+        // --- Monster Game Logic ---
         let monsterValues = [];
         let selectedMonsters = [];
         let monsterGameInitialized = false;
         
         function initMonsterGame() {
             if(monsterGameInitialized) return;
-            document.getElementById('resetMonstersBtn').addEventListener('click', setupMonsterGame);
             setupMonsterGame();
+            document.getElementById('resetMonstersBtn').addEventListener('click', setupMonsterGame);
             monsterGameInitialized = true;
         }
         
@@ -1108,58 +1085,52 @@
             for (let i = 0; i < monsterValues.length - 1; i++) { if (monsterValues[i] > monsterValues[i + 1]) return; }
             setTimeout(() => alert("🎉 All Monsters Sorted! Great Job!"), 300);
         }
-        // --- START: NEW QUEUE GAME LOGIC ---
+
+        // --- Queue Game Logic ---
         let customerQueue = [];
         let nextCustomerId = 1;
         let queueGameInitialized = false;
 
         function initQueueGame() {
-             if (queueGameInitialized) return;
-    
-             document.getElementById('enqueueBtn').addEventListener('click', enqueueCustomer);
-             document.getElementById('dequeueBtn').addEventListener('click', dequeueCustomer);
-    
-             setupQueueGame();
-             queueGameInitialized = true;
+            if (queueGameInitialized) return;
+            setupQueueGame(); 
+            document.getElementById('enqueueBtn').addEventListener('click', enqueueCustomer);
+            document.getElementById('dequeueBtn').addEventListener('click', dequeueCustomer);
+            queueGameInitialized = true;
         }
 
         function setupQueueGame() {
-             customerQueue = ['C1', 'C2', 'C3']; // Start with a few customers
-             nextCustomerId = 4;
-             renderQueue();
+            customerQueue = ['C1', 'C2', 'C3'];
+            nextCustomerId = 4;
+            renderQueue();
         }
 
         function renderQueue() {
-              const container = document.getElementById('queue-display-box');
-              container.innerHTML = '<strong>Front</strong>'; // Label the front of the queue
-    
-              customerQueue.forEach(customerId => {
-              const el = document.createElement('div');
-              el.className = 'customer';
-              el.innerText = customerId;
-              container.appendChild(el);
+            const container = document.getElementById('queue-display-box');
+            if (!container) return;
+            container.innerHTML = '<strong>Front</strong>';
+            customerQueue.forEach(customerId => {
+                const el = document.createElement('div');
+                el.className = 'customer';
+                el.innerText = customerId;
+                container.appendChild(el);
             });
-         }
+        }
 
-         function enqueueCustomer() {
-             if (customerQueue.length >= 10) { // Limit the queue size
-               alert("The line is too long! Serve some customers first.");
-               return;
-             }
-             const newCustomer = 'C' + nextCustomerId;
-             customerQueue.push(newCustomer); // Add to the end of the array (enqueue)
-             nextCustomerId++;
-             renderQueue();
-         }
+        function enqueueCustomer() {
+            if (customerQueue.length >= 8) { alert("The line is too long! Serve some customers first."); return; }
+            const newCustomer = 'C' + nextCustomerId;
+            customerQueue.push(newCustomer);
+            nextCustomerId++;
+            renderQueue();
+        }
 
-         function dequeueCustomer() {
-             if (customerQueue.length === 0) {
-                   alert("No customers in the line!");
-                   return;
-             }
-             customerQueue.shift(); // Remove from the front of the array (dequeue)
-             renderQueue();
-         }
+        function dequeueCustomer() {
+            if (customerQueue.length === 0) { alert("No customers in the line!"); return; }
+            customerQueue.shift();
+            renderQueue();
+        }
+
 
         // --- Initial Load ---
         function initialize() {
