@@ -34,544 +34,170 @@
         }
 
         /* Keyframes for animations */
-        @keyframes gradient-animation {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        @keyframes fade-in {
-            from { opacity: 0; transform: translateY(15px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 var(--primary-glow-color); }
-            70% { box-shadow: 0 0 0 10px rgba(99, 102, 241, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(99, 102, 241, 0); }
-        }
+        @keyframes gradient-animation { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+        @keyframes fade-in { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes pulse { 0% { box-shadow: 0 0 0 0 var(--primary-glow-color); } 70% { box-shadow: 0 0 0 10px rgba(99, 102, 241, 0); } 100% { box-shadow: 0 0 0 0 rgba(99, 102, 241, 0); } }
 
         /* General Body Styles */
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--background-color);
-            color: var(--text-color);
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            overflow: hidden;
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
-        
-        .main-container {
-            display: flex;
-            width: 95%;
-            max-width: 1400px;
-            height: 95vh;
-            background-color: var(--surface-color);
-            border: 1px solid var(--secondary-glow-color);
-            border-radius: 24px;
-            box-shadow: 0 0 50px rgba(0, 0, 0, 0.6), 0 0 20px var(--primary-glow-color);
-            overflow: hidden;
-            backdrop-filter: blur(12px);
-        }
+        body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background-color: var(--background-color); color: var(--text-color); margin: 0; display: flex; justify-content: center; align-items: center; height: 100vh; overflow: hidden; transition: background-color 0.3s ease, color 0.3s ease; }
+        .main-container { display: flex; width: 95%; max-width: 1400px; height: 95vh; background-color: var(--surface-color); border: 1px solid var(--secondary-glow-color); border-radius: 24px; box-shadow: 0 0 50px rgba(0, 0, 0, 0.6), 0 0 20px var(--primary-glow-color); overflow: hidden; backdrop-filter: blur(12px); }
 
         /* Sidebar Styles */
-        #sidebar {
-            width: 280px;
-            padding: 25px;
-            border-right: 1px solid var(--secondary-glow-color);
-            display: none; /* Initially hidden */
-            flex-direction: column;
-            animation: fade-in 0.5s ease;
-        }
-        
-        #profile-section {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        
-        #profile-section .profile-pic {
-            width: 80px;
-            height: 80px;
-            background: var(--accent-gradient);
-            border-radius: 50%;
-            margin: 0 auto 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.5em;
-            font-weight: 700;
-            color: white;
-        }
-
-        #profile-section h2 {
-            margin: 0;
-            font-size: 1.4em;
-        }
-        
-        #sidebar-menu {
-            flex-grow: 1;
-        }
-        
-        #sidebar-menu .menu-item, #logout-btn {
-            padding: 15px 20px;
-            margin: 8px 0;
-            border-radius: 12px;
-            cursor: pointer;
-            background-color: var(--ios-button-bg);
-            border: 1px solid transparent;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            transition: background-color 0.2s ease, border-color 0.2s ease;
-            width: 100%;
-            box-sizing: border-box;
-            text-align: left;
-            font-size: 1em;
-        }
-        
-        #sidebar-menu .menu-item:hover, #sidebar-menu .menu-item.active, #logout-btn:hover {
-            background-color: var(--ios-button-hover-bg);
-            color: var(--text-color);
-            border-color: var(--primary-glow-color);
-        }
-        
-        #logout-btn {
-            margin-top: 20px;
-            color: #ff6b6b;
-        }
-        
-        #logout-btn:hover {
-            border-color: #ff6b6b;
-        }
-
+        #sidebar { width: 280px; padding: 25px; border-right: 1px solid var(--secondary-glow-color); display: none; flex-direction: column; animation: fade-in 0.5s ease; }
+        #profile-section { text-align: center; margin-bottom: 30px; }
+        #profile-section .profile-pic { width: 80px; height: 80px; background: var(--accent-gradient); border-radius: 50%; margin: 0 auto 15px; display: flex; align-items: center; justify-content: center; font-size: 2.5em; font-weight: 700; color: white; }
+        #profile-section h2 { margin: 0; font-size: 1.4em; }
+        #sidebar-menu { flex-grow: 1; }
+        #sidebar-menu .menu-item, #logout-btn { padding: 15px 20px; margin: 8px 0; border-radius: 12px; cursor: pointer; background-color: var(--ios-button-bg); border: 1px solid transparent; font-weight: 500; display: flex; align-items: center; gap: 15px; transition: background-color 0.2s ease, border-color 0.2s ease; width: 100%; box-sizing: border-box; text-align: left; font-size: 1em; }
+        #sidebar-menu .menu-item:hover, #sidebar-menu .menu-item.active, #logout-btn:hover { background-color: var(--ios-button-hover-bg); color: var(--text-color); border-color: var(--primary-glow-color); }
+        #logout-btn { margin-top: 20px; color: #ff6b6b; }
+        #logout-btn:hover { border-color: #ff6b6b; }
 
         /* Main Chat Container */
-        #chat-container {
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-        }
-
-        /* Login Screen */
-        #login-screen {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100%;
-            text-align: center;
-            animation: fade-in 0.5s ease;
-        }
-        
-        #login-screen h1, #login-screen p {
-            background: var(--accent-gradient);
-            background-size: 200% 200%;
-            color: transparent;
-            -webkit-background-clip: text;
-            background-clip: text;
-            animation: gradient-animation 5s ease infinite;
-        }
-        
+        #chat-container { flex-grow: 1; display: flex; flex-direction: column; overflow: hidden; }
+        #login-screen { display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%; text-align: center; animation: fade-in 0.5s ease; }
+        #login-screen h1, #login-screen p { background: var(--accent-gradient); background-size: 200% 200%; color: transparent; -webkit-background-clip: text; background-clip: text; animation: gradient-animation 5s ease infinite; }
         #login-screen h1 { font-size: 3em; }
         #login-screen p { font-size: 1.2em; margin-bottom: 30px; color: var(--text-muted-color); }
-        
-        #login-form input {
-            padding: 15px 25px;
-            border-radius: 30px;
-            border: 1px solid var(--secondary-glow-color);
-            background: transparent;
-            color: var(--text-color);
-            font-size: 1.1em;
-            width: 300px;
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        
-        #login-form button {
-            background: var(--accent-gradient);
-            color: white;
-            border: none;
-            border-radius: 25px;
-            padding: 15px 40px;
-            cursor: pointer;
-            font-size: 1.1em;
-            font-weight: 500;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        #login-form button:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 10px #A855F7;
-        }
-        
-        #guest-mode-btn {
-            margin-top: 15px;
-            background: none;
-            border: none;
-            color: var(--text-muted-color);
-            cursor: pointer;
-            font-size: 0.9em;
-        }
-
-
-        /* Chat Header with Animated Gradient Text */
-        #chat-header {
-            padding: 20px 25px;
-            text-align: center;
-            border-bottom: 1px solid var(--secondary-glow-color);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
-        }
-        
-        #logo {
-            width: 40px;
-            height: 40px;
-            background: var(--accent-gradient);
-            border-radius: 8px;
-        }
-
-        #chat-header h1 {
-            margin: 0;
-            font-size: 1.6em;
-            font-weight: 700;
-        }
+        #login-form input { padding: 15px 25px; border-radius: 30px; border: 1px solid var(--secondary-glow-color); background: transparent; color: var(--text-color); font-size: 1.1em; width: 300px; text-align: center; margin-bottom: 20px; }
+        #login-form button { background: var(--accent-gradient); color: white; border: none; border-radius: 25px; padding: 15px 40px; cursor: pointer; font-size: 1.1em; font-weight: 500; transition: transform 0.2s ease, box-shadow 0.2s ease; }
+        #login-form button:hover { transform: scale(1.05); box-shadow: 0 0 10px #A855F7; }
+        #guest-mode-btn { margin-top: 15px; background: none; border: none; color: var(--text-muted-color); cursor: pointer; font-size: 0.9em; }
+        #chat-header { padding: 20px 25px; text-align: center; border-bottom: 1px solid var(--secondary-glow-color); display: flex; align-items: center; justify-content: center; gap: 15px; }
+        #logo { width: 40px; height: 40px; background: var(--accent-gradient); border-radius: 8px; }
+        #chat-header h1 { margin: 0; font-size: 1.6em; font-weight: 700; }
 
         /* Content Area */
-        .content-section {
-            display: none; /* Hidden by default */
-            flex-grow: 1;
-            overflow-y: auto;
-            padding: 30px;
-            animation: fade-in 0.5s ease;
-        }
-        
-        .content-section.active {
-            display: block;
-        }
-        
-        /* Dashboard specific styles */
-        #dashboard-content .widget {
-            background-color: var(--ios-button-bg);
-            padding: 25px;
-            border-radius: 16px;
-            margin-bottom: 25px;
-            border: 1px solid transparent;
-        }
-        
-        #dashboard-content h3 {
-            margin-top: 0;
-            border-bottom: 1px solid var(--secondary-glow-color);
-            padding-bottom: 15px;
-            margin-bottom: 20px;
-        }
-        
-        /* Custom scrollbar */
+        .content-section { display: none; flex-grow: 1; overflow-y: auto; padding: 30px; animation: fade-in 0.5s ease; }
+        .content-section.active { display: block; }
+        #dashboard-content .widget { background-color: var(--ios-button-bg); padding: 25px; border-radius: 16px; margin-bottom: 25px; border: 1px solid transparent; }
+        #dashboard-content h3 { margin-top: 0; border-bottom: 1px solid var(--secondary-glow-color); padding-bottom: 15px; margin-bottom: 20px; }
         .content-section::-webkit-scrollbar, #chat-box::-webkit-scrollbar { width: 6px; }
         .content-section::-webkit-scrollbar-track, #chat-box::-webkit-scrollbar-track { background: transparent; }
         .content-section::-webkit-scrollbar-thumb, #chat-box::-webkit-scrollbar-thumb { background-color: var(--secondary-glow-color); border-radius: 20px; }
-
-        /* General Message Styling */
-        .message {
-            padding: 15px 25px;
-            border-radius: 20px;
-            max-width: 80%;
-            line-height: 1.7;
-            font-size: 1em;
-            animation: fade-in 0.5s ease-out forwards;
-            white-space: pre-wrap; /* To correctly format code blocks */
-            word-wrap: break-word;
-        }
-        
-        .user-message {
-            background: #252525;
-            color: var(--text-color);
-            align-self: flex-end;
-            border-bottom-right-radius: 5px;
-            border: 1px solid var(--secondary-glow-color);
-        }
-
-        .ai-message {
-            background: transparent;
-            color: var(--text-muted-color);
-            align-self: flex-start;
-            border-bottom-left-radius: 5px;
-        }
-        
-        .ai-typing {
-            align-self: flex-start;
-            color: var(--text-muted-color);
-            font-style: italic;
-        }
-
-        /* Input Area */
-        #input-area {
-            padding: 20px;
-            border-top: 1px solid var(--secondary-glow-color);
-            background: rgba(0,0,0,0.2);
-        }
-
-        #input-form {
-            display: flex;
-            align-items: center;
-            background-color: var(--surface-color);
-            border: 1px solid var(--secondary-glow-color);
-            border-radius: 30px;
-            padding: 5px;
-            transition: box-shadow 0.3s ease;
-        }
-        
-        #input-form:focus-within {
-             box-shadow: 0 0 15px var(--primary-glow-color);
-             border-color: #6366F1;
-        }
-
-        #user-input-field {
-            flex-grow: 1;
-            border: none;
-            background: transparent;
-            color: var(--text-color);
-            padding: 15px 25px;
-            font-size: 1em;
-            outline: none;
-        }
-
-        #send-button {
-            background: var(--accent-gradient);
-            color: white;
-            border: none;
-            border-radius: 25px;
-            padding: 12px 25px;
-            margin-right: 5px;
-            cursor: pointer;
-            font-size: 1em;
-            font-weight: 500;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        #send-button:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 10px #A855F7;
-        }
-        
-        #send-button.loading {
-            animation: pulse 1.5s infinite;
-        }
-        
-        /* Settings Page */
-        .settings-option {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px;
-            background-color: var(--ios-button-bg);
-            border-radius: 12px;
-            margin-bottom: 15px;
-        }
-        
-        .switch {
-          position: relative;
-          display: inline-block;
-          width: 51px;
-          height: 31px;
-        }
-
-        .switch input { 
-          opacity: 0;
-          width: 0;
-          height: 0;
-        }
-
-        .slider {
-          position: absolute;
-          cursor: pointer;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          background-color: #ccc;
-          transition: .4s;
-          border-radius: 34px;
-        }
-
-        .slider:before {
-          position: absolute;
-          content: "";
-          height: 23px;
-          width: 23px;
-          left: 4px;
-          bottom: 4px;
-          background-color: white;
-          transition: .4s;
-          border-radius: 50%;
-        }
-
-        input:checked + .slider {
-          background-color: #6366F1;
-        }
-
-        input:focus + .slider {
-          box-shadow: 0 0 1px #6366F1;
-        }
-
-        input:checked + .slider:before {
-          transform: translateX(20px);
-        }
-        
-        /* Back Button Styles */
-        .back-btn {
-            background: var(--ios-button-bg);
-            border: 1px solid transparent;
-            color: var(--text-color);
-            padding: 10px 20px;
-            border-radius: 12px;
-            cursor: pointer;
-            font-weight: 500;
-            margin-bottom: 25px;
-            transition: background-color 0.2s ease, border-color 0.2s ease;
-        }
-        
-        .back-btn:hover {
-            background-color: var(--ios-button-hover-bg);
-            border-color: var(--primary-glow-color);
-        }
+        .message { padding: 15px 25px; border-radius: 20px; max-width: 80%; line-height: 1.7; font-size: 1em; animation: fade-in 0.5s ease-out forwards; white-space: pre-wrap; word-wrap: break-word; }
+        .user-message { background: #252525; color: var(--text-color); align-self: flex-end; border-bottom-right-radius: 5px; border: 1px solid var(--secondary-glow-color); }
+        .ai-message { background: transparent; color: var(--text-muted-color); align-self: flex-start; border-bottom-left-radius: 5px; }
+        .ai-typing { align-self: flex-start; color: var(--text-muted-color); font-style: italic; }
+        #input-area { padding: 20px; border-top: 1px solid var(--secondary-glow-color); background: rgba(0,0,0,0.2); }
+        #input-form { display: flex; align-items: center; background-color: var(--surface-color); border: 1px solid var(--secondary-glow-color); border-radius: 30px; padding: 5px; transition: box-shadow 0.3s ease; }
+        #input-form:focus-within { box-shadow: 0 0 15px var(--primary-glow-color); border-color: #6366F1; }
+        #user-input-field { flex-grow: 1; border: none; background: transparent; color: var(--text-color); padding: 15px 25px; font-size: 1em; outline: none; }
+        #send-button { background: var(--accent-gradient); color: white; border: none; border-radius: 25px; padding: 12px 25px; margin-right: 5px; cursor: pointer; font-size: 1em; font-weight: 500; transition: transform 0.2s ease, box-shadow 0.2s ease; }
+        #send-button:hover { transform: scale(1.05); box-shadow: 0 0 10px #A855F7; }
+        #send-button.loading { animation: pulse 1.5s infinite; }
+        .settings-option { display: flex; justify-content: space-between; align-items: center; padding: 20px; background-color: var(--ios-button-bg); border-radius: 12px; margin-bottom: 15px; }
+        .switch { position: relative; display: inline-block; width: 51px; height: 31px; }
+        .switch input { opacity: 0; width: 0; height: 0; }
+        .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #ccc; transition: .4s; border-radius: 34px; }
+        .slider:before { position: absolute; content: ""; height: 23px; width: 23px; left: 4px; bottom: 4px; background-color: white; transition: .4s; border-radius: 50%; }
+        input:checked + .slider { background-color: #6366F1; }
+        input:focus + .slider { box-shadow: 0 0 1px #6366F1; }
+        input:checked + .slider:before { transform: translateX(20px); }
+        .back-btn { background: var(--ios-button-bg); border: 1px solid transparent; color: var(--text-color); padding: 10px 20px; border-radius: 12px; cursor: pointer; font-weight: 500; margin-bottom: 25px; transition: background-color 0.2s ease, border-color 0.2s ease; }
+        .back-btn:hover { background-color: var(--ios-button-hover-bg); border-color: var(--primary-glow-color); }
         
         /* --- Playground Game Styles --- */
-        .game-container {
-            background-color: var(--ios-button-bg);
-            padding: 25px;
-            border-radius: 16px;
-            margin-bottom: 25px;
-            border: 1px solid var(--secondary-glow-color);
-            text-align: center;
-        }
-        
-        .game-container h3 {
-            margin-top: 0;
-            padding-bottom: 15px;
-            border-bottom: 1px solid var(--secondary-glow-color);
-            margin-bottom: 20px;
-        }
-        
-        .game-container button {
-            padding: 10px 20px;
-            margin: 10px 5px 0 5px;
-            border-radius: 8px;
-            border: none;
-            color: white;
-            cursor: pointer;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-        .game-container button:hover {
-            transform: scale(1.05);
-        }
+        .game-container { background-color: var(--ios-button-bg); padding: 25px; border-radius: 16px; margin-bottom: 25px; border: 1px solid var(--secondary-glow-color); text-align: center; }
+        .game-container h3 { margin-top: 0; padding-bottom: 15px; border-bottom: 1px solid var(--secondary-glow-color); margin-bottom: 20px; }
+        .game-container button { padding: 10px 20px; margin: 10px 5px 0 5px; border-radius: 8px; border: none; color: white; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; }
+        .game-container button:hover { transform: scale(1.05); }
+        .game-container .controls { margin-top:15px; }
+        .game-container .controls label { margin: 0 10px; }
 
-        /* Stack Simulator styles */
-        #stack-game input {
-            padding: 10px;
-            margin: 10px;
-            border: 1px solid var(--secondary-glow-color);
-            background: var(--surface-color);
-            color: var(--text-color);
-            border-radius: 8px;
-        }
+        /* OLD GAME STYLES */
+        #stack-game input { padding: 10px; margin: 10px; border: 1px solid var(--secondary-glow-color); background: var(--surface-color); color: var(--text-color); border-radius: 8px; }
         #stack-game button { background: #6366F1; }
-        #stack-game .log { 
-            margin-top: 20px; 
-            font-family: monospace;
-            background: #000;
-            padding: 15px;
-            border-radius: 8px;
-            text-align: left;
-        }
-
-        /* Monster Sort styles */
+        #stack-game .log { margin-top: 20px; font-family: monospace; background: #000; padding: 15px; border-radius: 8px; text-align: left; }
         #monster-game .monsters { display: flex; justify-content: center; gap: 10px; margin-top: 20px; min-height: 60px; }
         #monster-game .monster { background: #39a0ed; padding: 15px 25px; border-radius: 8px; cursor: pointer; transition: transform 0.2s ease, background-color 0.2s ease; user-select: none; }
         #monster-game .monster:hover { transform: scale(1.1); }
         #monster-game .monster.selected { background: #EC4899; box-shadow: 0 0 10px #EC4899; }
         #monster-game button { background: #A855F7; }
-
-        /* Queue Quest Styles */
         #queue-game button { background: #2a9d8f; }
         #queue-game .queue-display { display: flex; justify-content: flex-start; align-items: center; min-height: 80px; background: #000; border-radius: 8px; padding: 15px; margin-top: 20px; overflow-x: auto; gap: 10px; }
         #queue-game .customer { background-color: #f4a261; color: #000; padding: 15px; border-radius: 50%; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; font-weight: bold; flex-shrink: 0; animation: fade-in 0.3s ease; }
         
-        /* --- NEW GAME STYLES --- */
-
-        /* BST Treasure Hunt Styles */
-        #bst-game .bst-container { position: relative; width: 100%; height: 250px; margin: 20px 0; }
-        #bst-game .bst-node {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: #8338ec;
-            color: white;
-            width: 40px; height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            cursor: pointer;
-            border: 2px solid transparent;
-            transition: all 0.2s ease;
-        }
-        #bst-game .bst-node:hover { border-color: #ffbe0b; transform: translateX(-50%) scale(1.1); }
-        #bst-game .bst-node.visited { background-color: #ffbe0b; color: #000; }
-        #bst-game .bst-node.found { background-color: #3a5a40; border-color: #a3b18a; }
-        #bst-game #bst-status { font-weight: bold; min-height: 24px; }
+        /* ENHANCED/REFINED GAME STYLES */
+        .game-canvas-container { position: relative; width: 100%; height: 300px; margin: 20px 0; background-color: #000; border-radius:8px; }
+        .game-canvas-container svg { width: 100%; height: 100%; }
         #bst-game button { background: #fb5607; }
-
-        /* Graph Traveler Styles */
-        #graph-game #graph-container { position: relative; width: 100%; max-width: 400px; height: 250px; margin: 20px auto; }
-        #graph-game .city {
-            position: absolute;
-            background-color: #023047;
-            color: white;
-            width: 50px; height: 50px;
-            border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            font-weight: bold;
-            cursor: pointer;
-            border: 2px solid #8ecae6;
-            transition: all 0.2s ease;
-            z-index: 2;
-        }
-        #graph-game .city:hover { transform: scale(1.1); }
-        #graph-game .city.start { background-color: #2a9d8f; }
-        #graph-game .city.end { background-color: #e63946; }
-        #graph-game .city.current { border-color: #ffb703; box-shadow: 0 0 15px #ffb703; }
-        #graph-game .city.visited { opacity: 0.6; }
-        #graph-game .road { position: absolute; background-color: #8ecae6; height: 3px; transform-origin: 0 0; z-index: 1; }
+        #bst-game .bst-node { cursor: pointer; transition: all 0.2s ease; }
+        #bst-game .bst-node circle { stroke: #ffbe0b; stroke-width: 2; fill: #8338ec; }
+        #bst-game .bst-node text { fill: white; font-weight: bold; text-anchor: middle; dominant-baseline: middle; }
+        #bst-game .bst-node:hover circle { transform: scale(1.1); }
+        #bst-game .bst-node.visited circle { fill: #ffbe0b; }
+        #bst-game .bst-node.visited text { fill: #000; }
+        #bst-game .bst-node.found circle { fill: #3a5a40; stroke: #a3b18a; }
+        #bst-game #bst-status { font-weight: bold; min-height: 24px; }
         #graph-game button { background: #219ebc; }
-
-        /* Array Jumper Styles */
+        #graph-game .city circle { stroke: #8ecae6; stroke-width: 2px; transition: all 0.2s ease; cursor: pointer; }
+        #graph-game .city text { fill: white; text-anchor: middle; dominant-baseline: middle; font-weight: bold; }
+        #graph-game .city.start circle { fill: #2a9d8f; }
+        #graph-game .city.end circle { fill: #e63946; }
+        #graph-game .city.current circle { stroke: #ffb703; box-shadow: 0 0 15px #ffb703; stroke-width: 4px; }
+        #graph-game .city.visited circle { opacity: 0.6; }
+        #graph-game .road { stroke: #8ecae6; stroke-width: 3px; }
+        #graph-game .road.path { stroke: #ffb703; stroke-width: 5px; }
         #array-jumper-game .array-container { display: flex; justify-content: center; gap: 8px; margin: 20px 0; padding: 10px; background-color: #000; border-radius: 8px; }
-        #array-jumper-game .array-block {
-            background-color: #457b9d;
-            color: white;
-            width: 50px; height: 50px;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 1.2em; font-weight: bold;
-            border-radius: 8px;
-            cursor: pointer;
-            border: 2px solid transparent;
-            transition: all 0.2s ease;
-        }
+        #array-jumper-game .array-block { background-color: #457b9d; color: white; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; font-size: 1.2em; font-weight: bold; border-radius: 8px; cursor: pointer; border: 2px solid transparent; transition: all 0.2s ease; }
         #array-jumper-game .array-block.player { background-color: #fca311; border-color: #e5e5e5; }
         #array-jumper-game .array-block.end { background-color: #6a994e; }
         #array-jumper-game .array-block.possible { border-color: #fca311; opacity: 0.8; }
+        #array-jumper-game .array-block.path-taken { background-color: #1d3557; }
         #array-jumper-game .array-block:not(.possible) { cursor: not-allowed; opacity: 0.5; }
         #array-jumper-game button { background: #1d3557; }
 
+        /* NEW GAME STYLES */
+        /* Linked List Game */
+        #linked-list-game button { background: #d00000; }
+        #linked-list-game .ll-container { display: flex; justify-content: space-around; min-height: 150px; }
+        #linked-list-game .ll-area { border: 2px dashed var(--secondary-glow-color); border-radius: 8px; padding: 10px; width: 45%; }
+        #linked-list-game .ll-area h4 { margin: 0 0 10px 0; }
+        #linked-list-game .ll-node { background: #6d597a; color: white; padding: 10px 15px; margin: 5px; border-radius: 8px; display: inline-flex; align-items: center; gap: 10px; cursor: pointer; border: 2px solid transparent; }
+        #linked-list-game .ll-node.selected { border-color: #fca311; box-shadow: 0 0 10px #fca311; }
+        #linked-list-game .ll-node .pointer { background: #b56576; width: 20px; height: 20px; border-radius: 50%; }
+
+        /* Pathfinding Game */
+        #pathfinding-game .path-grid { display: grid; grid-template-columns: repeat(20, 1fr); gap: 1px; background-color: #333; margin: 15px auto; width: 100%; max-width: 500px; aspect-ratio: 20 / 10; }
+        #pathfinding-game .path-node { background-color: var(--ios-button-bg); transition: background-color 0.1s; }
+        #pathfinding-game .path-node.start { background-color: #2a9d8f; }
+        #pathfinding-game .path-node.end { background-color: #e63946; }
+        #pathfinding-game .path-node.wall { background-color: #1d3557; }
+        #pathfinding-game .path-node.visited { background-color: #457b9d; animation: fade-in 0.2s; }
+        #pathfinding-game .path-node.path { background-color: #fca311; }
+        #pathfinding-game button { background: #e76f51; }
+        
+        /* Heap Game */
+        #heap-game .heap-node { cursor: pointer; transition: all 0.2s ease; }
+        #heap-game .heap-node circle { stroke: #a3b18a; stroke-width: 2; fill: #3a5a40; }
+        #heap-game .heap-node text { fill: white; font-weight: bold; text-anchor: middle; dominant-baseline: middle; }
+        #heap-game .heap-node.invalid circle { fill: #e63946; }
+        #heap-game .heap-node.selected circle { stroke: #fca311; stroke-width: 4px; }
+        #heap-game button { background: #588157; }
+
+        /* Recursion Maze Game */
+        #recursion-maze-game .recursion-container { display: flex; justify-content: space-around; gap: 20px; }
+        #recursion-maze-game .maze-grid { display: grid; grid-template-columns: repeat(11, 1fr); gap: 1px; background: #333; width: 220px; height: 220px; }
+        #recursion-maze-game .maze-cell { background-color: var(--ios-button-bg); }
+        #recursion-maze-game .maze-cell.wall { background-color: #1d3557; }
+        #recursion-maze-game .maze-cell.path { background-color: #e5e5e5; }
+        #recursion-maze-game .maze-cell.current { background-color: #fca311; }
+        #recursion-maze-game .maze-cell.visited { background-color: #457b9d; }
+        #recursion-maze-game .code-display { font-family: monospace; text-align: left; background: #000; padding: 15px; border-radius: 8px; flex-grow: 1; }
+        #recursion-maze-game .code-display .line.highlight { background-color: #4a4e69; }
+        #recursion-maze-game #call-stack { font-family: monospace; font-size: 0.9em; margin-top: 10px; }
+        #recursion-maze-game button { background: #4a4e69; }
+
+        /* KMP String Search Game */
+        #kmp-game button { background: #5e548e; }
+        #kmp-game .kmp-viz { font-family: monospace; font-size: 1.2em; text-align: left; }
+        #kmp-game .kmp-row { display: flex; }
+        #kmp-game .kmp-char { width: 20px; height: 30px; display: flex; align-items: center; justify-content: center; }
+        #kmp-game .kmp-char.match { background-color: #3a5a40; }
+        #kmp-game .kmp-char.mismatch { background-color: #e63946; }
+        #kmp-game #lps-table { display: flex; gap: 5px; margin-top: 10px; }
+        #kmp-game .lps-cell { display: flex; flex-direction: column; align-items: center; background-color: #4a4e69; padding: 5px; border-radius: 4px; }
 
     </style>
     <!-- Chart.js for progress visualization -->
@@ -581,7 +207,6 @@
 
     <div class="main-container">
         
-        <!-- Sidebar - Initially Hidden -->
         <div id="sidebar">
             <div id="profile-section">
                 <div class="profile-pic" id="user-initial"></div>
@@ -595,14 +220,10 @@
                 <div class="menu-item" data-content="playground-content"><span>🎮</span> Playground</div>
                 <div class="menu-item" data-content="settings-content"><span>⚙️</span> Settings</div>
             </nav>
-            <div id="logout-section">
-                <button id="logout-btn"><span>🔓</span> Logout</button>
-            </div>
+            <div id="logout-section"> <button id="logout-btn"><span>🔓</span> Logout</button> </div>
         </div>
 
-        <!-- Main Content Area -->
         <div id="chat-container">
-            <!-- Login Screen -->
             <div id="login-screen">
                 <div id="logo" style="width: 80px; height: 80px; border-radius: 16px; margin-bottom: 20px;"></div>
                 <h1>DSA Instructor AI</h1>
@@ -614,18 +235,12 @@
                 <button id="guest-mode-btn">Continue without login</button>
             </div>
             
-            <!-- This section holds all switchable content -->
             <div id="main-content-area" style="display: none; flex-grow: 1; flex-direction: column; overflow: hidden;">
                 <!-- Chat View -->
                 <div id="chat-content" class="content-section">
-                    <div id="chat-header">
-                       <div id="logo"></div>
-                        <h1>DSA Instructor AI</h1>
-                    </div>
+                    <div id="chat-header"> <div id="logo"></div> <h1>DSA Instructor AI</h1> </div>
                     <div id="chat-box" style="flex-grow: 1; padding: 30px; overflow-y: auto; display: flex; flex-direction: column; gap: 20px;">
-                        <div class="message ai-message">
-                            Ask me anything about Data Structures and Algorithms. For example, "Explain bubble sort."
-                        </div>
+                        <div class="message ai-message"> Ask me anything about Data Structures and Algorithms. For example, "Explain bubble sort." </div>
                     </div>
                     <div id="input-area">
                         <form id="input-form">
@@ -638,122 +253,60 @@
                 <!-- Dashboard View -->
                 <div id="dashboard-content" class="content-section active">
                     <h2>Dashboard</h2>
-                    <div class="widget">
-                        <h3>Progress Level</h3>
-                        <canvas id="progress-chart"></canvas>
-                    </div>
-                    <div class="widget">
-                        <h3>Questions Solved</h3>
-                        <p id="solved-count">0</p>
-                    </div>
+                    <div class="widget"> <h3>Progress Level</h3> <canvas id="progress-chart"></canvas> </div>
+                    <div class="widget"> <h3>Questions Solved</h3> <p id="solved-count">0</p> </div>
                     <div class="widget">
                         <h3>Trending Topics</h3>
-                        <ul>
-                            <li>Big O Notation</li>
-                            <li>Recursion</li>
-                            <li>Dynamic Programming</li>
-                            <li>Graphs: DFS & BFS</li>
-                        </ul>
+                        <ul> <li>Big O Notation</li> <li>Recursion</li> <li>Dynamic Programming</li> <li>Graphs: DFS & BFS</li> </ul>
                     </div>
                 </div>
 
                 <!-- History View -->
                 <div id="history-content" class="content-section">
-                    <h2>Chat History</h2>
-                    <button class="back-btn" data-target="dashboard-content">← Back to Dashboard</button>
+                    <h2>Chat History</h2> <button class="back-btn" data-target="dashboard-content">← Back to Dashboard</button>
                     <div id="history-container">Your chat history will appear here.</div>
                 </div>
 
                 <!-- Tutorials View -->
                 <div id="tutorials-content" class="content-section">
-                    <h2>Short Tutorials</h2>
-                     <button class="back-btn" data-target="dashboard-content">← Back to Dashboard</button>
+                    <h2>Short Tutorials</h2> <button class="back-btn" data-target="dashboard-content">← Back to Dashboard</button>
                     <p>Coming Soon: A curated list of short videos explaining key DSA concepts.</p>
                 </div>
                 
                 <!-- Playground View -->
                 <div id="playground-content" class="content-section">
-                    <h2>DSA Playground</h2>
-                    <button class="back-btn" data-target="dashboard-content">← Back to Dashboard</button>
+                    <h2>DSA Playground</h2> <button class="back-btn" data-target="dashboard-content">← Back to Dashboard</button>
 
-                    <!-- Game 1: Stack Simulator -->
-                    <div id="stack-game" class="game-container">
-                        <h3>🌀 Stack Simulator – Undo/Redo Challenge</h3>
-                        <p>Type an action (e.g., "Wrote a line of code") and press Submit. Then use <strong>Ctrl+Z</strong> to Undo and <strong>Ctrl+Y</strong> to Redo.</p>
-                        <input id="actionInput" placeholder="Type an action..." />
-                        <button id="submitActionBtn">Submit</button>
-                        <div class="log" id="stack-log">
-                            <p><strong>Undo Stack:</strong> []</p>
-                            <p><strong>Redo Stack:</strong> []</p>
-                        </div>
-                    </div>
+                    <!-- EASY LEVEL -->
+                    <div id="stack-game" class="game-container"> <h3>🌀 Stack Simulator (Easy)</h3> <p>Simulate Undo/Redo. Type an action and press Submit. Use <strong>Ctrl+Z</strong> to Undo and <strong>Ctrl+Y</strong> to Redo.</p> <input id="actionInput" placeholder="Type an action..." /> <button id="submitActionBtn">Submit</button> <div class="log" id="stack-log"><p><strong>Undo Stack:</strong> []</p><p><strong>Redo Stack:</strong> []</p></div> </div>
+                    <div id="queue-game" class="game-container"> <h3>🛒 Queue Quest (Easy)</h3> <p>Manage a service line. Use "Enqueue" to add customers and "Dequeue" to serve them from the front.</p> <button id="enqueueBtn">Enqueue New Customer</button> <button id="dequeueBtn">Dequeue Next Customer</button> <div class="queue-display" id="queue-display-box"></div> </div>
+                    <div id="linked-list-game" class="game-container"> <h3>🔗 Linked List Chain Builder (Easy)</h3> <p>The nodes must be linked in ascending order. Click a node, then click another to form a `next` pointer.</p> <div class="ll-container"> <div class="ll-area"><h4>Unlinked Nodes</h4><div id="ll-unlinked-area"></div></div> <div class="ll-area"><h4>Your Linked List</h4><div id="ll-linked-area"></div></div> </div> <button id="resetLlBtn">Reset</button> </div>
+                    <div id="recursion-maze-game" class="game-container"><h3>🌀 Recursion Maze Solver (Easy)</h3><p>Watch how recursion explores a maze. The call stack shows the function's memory as it dives deep and backtracks.</p><div class="recursion-container"><div class="maze-grid" id="recursion-maze-grid"></div><div><div class="code-display" id="recursion-code-display"></div><div id="call-stack"><strong>Call Stack:</strong></div></div></div><div class="controls"><button id="stepRecursionBtn">Step</button><button id="runRecursionBtn">Run</button><button id="resetRecursionBtn">Reset</button></div></div>
                     
-                    <!-- Game 2: Sort the Monsters -->
-                    <div id="monster-game" class="game-container">
-                        <h3>🐉 Sort the Monsters (Bubble Sort)</h3>
-                        <p>Click two monsters to compare them. If the first is larger than the second, they will swap. Sort them in ascending order!</p>
-                        <div class="monsters" id="monsters-container"></div>
-                        <button id="resetMonstersBtn">Reset Monsters</button>
-                    </div>
-
-                    <!-- Game 3: Queue Quest -->
-                    <div id="queue-game" class="game-container">
-                        <h3>🛒 Queue Quest – Service Counter</h3>
-                        <p>Customers are arriving! Use "Enqueue" to add them to the line and "Dequeue" to serve the customer at the front.</p>
-                        <button id="enqueueBtn">Enqueue New Customer</button>
-                        <button id="dequeueBtn">Dequeue Next Customer</button>
-                        <div class="queue-display" id="queue-display-box"></div>
-                    </div>
-
-                    <!-- NEW Game 4: BST Treasure Hunt -->
-                    <div id="bst-game" class="game-container">
-                        <h3>🌳 BST Treasure Hunt</h3>
-                        <p id="bst-instruction">Find the treasure! Click the root to start. If your guess is wrong, I'll tell you to go higher or lower.</p>
-                        <p id="bst-status"></p>
-                        <div class="bst-container" id="bst-container"></div>
-                        <button id="resetBstBtn">New Game</button>
-                    </div>
-
-                    <!-- NEW Game 5: Graph Traveler -->
-                    <div id="graph-game" class="game-container">
-                        <h3>🗺️ Graph Traveler</h3>
-                        <p>Find a path from the Green city (Start) to the Red city (End). You can only travel to adjacent cities.</p>
-                        <div id="graph-container"></div>
-                        <button id="resetGraphBtn">Reset Journey</button>
-                    </div>
-
-                    <!-- NEW Game 6: Array Jumper -->
-                    <div id="array-jumper-game" class="game-container">
-                        <h3>🤸 Array Jumper</h3>
-                        <p>From your current position (Orange), you can jump up to the number of steps shown. Reach the Green block to win!</p>
-                        <div class="array-container" id="array-jumper-container"></div>
-                        <button id="resetArrayJumperBtn">Reset Puzzle</button>
-                    </div>
-
+                    <!-- INTERMEDIATE LEVEL -->
+                    <div id="monster-game" class="game-container"> <h3>🐉 Sort the Monsters (Intermediate)</h3> <p>A hands-on Bubble Sort. Click two adjacent monsters to compare and swap if needed. Sort them in ascending order.</p> <div class="monsters" id="monsters-container"></div> <button id="resetMonstersBtn">Reset</button> </div>
+                    <div id="array-jumper-game" class="game-container"><h3>🤸 Array Jumper (Intermediate)</h3> <p>From your orange block, jump up to the number of steps shown. Reach the green block to win!</p> <div class="array-container" id="array-jumper-container"></div> <button id="resetArrayJumperBtn">Reset Puzzle</button> </div>
+                    <div id="bst-game" class="game-container"> <h3>🌳 BST Treasure Hunt (Intermediate)</h3> <p id="bst-instruction">Find the treasure! If your guess is wrong, I'll tell you to go higher (right) or lower (left).</p> <p id="bst-status"></p> <div class="game-canvas-container"><svg id="bst-svg-container"></svg></div> <button id="resetBstBtn">New Game</button> </div>
+                    <div id="heap-game" class="game-container"><h3>🔥 Min-Heap Organizer (Intermediate)</h3><p>This tree violates the Min-Heap rule (parent > child). Click invalid parents and their smaller children to swap them until the heap is fixed.</p><div class="game-canvas-container"><svg id="heap-svg-container"></svg></div><button id="resetHeapBtn">Reset Heap</button></div>
+                    
+                    <!-- ADVANCED LEVEL -->
+                    <div id="graph-game" class="game-container"> <h3>🗺️ Graph Traveler (Advanced)</h3> <p>Find a path from Green (Start) to Red (End). You can only travel between connected cities.</p> <div class="game-canvas-container"><svg id="graph-svg-container"></svg></div> <button id="resetGraphBtn">Reset Journey</button> </div>
+                    <div id="pathfinding-game" class="game-container"><h3>🛰️ Pathfinding Visualizer (Advanced)</h3><p>Dijkstra's Algorithm in action! Draw walls, then watch the algorithm find the shortest path from Green to Red.</p><div class="controls"><label><input type="radio" name="draw-mode" value="wall" checked> Draw Walls</label><label><input type="radio" name="draw-mode" value="start"> Move Start</label><label><input type="radio" name="draw-mode" value="end"> Move End</label></div><div class="path-grid" id="pathfinding-grid"></div><button id="runPathfindingBtn">Find Path</button><button id="clearPathfindingBtn">Clear Board</button></div>
+                    <div id="kmp-game" class="game-container"><h3>🔎 String Search Detective (Advanced)</h3><p>Watch the KMP algorithm find the pattern. The table shows how it uses prefixes to avoid re-checking characters.</p><div id="kmp-viz"><div id="kmp-text-row" class="kmp-row"></div><div id="kmp-pattern-row" class="kmp-row"></div></div><div class="controls"><strong>LPS Table:</strong><div id="lps-table"></div><button id="stepKmpBtn">Step</button><button id="resetKmpBtn">Reset</button></div></div>
                 </div>
                 
                 <!-- Settings View -->
                 <div id="settings-content" class="content-section">
-                    <h2>Settings</h2>
-                     <button class="back-btn" data-target="dashboard-content">← Back to Dashboard</button>
-                    <div class="settings-option">
-                        <span>Dark / Light Mode</span>
-                        <label class="switch">
-                          <input type="checkbox" id="theme-toggle">
-                          <span class="slider"></span>
-                        </label>
-                    </div>
-                     <div class="settings-option">
-                        <span>Clear Chat History</span>
-                        <button id="clear-history-btn" style="background: #e53e3e; color: white; border: none; padding: 10px 20px; border-radius: 12px; cursor: pointer;">Clear Now</button>
-                    </div>
+                    <h2>Settings</h2> <button class="back-btn" data-target="dashboard-content">← Back to Dashboard</button>
+                    <div class="settings-option"> <span>Dark / Light Mode</span> <label class="switch"> <input type="checkbox" id="theme-toggle"> <span class="slider"></span> </label> </div>
+                    <div class="settings-option"> <span>Clear Chat History</span> <button id="clear-history-btn" style="background: #e53e3e; color: white; border: none; padding: 10px 20px; border-radius: 12px; cursor: pointer;">Clear Now</button> </div>
                 </div>
             </div>
         </div>
     </div>
 
     <script>
-        // --- DOM Elements ---
+        // --- DOM Elements & App State ---
         const loginScreen = document.getElementById('login-screen');
         const loginForm = document.getElementById('login-form');
         const usernameInput = document.getElementById('username-input');
@@ -761,91 +314,49 @@
         const mainContentArea = document.getElementById('main-content-area');
         const sidebar = document.getElementById('sidebar');
         const logoutBtn = document.getElementById('logout-btn');
-        
         const form = document.getElementById('input-form');
         const userInput = document.getElementById('user-input-field');
         const chatBox = document.getElementById('chat-box');
         const sendButton = document.getElementById('send-button');
-
         const menuItems = document.querySelectorAll('.menu-item');
         const contentSections = document.querySelectorAll('.content-section');
         const backButtons = document.querySelectorAll('.back-btn');
-        
         const themeToggle = document.getElementById('theme-toggle');
         const clearHistoryBtn = document.getElementById('clear-history-btn');
         
         let progressChart = null;
-        
-        // --- App State ---
         let currentUser = null;
         let userData = {};
 
         // --- Event Listeners ---
-        loginForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const username = usernameInput.value.trim();
-            if (username) loginUser(username);
-        });
-
+        loginForm.addEventListener('submit', (e) => { e.preventDefault(); const username = usernameInput.value.trim(); if (username) loginUser(username); });
         guestModeBtn.addEventListener('click', () => loginUser(null));
-        
-        logoutBtn.addEventListener('click', () => {
-            if (confirm('Are you sure you want to logout?')) location.reload();
-        });
-
+        logoutBtn.addEventListener('click', () => { if (confirm('Are you sure you want to logout?')) location.reload(); });
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
             const userMessage = userInput.value.trim();
             if (!userMessage) return;
-
             appendMessage(userMessage, 'user-message');
             saveMessage('user', userMessage);
             userInput.value = '';
             setLoading(true);
-
             try {
                 showTypingIndicator();
                 const aiResponse = await callGoogleGenAI(userMessage);
-                removeTypingIndicator();
                 appendMessage(aiResponse, 'ai-message');
                 saveMessage('ai', aiResponse);
                 updateDashboard();
-            } catch (error) {
-                removeTypingIndicator();
-                console.error("AI Error:", error);
-                appendMessage(error.message, 'ai-message');
-            } finally {
-                setLoading(false);
-            }
+            } catch (error) { console.error("AI Error:", error); appendMessage(error.message, 'ai-message'); } 
+            finally { removeTypingIndicator(); setLoading(false); }
         });
-
-        menuItems.forEach(item => {
-            item.addEventListener('click', () => {
-                switchContent(item.getAttribute('data-content'));
-            });
-        });
-        
-        backButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                switchContent(button.getAttribute('data-target'));
-            });
-        });
-        
-        themeToggle.addEventListener('change', () => {
-            document.body.classList.toggle('light-mode');
-            localStorage.setItem('dsa-theme', document.body.classList.contains('light-mode') ? 'light' : 'dark');
-            if (currentUser) updateDashboard();
-        });
-        
+        menuItems.forEach(item => item.addEventListener('click', () => switchContent(item.getAttribute('data-content'))));
+        backButtons.forEach(button => button.addEventListener('click', () => switchContent(button.getAttribute('data-target'))));
+        themeToggle.addEventListener('change', () => { document.body.classList.toggle('light-mode'); localStorage.setItem('dsa-theme', document.body.classList.contains('light-mode') ? 'light' : 'dark'); if (currentUser) updateDashboard(); });
         clearHistoryBtn.addEventListener('click', () => {
-            if (confirm('Are you sure you want to clear all chat history? This cannot be undone.')) {
+            if (confirm('Are you sure you want to clear all chat history?')) {
                 if (currentUser && userData[currentUser]) {
-                    userData[currentUser].history = [];
-                    userData[currentUser].progress = {};
-                    saveUserData();
-                    alert('History cleared.');
-                    loadHistory();
-                    updateDashboard();
+                    userData[currentUser].history = []; userData[currentUser].progress = {};
+                    saveUserData(); alert('History cleared.'); loadHistory(); updateDashboard();
                 }
             }
         });
@@ -854,184 +365,74 @@
         function switchContent(contentId) {
             menuItems.forEach(i => i.classList.toggle('active', i.getAttribute('data-content') === contentId));
             contentSections.forEach(section => section.classList.toggle('active', section.id === contentId));
-            
             if (contentId === 'playground-content') {
-                initStackGame();
-                initMonsterGame();
-                initQueueGame();
-                initBstGame();
-                initGraphGame();
-                initArrayJumperGame();
+                initStackGame(); initQueueGame(); initLlGame(); initRecursionMazeGame();
+                initMonsterGame(); initArrayJumperGame(); initBstGame(); initHeapGame();
+                initGraphGame(); initPathfindingGame(); initKmpGame();
             }
             if(contentId === 'history-content' && currentUser) loadHistory();
             if(contentId === 'dashboard-content' && currentUser) updateDashboard();
         }
-
         function loginUser(username) {
-            currentUser = username;
-            loginScreen.style.display = 'none';
-            mainContentArea.style.display = 'flex';
-            
+            currentUser = username; loginScreen.style.display = 'none'; mainContentArea.style.display = 'flex';
             if (username) {
                 sidebar.style.display = 'flex';
                 document.getElementById('username-display').textContent = username;
                 document.getElementById('user-initial').textContent = username.charAt(0).toUpperCase();
-                
                 userData = JSON.parse(localStorage.getItem('dsaUserData')) || {};
-                if (!userData[username]) {
-                    userData[username] = { history: [], progress: {} };
-                }
-                loadChat();
-                switchContent('dashboard-content');
-            } else {
-                sidebar.style.display = 'none';
-                switchContent('chat-content');
-            }
+                if (!userData[username]) userData[username] = { history: [], progress: {} };
+                loadChat(); switchContent('dashboard-content');
+            } else { sidebar.style.display = 'none'; switchContent('chat-content'); }
         }
-        
-        function appendMessage(message, className) {
-            const messageElement = document.createElement('div');
-            messageElement.className = `message ${className}`;
-            messageElement.textContent = message;
-            chatBox.appendChild(messageElement);
-            scrollToBottom();
-        }
-        
-        function saveMessage(sender, text) {
-            if (!currentUser) return;
-            userData[currentUser].history.push({ sender, text, timestamp: new Date().toISOString() });
-            if (sender === 'user') {
-                 const date = new Date().toISOString().split('T')[0];
-                 userData[currentUser].progress[date] = (userData[currentUser].progress[date] || 0) + 1;
-            }
-            saveUserData();
-        }
-        
-        function loadChat() {
-            if (!currentUser || !userData[currentUser]) return;
-            chatBox.innerHTML = '';
-            if (userData[currentUser].history.length === 0) {
-                 appendMessage('Ask me anything about Data Structures and Algorithms. For example, "Explain bubble sort."', 'ai-message');
-            } else {
-                 userData[currentUser].history.forEach(msg => appendMessage(msg.text, `${msg.sender}-message`));
-            }
-        }
-        
+        function appendMessage(message, className) { const el = document.createElement('div'); el.className = `message ${className}`; el.textContent = message; chatBox.appendChild(el); scrollToBottom(); }
+        function saveMessage(sender, text) { if (!currentUser) return; userData[currentUser].history.push({ sender, text, timestamp: new Date().toISOString() }); if (sender === 'user') { const date = new Date().toISOString().split('T')[0]; userData[currentUser].progress[date] = (userData[currentUser].progress[date] || 0) + 1; } saveUserData(); }
+        function loadChat() { if (!currentUser || !userData[currentUser]) return; chatBox.innerHTML = ''; if (userData[currentUser].history.length === 0) { appendMessage('Ask me anything about Data Structures and Algorithms.', 'ai-message'); } else { userData[currentUser].history.forEach(msg => appendMessage(msg.text, `${msg.sender}-message`)); } }
         function loadHistory() {
-            const historyContainer = document.getElementById('history-container');
-            historyContainer.innerHTML = '';
+            const container = document.getElementById('history-container'); container.innerHTML = '';
             if (currentUser && userData[currentUser] && userData[currentUser].history.length > 0) {
                  userData[currentUser].history.forEach(msg => {
-                     const historyItem = document.createElement('div');
-                     historyItem.className = `message ${msg.sender}-message`;
-                     historyItem.style.animation = 'none';
-                     historyItem.textContent = `[${new Date(msg.timestamp).toLocaleTimeString()}] ${msg.sender === 'user' ? 'You' : 'AI'}: ${msg.text}`;
-                     historyContainer.appendChild(historyItem);
+                     const item = document.createElement('div'); item.className = `message ${msg.sender}-message`; item.style.animation = 'none';
+                     item.textContent = `[${new Date(msg.timestamp).toLocaleTimeString()}] ${msg.sender === 'user' ? 'You' : 'AI'}: ${msg.text}`;
+                     container.appendChild(item);
                  });
-            } else {
-                historyContainer.textContent = 'No chat history found.';
-            }
+            } else { container.textContent = 'No chat history found.'; }
         }
-        
-        function saveUserData() {
-            if (currentUser) localStorage.setItem('dsaUserData', JSON.stringify(userData));
-        }
-
-        function showTypingIndicator() {
-            const typingElement = document.createElement('div');
-            typingElement.id = 'typing-indicator';
-            typingElement.className = 'message ai-typing';
-            typingElement.textContent = 'DSA Instructor is typing...';
-            chatBox.appendChild(typingElement);
-            scrollToBottom();
-        }
-        
-        function removeTypingIndicator() {
-            const typingElement = document.getElementById('typing-indicator');
-            if (typingElement) typingElement.remove();
-        }
-        
-        function setLoading(isLoading) {
-            userInput.disabled = isLoading;
-            sendButton.disabled = isLoading;
-            sendButton.textContent = isLoading ? 'Thinking...' : 'Send';
-            sendButton.classList.toggle('loading', isLoading);
-        }
-        
-        function scrollToBottom() {
-            chatBox.scrollTop = chatBox.scrollHeight;
-        }
-
+        function saveUserData() { if (currentUser) localStorage.setItem('dsaUserData', JSON.stringify(userData)); }
+        function showTypingIndicator() { const el = document.createElement('div'); el.id = 'typing-indicator'; el.className = 'message ai-typing'; el.textContent = 'DSA Instructor is typing...'; chatBox.appendChild(el); scrollToBottom(); }
+        function removeTypingIndicator() { const el = document.getElementById('typing-indicator'); if (el) el.remove(); }
+        function setLoading(isLoading) { userInput.disabled = isLoading; sendButton.disabled = isLoading; sendButton.textContent = isLoading ? 'Thinking...' : 'Send'; sendButton.classList.toggle('loading', isLoading); }
+        function scrollToBottom() { chatBox.scrollTop = chatBox.scrollHeight; }
         async function callGoogleGenAI(prompt) {
-            const response = await fetch('/api/call-ai', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ prompt }),
-            });
+            const response = await fetch('/api/call-ai', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ prompt }) });
             const data = await response.json();
             if (!response.ok) throw new Error(data.error?.message || `Error: ${response.status}`);
-            if (!data.candidates?.[0]?.content?.parts?.[0]?.text) {
-                throw new Error("API returned an empty or invalid response.");
-            }
+            if (!data.candidates?.[0]?.content?.parts?.[0]?.text) throw new Error("API returned an invalid response.");
             return data.candidates[0].content.parts[0].text;
         }
-        
         function updateDashboard() {
             if (!currentUser || !userData[currentUser] || !document.getElementById('dashboard-content').classList.contains('active')) return;
-            const solvedCount = Object.values(userData[currentUser].progress).reduce((a, b) => a + b, 0);
-            document.getElementById('solved-count').textContent = solvedCount;
-            const progressData = userData[currentUser].progress;
-            const sortedDates = Object.keys(progressData).sort();
-            const chartLabels = sortedDates.slice(-30);
-            const chartDataPoints = chartLabels.map(date => progressData[date]);
+            document.getElementById('solved-count').textContent = Object.values(userData[currentUser].progress).reduce((a, b) => a + b, 0);
+            const progress = userData[currentUser].progress;
+            const labels = Object.keys(progress).sort().slice(-30);
+            const data = labels.map(date => progress[date]);
             const isLight = document.body.classList.contains('light-mode');
             const gridColor = isLight ? 'rgba(0,0,0,0.1)' : 'rgba(255,255,255,0.1)';
             const textColor = isLight ? '#1c1c1e' : '#f0f0f0';
             const ctx = document.getElementById('progress-chart').getContext('2d');
             if(progressChart) progressChart.destroy();
-            progressChart = new Chart(ctx, {
-                type: 'line',
-                data: { labels: chartLabels, datasets: [{ label: 'Questions Solved per Day', data: chartDataPoints, fill: true, backgroundColor: 'rgba(99,102,241,0.2)', borderColor: '#6366F1', tension: 0.3 }] },
-                options: { responsive: true, scales: { y: { beginAtZero: true, grid: { color: gridColor }, ticks: { color: textColor, stepSize: 1 } }, x: { grid: { color: gridColor }, ticks: { color: textColor } } }, plugins: { legend: { labels: { color: textColor } } } }
-            });
+            progressChart = new Chart(ctx, { type: 'line', data: { labels, datasets: [{ label: 'Questions Solved', data, fill: true, backgroundColor: 'rgba(99,102,241,0.2)', borderColor: '#6366F1', tension: 0.3 }] }, options: { responsive: true, scales: { y: { beginAtZero: true, grid: { color: gridColor }, ticks: { color: textColor, stepSize: 1 } }, x: { grid: { color: gridColor }, ticks: { color: textColor } } }, plugins: { legend: { labels: { color: textColor } } } } });
         }
         
         // --- Game Logic ---
+        const SVG_NS = "http://www.w3.org/2000/svg";
+        
         // --- Game 1: Stack ---
         const undoStack = []; const redoStack = []; let stackGameInitialized = false;
-        function initStackGame() {
-            if (stackGameInitialized) return;
-            const actionInput = document.getElementById('actionInput');
-            const submitBtn = document.getElementById('submitActionBtn');
-            submitBtn.addEventListener('click', addStackAction);
-            actionInput.addEventListener('keydown', e => { if(e.key === 'Enter') addStackAction(); });
-            document.addEventListener("keydown", e => {
-                if(!document.getElementById('playground-content').classList.contains('active')) return;
-                if (e.ctrlKey && e.key.toLowerCase() === 'z') { e.preventDefault(); if (undoStack.length) redoStack.push(undoStack.pop()); updateStackLog(); }
-                if (e.ctrlKey && e.key.toLowerCase() === 'y') { e.preventDefault(); if (redoStack.length) undoStack.push(redoStack.pop()); updateStackLog(); }
-            });
-            stackGameInitialized = true;
-        }
-        function addStackAction() { const action = document.getElementById('actionInput').value; if (action) { undoStack.push(action); redoStack.length = 0; updateStackLog(); document.getElementById('actionInput').value = ''; } }
-        function updateStackLog() { document.getElementById("stack-log").innerHTML = `<p><strong>Undo Stack (Ctrl+Z):</strong> ${JSON.stringify(undoStack)}</p><p><strong>Redo Stack (Ctrl+Y):</strong> ${JSON.stringify(redoStack)}</p>`; }
+        function initStackGame() { if (stackGameInitialized) return; const input = document.getElementById('actionInput'); document.getElementById('submitActionBtn').addEventListener('click', addStackAction); input.addEventListener('keydown', e => { if(e.key === 'Enter') addStackAction(); }); document.addEventListener("keydown", e => { if(!document.getElementById('playground-content').classList.contains('active')) return; if (e.ctrlKey && e.key.toLowerCase() === 'z') { e.preventDefault(); if (undoStack.length) redoStack.push(undoStack.pop()); updateStackLog(); } if (e.ctrlKey && e.key.toLowerCase() === 'y') { e.preventDefault(); if (redoStack.length) undoStack.push(redoStack.pop()); updateStackLog(); } }); stackGameInitialized = true; }
+        function addStackAction() { const input = document.getElementById('actionInput'); const action = input.value; if (action) { undoStack.push(action); redoStack.length = 0; updateStackLog(); input.value = ''; } }
+        function updateStackLog() { document.getElementById("stack-log").innerHTML = `<p><strong>Undo Stack:</strong> ${JSON.stringify(undoStack)}</p><p><strong>Redo Stack:</strong> ${JSON.stringify(redoStack)}</p>`; }
         
-        // --- Game 2: Monster Sort ---
-        let monsterValues = []; let selectedMonsters = []; let monsterGameInitialized = false;
-        function initMonsterGame() { if(monsterGameInitialized) return; setupMonsterGame(); document.getElementById('resetMonstersBtn').addEventListener('click', setupMonsterGame); monsterGameInitialized = true; }
-        function setupMonsterGame() { monsterValues = [40, 10, 30, 50, 20]; selectedMonsters = []; renderMonsters(); }
-        function renderMonsters() { const container = document.getElementById('monsters-container'); container.innerHTML = ''; monsterValues.forEach((val, i) => { const el = document.createElement('div'); el.className = 'monster'; el.innerText = val; if (selectedMonsters.includes(i)) el.classList.add('selected'); el.onclick = () => selectMonster(i); container.appendChild(el); }); }
-        function selectMonster(index) {
-            if (selectedMonsters.includes(index)) { selectedMonsters = selectedMonsters.filter(i => i !== index); } else if (selectedMonsters.length < 2) { selectedMonsters.push(index); }
-            renderMonsters();
-            if (selectedMonsters.length === 2) {
-                const [i, j] = selectedMonsters.sort((a,b) => a - b);
-                if (j === i + 1) { if (monsterValues[i] > monsterValues[j]) { [monsterValues[i], monsterValues[j]] = [monsterValues[j], monsterValues[i]]; } } else { alert("In Bubble Sort, you only compare adjacent elements!"); }
-                selectedMonsters = []; setTimeout(() => { renderMonsters(); checkSorted(); }, 300);
-            }
-        }
-        function checkSorted() { for (let i = 0; i < monsterValues.length - 1; i++) { if (monsterValues[i] > monsterValues[i + 1]) return; } setTimeout(() => alert("🎉 All Monsters Sorted! Great Job!"), 300); }
-
-        // --- Game 3: Queue ---
+        // --- Game 2: Queue ---
         let customerQueue = []; let nextCustomerId = 1; let queueGameInitialized = false;
         function initQueueGame() { if (queueGameInitialized) return; setupQueueGame(); document.getElementById('enqueueBtn').addEventListener('click', enqueueCustomer); document.getElementById('dequeueBtn').addEventListener('click', dequeueCustomer); queueGameInitialized = true; }
         function setupQueueGame() { customerQueue = ['C1', 'C2', 'C3']; nextCustomerId = 4; renderQueue(); }
@@ -1039,140 +440,212 @@
         function enqueueCustomer() { if (customerQueue.length >= 8) { alert("The line is too long!"); return; } customerQueue.push('C' + nextCustomerId++); renderQueue(); }
         function dequeueCustomer() { if (customerQueue.length === 0) { alert("No customers in line!"); return; } customerQueue.shift(); renderQueue(); }
 
-        // --- Game 4: BST Treasure Hunt ---
+        // --- Game 3: Monster Sort ---
+        let monsterValues = []; let selectedMonsters = []; let monsterGameInitialized = false;
+        function initMonsterGame() { if(monsterGameInitialized) return; setupMonsterGame(); document.getElementById('resetMonstersBtn').addEventListener('click', setupMonsterGame); monsterGameInitialized = true; }
+        function setupMonsterGame() { monsterValues = [40, 10, 30, 50, 20]; selectedMonsters = []; renderMonsters(); }
+        function renderMonsters() { const container = document.getElementById('monsters-container'); container.innerHTML = ''; monsterValues.forEach((val, i) => { const el = document.createElement('div'); el.className = 'monster'; el.innerText = val; if (selectedMonsters.includes(i)) el.classList.add('selected'); el.onclick = () => selectMonster(i); container.appendChild(el); }); }
+        function selectMonster(index) { if (selectedMonsters.includes(index)) { selectedMonsters = selectedMonsters.filter(i => i !== index); } else if (selectedMonsters.length < 2) { selectedMonsters.push(index); } renderMonsters(); if (selectedMonsters.length === 2) { const [i, j] = selectedMonsters.sort((a,b) => a - b); if (j === i + 1) { if (monsterValues[i] > monsterValues[j]) { [monsterValues[i], monsterValues[j]] = [monsterValues[j], monsterValues[i]]; } } else { alert("In Bubble Sort, you only compare adjacent elements!"); } selectedMonsters = []; setTimeout(() => { renderMonsters(); checkSorted(); }, 300); } }
+        function checkSorted() { for (let i = 0; i < monsterValues.length - 1; i++) { if (monsterValues[i] > monsterValues[i + 1]) return; } setTimeout(() => alert("🎉 All Monsters Sorted!"), 300); }
+        
+        // --- Game 4: Array Jumper ---
+        let arrayJumperInitialized = false; let jumperArray = []; let playerPos = 0; let jumperPath = [];
+        function initArrayJumperGame() { if (arrayJumperInitialized) return; setupArrayJumperGame(); document.getElementById('resetArrayJumperBtn').addEventListener('click', setupArrayJumperGame); arrayJumperInitialized = true; }
+        function setupArrayJumperGame() { jumperArray = [2, 3, 1, 1, 4, 1, 2]; playerPos = 0; jumperPath = [0]; renderArrayJumper(); }
+        function renderArrayJumper() { const container = document.getElementById('array-jumper-container'); container.innerHTML = ''; const jumpValue = jumperArray[playerPos]; jumperArray.forEach((val, i) => { const el = document.createElement('div'); el.className = 'array-block'; el.textContent = val; if (i === playerPos) el.classList.add('player'); if (i === jumperArray.length - 1) el.classList.add('end'); if(jumperPath.includes(i) && i !== playerPos) el.classList.add('path-taken'); const isPossible = i > playerPos && i <= playerPos + jumpValue; if (isPossible) el.classList.add('possible'); el.onclick = () => handleBlockClick(i, isPossible); container.appendChild(el); }); }
+        function handleBlockClick(index, isPossible) { if (!isPossible) { alert("You can't jump that far!"); return; } playerPos = index; jumperPath.push(index); renderArrayJumper(); if (playerPos === jumperArray.length - 1) setTimeout(() => alert('🎉 You reached the end!'), 100); }
+
+        // --- Helper to create SVG elements ---
+        function createSvgElement(tag, attributes) { const el = document.createElementNS(SVG_NS, tag); for (const key in attributes) el.setAttribute(key, attributes[key]); return el; }
+
+        // --- Game 5: BST Treasure Hunt ---
         let bstGameInitialized = false; let bstRoot = null; let bstTreasure = null;
-        class BstNode { constructor(value) { this.value = value; this.left = null; this.right = null; } }
+        class BstNode { constructor(value) { this.value = value; this.left = null; this.right = null; this.x = 0; this.y = 0; } }
         function initBstGame() { if (bstGameInitialized) return; setupBstGame(); document.getElementById('resetBstBtn').addEventListener('click', setupBstGame); bstGameInitialized = true; }
-        function setupBstGame() {
-            bstRoot = new BstNode(50);
-            [30, 70, 20, 40, 60, 80, 15, 25, 35, 45].forEach(v => insertBstNode(bstRoot, v));
-            const allValues = [50, 30, 70, 20, 40, 60, 80, 15, 25, 35, 45];
-            bstTreasure = allValues[Math.floor(Math.random() * allValues.length)];
-            document.getElementById('bst-instruction').textContent = `Find the treasure! The treasure is a number between 15 and 80.`;
-            document.getElementById('bst-status').textContent = 'Click the root node (50) to begin your search.';
-            renderBst();
-        }
+        function setupBstGame() { bstRoot = new BstNode(50); const values = [30, 70, 20, 40, 60, 80, 15, 25, 35, 45]; values.forEach(v => insertBstNode(bstRoot, v)); bstTreasure = values.concat(50)[Math.floor(Math.random() * (values.length + 1))]; document.getElementById('bst-instruction').textContent = `Find the treasure! It's a number between 15 and 80.`; document.getElementById('bst-status').textContent = 'Click the root node (50) to begin.'; renderBst(); }
         function insertBstNode(node, value) { if (value < node.value) { if (node.left === null) node.left = new BstNode(value); else insertBstNode(node.left, value); } else { if (node.right === null) node.right = new BstNode(value); else insertBstNode(node.right, value); } }
         function renderBst() {
-            const container = document.getElementById('bst-container');
-            container.innerHTML = '';
-            function createNodeElement(node, top, left, offset) {
+            const svg = document.getElementById('bst-svg-container'); svg.innerHTML = '';
+            function setNodePosition(node, x, y, xOffset) { if (!node) return; node.x = x; node.y = y; setNodePosition(node.left, x - xOffset, y + 60, xOffset / 2); setNodePosition(node.right, x + xOffset, y + 60, xOffset / 2); }
+            setNodePosition(bstRoot, 50, 15, 25);
+            function drawTree(node) {
                 if (!node) return;
-                const el = document.createElement('div');
-                el.className = 'bst-node';
-                el.textContent = node.value;
-                el.style.top = `${top}px`;
-                el.style.left = `${left}%`;
-                el.onclick = () => handleBstNodeClick(el, node.value);
-                container.appendChild(el);
-                createNodeElement(node.left, top + 60, left - offset, offset / 2);
-                createNodeElement(node.right, top + 60, left + offset, offset / 2);
+                if (node.left) svg.appendChild(createSvgElement('line', { x1: `${node.x}%`, y1: `${node.y}%`, x2: `${node.left.x}%`, y2: `${node.left.y}%`, stroke: 'var(--text-muted-color)' }));
+                if (node.right) svg.appendChild(createSvgElement('line', { x1: `${node.x}%`, y1: `${node.y}%`, x2: `${node.right.x}%`, y2: `${node.right.y}%`, stroke: 'var(--text-muted-color)' }));
+                drawTree(node.left); drawTree(node.right);
+                const g = createSvgElement('g', { class: 'bst-node', transform: `translate(${node.x}%, ${node.y}%)` });
+                g.onclick = () => handleBstNodeClick(g, node.value);
+                g.appendChild(createSvgElement('circle', { r: '20' }));
+                g.appendChild(createSvgElement('text', { dy: ".3em" }, node.value));
+                svg.appendChild(g);
             }
-            createNodeElement(bstRoot, 0, 50, 25);
+            drawTree(bstRoot);
         }
-        function handleBstNodeClick(el, value) {
-            el.classList.add('visited');
-            const status = document.getElementById('bst-status');
-            if (value === bstTreasure) {
-                status.textContent = `🎉 You found the treasure: ${bstTreasure}! 🎉`;
-                el.classList.add('found');
-                document.querySelectorAll('#bst-game .bst-node').forEach(n => n.onclick = null); // Disable clicks
-            } else if (value > bstTreasure) {
-                status.textContent = `You clicked ${value}. The treasure is LOWER. Try the left path!`;
-            } else {
-                status.textContent = `You clicked ${value}. The treasure is HIGHER. Try the right path!`;
-            }
-        }
+        function handleBstNodeClick(el, value) { el.classList.add('visited'); const status = document.getElementById('bst-status'); if (value === bstTreasure) { status.textContent = `🎉 You found the treasure: ${bstTreasure}!`; el.classList.add('found'); document.querySelectorAll('#bst-game .bst-node').forEach(n => n.onclick = null); } else if (value > bstTreasure) { status.textContent = `${value} is too high. Go Left!`; } else { status.textContent = `${value} is too low. Go Right!`; } }
         
-        // --- Game 5: Graph Traveler ---
+        // --- Game 6: Graph Traveler ---
         let graphGameInitialized = false; let graph = {}; let graphPositions = {}; let graphPath = [];
         function initGraphGame() { if (graphGameInitialized) return; setupGraphGame(); document.getElementById('resetGraphBtn').addEventListener('click', setupGraphGame); graphGameInitialized = true; }
-        function setupGraphGame() {
-            graph = { A: ['B', 'C'], B: ['A', 'D', 'E'], C: ['A', 'F'], D: ['B'], E: ['B', 'F'], F: ['C', 'E'] };
-            graphPositions = { A: {x: 50, y: 10}, B: {x: 20, y: 40}, C: {x: 80, y: 40}, D: {x: 10, y: 70}, E: {x: 50, y: 70}, F: {x: 90, y: 70} };
-            graphPath = ['A'];
-            renderGraph();
-        }
+        function setupGraphGame() { graph = { A: ['B', 'C'], B: ['A', 'D', 'E'], C: ['A', 'F'], D: ['B'], E: ['B', 'F'], F: ['C', 'E'] }; graphPositions = { A: {x: 50, y: 15}, B: {x: 25, y: 40}, C: {x: 75, y: 40}, D: {x: 15, y: 80}, E: {x: 50, y: 80}, F: {x: 85, y: 80} }; graphPath = ['A']; renderGraph(); }
         function renderGraph() {
-            const container = document.getElementById('graph-container');
-            container.innerHTML = '';
-            Object.keys(graph).forEach(city => {
-                graph[city].forEach(neighbor => {
-                    if (city < neighbor) { // Draw each road once
-                        const c1 = graphPositions[city]; const c2 = graphPositions[neighbor];
-                        const angle = Math.atan2(c2.y - c1.y, c2.x - c1.x) * 180 / Math.PI;
-                        const length = Math.sqrt(Math.pow(c2.x - c1.x, 2) + Math.pow(c2.y - c1.y, 2));
-                        const road = document.createElement('div');
-                        road.className = 'road';
-                        road.style.left = `${c1.x}%`; road.style.top = `${c1.y}%`;
-                        road.style.width = `${length}%`; road.style.transform = `rotate(${angle}deg)`;
-                        container.appendChild(road);
-                    }
-                });
-            });
-            Object.keys(graphPositions).forEach(city => {
-                const pos = graphPositions[city]; const el = document.createElement('div');
-                el.className = 'city'; el.textContent = city;
-                if (city === 'A') el.classList.add('start');
-                if (city === 'F') el.classList.add('end');
-                if (graphPath[graphPath.length - 1] === city) el.classList.add('current');
-                if (graphPath.includes(city) && city !== 'A') el.classList.add('visited');
-                el.style.left = `calc(${pos.x}% - 25px)`; el.style.top = `calc(${pos.y}% - 25px)`;
-                el.onclick = () => handleCityClick(city);
-                container.appendChild(el);
-            });
+            const svg = document.getElementById('graph-svg-container'); svg.innerHTML = '';
+            Object.keys(graph).forEach(city => { graph[city].forEach(neighbor => { if (city < neighbor) { const c1 = graphPositions[city]; const c2 = graphPositions[neighbor]; const isPath = (graphPath.includes(city) && graphPath[graphPath.indexOf(neighbor) - 1] === city) || (graphPath.includes(neighbor) && graphPath[graphPath.indexOf(city) - 1] === neighbor); svg.appendChild(createSvgElement('line', { x1: `${c1.x}%`, y1: `${c1.y}%`, x2: `${c2.x}%`, y2: `${c2.y}%`, class: isPath ? 'road path' : 'road' })); } }); });
+            Object.keys(graphPositions).forEach(city => { const pos = graphPositions[city]; const g = createSvgElement('g', { class: `city ${city==='A'?'start':''} ${city==='F'?'end':''} ${graphPath.includes(city)?'visited':''} ${graphPath[graphPath.length - 1] === city ? 'current': ''}`, transform: `translate(${pos.x}%, ${pos.y}%)` }); g.onclick = () => handleCityClick(city); g.appendChild(createSvgElement('circle', { r: '20' })); g.appendChild(createSvgElement('text', { dy: ".3em" }, city)); svg.appendChild(g); });
         }
-        function handleCityClick(city) {
-            const currentCity = graphPath[graphPath.length - 1];
-            if (graph[currentCity].includes(city) && !graphPath.includes(city)) {
-                graphPath.push(city);
-                renderGraph();
-                if (city === 'F') setTimeout(() => alert('🎉 You reached the destination! 🎉'), 100);
-            } else if (graphPath.includes(city)) {
-                alert("You've already visited this city!");
-            } else {
-                alert("You can't travel there from your current location.");
+        function handleCityClick(city) { const currentCity = graphPath[graphPath.length - 1]; if (graph[currentCity].includes(city) && !graphPath.includes(city)) { graphPath.push(city); renderGraph(); if (city === 'F') setTimeout(() => alert('🎉 You reached the destination!'), 100); } else if (graphPath.includes(city)) { alert("You've already visited this city!"); } else { alert("Can't travel there from your current location."); } }
+
+        // --- Game 7: Linked List Builder ---
+        let llGameInitialized = false; let llUnlinked = [], llHead = null, llSelected = null;
+        function initLlGame() { if(llGameInitialized) return; setupLlGame(); document.getElementById('resetLlBtn').addEventListener('click', setupLlGame); llGameInitialized = true; }
+        function setupLlGame() { llUnlinked = [42, 10, 85, 25, 61].map(v => ({val:v, next:null})); llHead = null; llSelected = null; renderLlGame(); }
+        function renderLlGame() {
+            const unlinkedArea = document.getElementById('ll-unlinked-area');
+            const linkedArea = document.getElementById('ll-linked-area');
+            unlinkedArea.innerHTML = '';
+            linkedArea.innerHTML = '';
+            llUnlinked.forEach(node => unlinkedArea.appendChild(createLlNodeEl(node, 'unlinked')));
+            let current = llHead;
+            while(current) { linkedArea.appendChild(createLlNodeEl(current, 'linked')); current = current.next; }
+            if (llUnlinked.length === 0 && llHead) {
+                let sorted = true, curr = llHead; while(curr.next){ if(curr.val > curr.next.val) sorted = false; curr = curr.next; }
+                if(sorted) setTimeout(() => alert("🎉 You built a sorted Linked List!"), 100);
             }
+        }
+        function createLlNodeEl(node, area) {
+            const el = document.createElement('div');
+            el.className = 'll-node';
+            if(node === llSelected) el.classList.add('selected');
+            el.textContent = node.val;
+            el.appendChild(document.createElement('div'));
+            el.onclick = () => handleLlNodeClick(node, area);
+            return el;
+        }
+        function handleLlNodeClick(node, area) {
+            if (!llSelected) { llSelected = node; } 
+            else {
+                if(llSelected !== node) {
+                    if (area === 'unlinked' && !llHead) { llHead = llSelected; llUnlinked = llUnlinked.filter(n => n !== llSelected); }
+                    if (llSelected.next === null) { llSelected.next = node; llUnlinked = llUnlinked.filter(n => n !== node); }
+                }
+                llSelected = null;
+            }
+            renderLlGame();
         }
         
-        // --- Game 6: Array Jumper ---
-        let arrayJumperInitialized = false; let jumperArray = []; let playerPos = 0;
-        function initArrayJumperGame() { if (arrayJumperInitialized) return; setupArrayJumperGame(); document.getElementById('resetArrayJumperBtn').addEventListener('click', setupArrayJumperGame); arrayJumperInitialized = true; }
-        function setupArrayJumperGame() { jumperArray = [2, 3, 1, 1, 4, 1, 2]; playerPos = 0; renderArrayJumper(); }
-        function renderArrayJumper() {
-            const container = document.getElementById('array-jumper-container');
-            container.innerHTML = '';
-            const jumpValue = jumperArray[playerPos];
-            jumperArray.forEach((val, i) => {
-                const el = document.createElement('div');
-                el.className = 'array-block';
-                el.textContent = val;
-                if (i === playerPos) el.classList.add('player');
-                if (i === jumperArray.length - 1) el.classList.add('end');
-                const isPossible = i > playerPos && i <= playerPos + jumpValue;
-                if (isPossible) el.classList.add('possible');
-                if (i !== playerPos && !isPossible) el.classList.remove('possible');
-                el.onclick = () => handleBlockClick(i, isPossible);
-                container.appendChild(el);
-            });
+        // --- Game 8: Recursion Maze ---
+        let recursionMazeInitialized = false; let mazeGrid, mazeSolver, mazeInterval;
+        function initRecursionMazeGame() { if(recursionMazeInitialized) return; setupRecursionMaze(); document.getElementById('resetRecursionBtn').addEventListener('click', setupRecursionMaze); document.getElementById('stepRecursionBtn').addEventListener('click', () => mazeSolver.step()); document.getElementById('runRecursionBtn').addEventListener('click', () => { clearInterval(mazeInterval); mazeInterval = setInterval(() => mazeSolver.step(), 100); }); recursionMazeInitialized = true; }
+        function setupRecursionMaze() {
+            mazeGrid = [ [1,1,1,1,1,1,1,1,1,1,1], [1,0,1,0,1,0,1,0,0,0,1], [1,0,1,0,1,0,1,0,1,0,1], [1,0,0,0,0,0,0,0,1,0,1], [1,0,1,1,1,1,1,1,1,0,1], [1,0,0,0,0,0,0,0,0,0,1], [1,0,1,1,1,1,1,1,1,0,1], [1,0,1,0,0,0,0,0,0,0,1], [1,0,1,0,1,1,1,1,1,0,1], [1,0,0,0,0,0,0,0,1,0,1], [1,1,1,1,1,1,1,1,1,1,1] ];
+            mazeSolver = new MazeSolver(mazeGrid, 1, 1);
+            clearInterval(mazeInterval);
+            mazeSolver.render();
         }
-        function handleBlockClick(index, isPossible) {
-            if (!isPossible) { alert("You can't jump that far!"); return; }
-            playerPos = index;
-            renderArrayJumper();
-            if (playerPos === jumperArray.length - 1) {
-                setTimeout(() => alert('🎉 You reached the end! Congratulations! 🎉'), 100);
+        class MazeSolver { /* ... (class definition below) ... */ }
+
+        // --- Game 9: Min-Heap Organizer ---
+        let heapGameInitialized = false; let heapData = [];
+        function initHeapGame() { if(heapGameInitialized) return; setupHeapGame(); document.getElementById('resetHeapBtn').addEventListener('click', setupHeapGame); heapGameInitialized = true; }
+        function setupHeapGame() { heapData = [null, 90, 40, 80, 20, 10, 60, 70, 30, 50]; renderHeap(); }
+        function renderHeap() {
+            const svg = document.getElementById('heap-svg-container'); svg.innerHTML = '';
+            const positions = [null, {x:50,y:15}, {x:30,y:40}, {x:70,y:40}, {x:20,y:65}, {x:40,y:65}, {x:60,y:65}, {x:80,y:65}, {x:15,y:90}, {x:25,y:90} ];
+            for(let i = 1; i < heapData.length; i++) {
+                const p = Math.floor(i/2); if(p > 0) svg.appendChild(createSvgElement('line', { x1:`${positions[i].x}%`, y1:`${positions[i].y}%`, x2:`${positions[p].x}%`, y2:`${positions[p].y}%`, stroke:'var(--text-muted-color)' }));
             }
+            for(let i = 1; i < heapData.length; i++) {
+                const pos = positions[i]; const g = createSvgElement('g', { class:'heap-node', transform:`translate(${pos.x}%, ${pos.y}%)` });
+                const left=2*i, right=2*i+1;
+                if((heapData[left] && heapData[i] > heapData[left]) || (heapData[right] && heapData[i] > heapData[right])) g.classList.add('invalid');
+                g.onclick = () => handleHeapClick(i); g.appendChild(createSvgElement('circle', { r: '20' })); g.appendChild(createSvgElement('text', { dy: ".3em" }, heapData[i])); svg.appendChild(g);
+            }
+            if(!document.querySelector('#heap-game .invalid')) setTimeout(() => alert("🎉 Heap is valid!"), 100);
+        }
+        let heapSelected = null;
+        function handleHeapClick(idx) {
+            if (!heapSelected) { heapSelected = idx; } else {
+                const p1 = Math.floor(heapSelected/2), p2 = Math.floor(idx/2);
+                if ((p1 === idx && heapData[idx] > heapData[heapSelected]) || (p2 === heapSelected && heapData[heapSelected] > heapData[idx])) {
+                    [heapData[heapSelected], heapData[idx]] = [heapData[idx], heapData[heapSelected]];
+                }
+                heapSelected = null;
+            }
+            renderHeap();
+            if(heapSelected) document.querySelectorAll('#heap-game .heap-node')[heapSelected-1].classList.add('selected');
+        }
+
+        // --- Game 10: Pathfinding Visualizer ---
+        let pathfindingGameInitialized = false; let pfGrid = [], pfRows = 10, pfCols = 20, pfStartNode, pfEndNode, pfDrawMode = 'wall', pfMouseDown = false;
+        function initPathfindingGame() { if(pathfindingGameInitialized) return; setupPathfindingGame(); document.getElementById('runPathfindingBtn').addEventListener('click', runDijkstra); document.getElementById('clearPathfindingBtn').addEventListener('click', setupPathfindingGame); document.querySelectorAll('input[name="draw-mode"]').forEach(r => r.onchange = (e) => pfDrawMode = e.target.value); pathfindingGameInitialized = true; }
+        function setupPathfindingGame() { pfGrid = []; const container = document.getElementById('pathfinding-grid'); container.innerHTML = ''; for(let r=0; r<pfRows; r++) { const row = []; for(let c=0; c<pfCols; c++) { const node = { r, c, isStart:false, isEnd:false, isWall:false, distance:Infinity, visited:false, prev:null, el: document.createElement('div')}; node.el.className = 'path-node'; node.el.onmousedown = (e) => { e.preventDefault(); pfMouseDown = true; handlePfNodeClick(node); }; node.el.onmouseenter = () => { if(pfMouseDown) handlePfNodeClick(node); }; node.el.onmouseup = () => pfMouseDown = false; container.onmouseleave = () => pfMouseDown = false; container.appendChild(node.el); row.push(node); } pfGrid.push(row); } pfStartNode = pfGrid[5][5]; pfStartNode.isStart = true; pfStartNode.distance = 0; pfEndNode = pfGrid[5][15]; pfEndNode.isEnd = true; renderPfGrid(); }
+        function renderPfGrid() { for(let r=0; r<pfRows; r++) for(let c=0; c<pfCols; c++) { const n = pfGrid[r][c]; n.el.className = `path-node ${n.isStart?'start':''} ${n.isEnd?'end':''} ${n.isWall?'wall':''}`; } }
+        function handlePfNodeClick(node) {
+            if(pfDrawMode === 'wall') { if(!node.isStart && !node.isEnd) { node.isWall = !node.isWall; node.el.classList.toggle('wall'); } }
+            else if(pfDrawMode === 'start') { if(!node.isEnd && !node.isWall) { pfStartNode.isStart=false; pfStartNode=node; pfStartNode.isStart=true; renderPfGrid(); } }
+            else if(pfDrawMode === 'end') { if(!node.isStart && !node.isWall) { pfEndNode.isEnd=false; pfEndNode=node; pfEndNode.isEnd=true; renderPfGrid(); } }
+        }
+        async function runDijkstra() { /* ... (function definition below) ... */ }
+
+        // --- Game 11: KMP String Search ---
+        let kmpGameInitialized = false; let kmpText, kmpPattern, kmpLps, kmp_i, kmp_j;
+        function initKmpGame() { if(kmpGameInitialized) return; setupKmpGame(); document.getElementById('stepKmpBtn').addEventListener('click', stepKmp); document.getElementById('resetKmpBtn').addEventListener('click', setupKmpGame); kmpGameInitialized = true; }
+        function setupKmpGame() { kmpText = "ABABDABACDABABCABAB"; kmpPattern = "ABABCABAB"; kmpLps = computeLps(kmpPattern); kmp_i = 0; kmp_j = 0; renderKmp(); }
+        function computeLps(p) { const lps = [0]; let len = 0, i = 1; while(i < p.length) { if(p[i] === p[len]) { len++; lps[i] = len; i++; } else { if(len !== 0) len = lps[len-1]; else { lps[i] = 0; i++; } } } return lps; }
+        function renderKmp() {
+            const textRow = document.getElementById('kmp-text-row'); const patternRow = document.getElementById('kmp-pattern-row');
+            textRow.innerHTML = ''; patternRow.innerHTML = ''; patternRow.style.paddingLeft = `${kmp_i * 20}px`;
+            for(const char of kmpText) textRow.innerHTML += `<div class="kmp-char">${char}</div>`;
+            for(let k=0; k<kmpPattern.length; k++) {
+                const el = document.createElement('div'); el.className = 'kmp-char'; el.textContent = kmpPattern[k];
+                if (kmp_j > k) el.classList.add('match');
+                patternRow.appendChild(el);
+            }
+            if (kmp_j < kmpPattern.length && kmpText[kmp_i + kmp_j] !== kmpPattern[kmp_j]) patternRow.children[kmp_j]?.classList.add('mismatch');
+            document.getElementById('lps-table').innerHTML = kmpLps.map((val, i) => `<div class="lps-cell"><div>${kmpPattern[i]}</div><div>${val}</div></div>`).join('');
+        }
+        function stepKmp() {
+            if (kmp_j === kmpPattern.length) { alert("Pattern found!"); return; }
+            if (kmp_i > kmpText.length - kmpPattern.length) { alert("Pattern not found!"); return; }
+            if (kmpText[kmp_i + kmp_j] === kmpPattern[kmp_j]) { kmp_j++; } 
+            else { if (kmp_j !== 0) { kmp_i += kmp_j - kmpLps[kmp_j - 1]; kmp_j = kmpLps[kmp_j - 1]; } else { kmp_i++; } }
+            renderKmp();
         }
 
         // --- Initial Load ---
-        function initialize() {
-            const savedTheme = localStorage.getItem('dsa-theme');
-            if (savedTheme === 'light') { document.body.classList.add('light-mode'); themeToggle.checked = false; } 
-            else { document.body.classList.remove('light-mode'); themeToggle.checked = true; }
-        }
-        
+        function initialize() { const theme = localStorage.getItem('dsa-theme'); document.body.classList.toggle('light-mode', theme === 'light'); themeToggle.checked = theme !== 'light'; }
         initialize();
+
+        // --- Class definitions placed at the end for clarity ---
+        class MazeSolver {
+            constructor(grid, startR, startC) { this.grid = grid.map(r => [...r]); this.rows = grid.length; this.cols = grid[0].length; this.stack = [{r: startR, c: startC, path: [[startR, startC]]}]; this.visited = new Set([`${startR},${startC}`]); this.found = false; this.code = ["function solve(r, c):", "  if (r,c) is goal: return true", "  mark (r,c) as visited", "  for each neighbor (nr, nc):", "    if solve(nr, nc) is true:", "      return true", "  return false"]; }
+            step() { if (this.found || this.stack.length === 0) return; const {r, c, path, state=0, dir=0} = this.stack.pop();
+                if (r === this.rows-2 && c === this.cols-2) { this.found = true; this.path = path; this.render(path, 4); return; }
+                const dirs = [[0,1], [1,0], [0,-1], [-1,0]];
+                if (state === 0) { this.grid[r][c] = 2; this.stack.push({r,c,path,state:1}); this.render(path, 2); return; }
+                if (dir < dirs.length) { const [dr, dc] = dirs[dir]; const nr = r+dr, nc = c+dc; this.stack.push({r,c,path,state:1,dir:dir+1}); this.render(path, 3);
+                    if(nr>=0 && nr<this.rows && nc>=0 && nc<this.cols && this.grid[nr][nc]===0 && !this.visited.has(`${nr},${nc}`)) { this.visited.add(`${nr},${nc}`); this.stack.push({r:nr, c:nc, path:path.concat([[nr,nc]])}); this.render(path, 4); return; }
+                } else { this.render(path.slice(0,-1), 6); }
+            }
+            render(path=[], line=0) {
+                const gridEl = document.getElementById('recursion-maze-grid'); gridEl.innerHTML = ''; this.grid.forEach((row, r) => row.forEach((cell, c) => { const el = document.createElement('div'); let className = 'maze-cell'; if(cell === 1) className += ' wall'; if(cell === 2) className += ' visited'; if(path.some(([pr,pc])=>pr===r && pc===c)) className += ' path'; if(path.length > 0 && path[path.length-1][0]===r && path[path.length-1][1]===c) className += ' current'; el.className = className; gridEl.appendChild(el); }));
+                document.getElementById('recursion-code-display').innerHTML = this.code.map((c,i) => `<div class="line ${i===line?'highlight':''}">${c}</div>`).join('');
+                document.getElementById('call-stack').innerHTML = `<strong>Call Stack:</strong> ${this.stack.map(s => `f(${s.r},${s.c})`).join(' ')}`;
+            }
+        }
+        async function runDijkstra() {
+            for(let r=0; r<pfRows; r++) for(let c=0; c<pfCols; c++) { pfGrid[r][c].distance = Infinity; pfGrid[r][c].visited = false; pfGrid[r][c].prev = null; if(!pfGrid[r][c].isWall) pfGrid[r][c].el.classList.remove('visited', 'path'); }
+            pfStartNode.distance = 0; const unvisited = pfGrid.flat().filter(n => !n.isWall);
+            while(unvisited.length) {
+                unvisited.sort((a,b) => a.distance - b.distance);
+                const closest = unvisited.shift();
+                if(closest.distance === Infinity) return alert("No path found!");
+                closest.visited = true;
+                if(!closest.isStart && !closest.isEnd) { closest.el.classList.add('visited'); await new Promise(r => setTimeout(r, 5)); }
+                if(closest === pfEndNode) { let curr = pfEndNode; while(curr) { if(!curr.isStart) curr.el.classList.add('path'); curr = curr.prev; } return; }
+                const neighbors = [[-1,0],[1,0],[0,-1],[0,1]].map(([dr,dc]) => pfGrid[closest.r+dr]?.[closest.c+dc]).filter(n => n && !n.visited && !n.isWall);
+                for(const n of neighbors) { const newDist = closest.distance + 1; if(newDist < n.distance) { n.distance = newDist; n.prev = closest; } }
+            }
+        }
 
     </script>
 
