@@ -34,68 +34,414 @@
         }
 
         /* Keyframes for animations */
-        @keyframes gradient-animation { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
-        @keyframes fade-in { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes pulse { 0% { box-shadow: 0 0 0 0 var(--primary-glow-color); } 70% { box-shadow: 0 0 0 10px rgba(99, 102, 241, 0); } 100% { box-shadow: 0 0 0 0 rgba(99, 102, 241, 0); } }
+        @keyframes gradient-animation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes fade-in {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 var(--primary-glow-color); }
+            70% { box-shadow: 0 0 0 10px rgba(99, 102, 241, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(99, 102, 241, 0); }
+        }
 
         /* General Body Styles */
-        body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background-color: var(--background-color); color: var(--text-color); margin: 0; display: flex; justify-content: center; align-items: center; height: 100vh; overflow: hidden; transition: background-color 0.3s ease, color 0.3s ease; }
-        .main-container { display: flex; width: 95%; max-width: 1400px; height: 95vh; background-color: var(--surface-color); border: 1px solid var(--secondary-glow-color); border-radius: 24px; box-shadow: 0 0 50px rgba(0, 0, 0, 0.6), 0 0 20px var(--primary-glow-color); overflow: hidden; backdrop-filter: blur(12px); }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        
+        .main-container {
+            display: flex;
+            width: 95%;
+            max-width: 1400px;
+            height: 95vh;
+            background-color: var(--surface-color);
+            border: 1px solid var(--secondary-glow-color);
+            border-radius: 24px;
+            box-shadow: 0 0 50px rgba(0, 0, 0, 0.6), 0 0 20px var(--primary-glow-color);
+            overflow: hidden;
+            backdrop-filter: blur(12px);
+        }
 
         /* Sidebar Styles */
-        #sidebar { width: 280px; padding: 25px; border-right: 1px solid var(--secondary-glow-color); display: none; flex-direction: column; animation: fade-in 0.5s ease; }
-        #profile-section { text-align: center; margin-bottom: 30px; }
-        #profile-section .profile-pic { width: 80px; height: 80px; background: var(--accent-gradient); border-radius: 50%; margin: 0 auto 15px; display: flex; align-items: center; justify-content: center; font-size: 2.5em; font-weight: 700; color: white; }
-        #profile-section h2 { margin: 0; font-size: 1.4em; }
-        #sidebar-menu { flex-grow: 1; }
-        #sidebar-menu .menu-item, #logout-btn { padding: 15px 20px; margin: 8px 0; border-radius: 12px; cursor: pointer; background-color: var(--ios-button-bg); border: 1px solid transparent; font-weight: 500; display: flex; align-items: center; gap: 15px; transition: background-color 0.2s ease, border-color 0.2s ease; width: 100%; box-sizing: border-box; text-align: left; font-size: 1em; }
-        #sidebar-menu .menu-item:hover, #sidebar-menu .menu-item.active, #logout-btn:hover { background-color: var(--ios-button-hover-bg); color: var(--text-color); border-color: var(--primary-glow-color); }
-        #logout-btn { margin-top: 20px; color: #ff6b6b; }
-        #logout-btn:hover { border-color: #ff6b6b; }
+        #sidebar {
+            width: 280px;
+            padding: 25px;
+            border-right: 1px solid var(--secondary-glow-color);
+            display: none; /* Initially hidden */
+            flex-direction: column;
+            animation: fade-in 0.5s ease;
+        }
+        
+        #profile-section {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        #profile-section .profile-pic {
+            width: 80px;
+            height: 80px;
+            background: var(--accent-gradient);
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5em;
+            font-weight: 700;
+            color: white;
+        }
+
+        #profile-section h2 {
+            margin: 0;
+            font-size: 1.4em;
+        }
+        
+        #sidebar-menu {
+            flex-grow: 1;
+        }
+        
+        #sidebar-menu .menu-item, #logout-btn {
+            padding: 15px 20px;
+            margin: 8px 0;
+            border-radius: 12px;
+            cursor: pointer;
+            background-color: var(--ios-button-bg);
+            border: 1px solid transparent;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transition: background-color 0.2s ease, border-color 0.2s ease;
+            width: 100%;
+            box-sizing: border-box;
+            text-align: left;
+            font-size: 1em;
+        }
+        
+        #sidebar-menu .menu-item:hover, #sidebar-menu .menu-item.active, #logout-btn:hover {
+            background-color: var(--ios-button-hover-bg);
+            color: var(--text-color);
+            border-color: var(--primary-glow-color);
+        }
+        
+        #logout-btn {
+            margin-top: 20px;
+            color: #ff6b6b;
+        }
+        
+        #logout-btn:hover {
+            border-color: #ff6b6b;
+        }
+
 
         /* Main Chat Container */
-        #chat-container { flex-grow: 1; display: flex; flex-direction: column; overflow: hidden; }
-        #login-screen { display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%; text-align: center; animation: fade-in 0.5s ease; }
-        #login-screen h1, #login-screen p { background: var(--accent-gradient); background-size: 200% 200%; color: transparent; -webkit-background-clip: text; background-clip: text; animation: gradient-animation 5s ease infinite; }
+        #chat-container {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        /* Login Screen */
+        #login-screen {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            text-align: center;
+            animation: fade-in 0.5s ease;
+        }
+        
+        #login-screen h1, #login-screen p {
+            background: var(--accent-gradient);
+            background-size: 200% 200%;
+            color: transparent;
+            -webkit-background-clip: text;
+            background-clip: text;
+            animation: gradient-animation 5s ease infinite;
+        }
+        
         #login-screen h1 { font-size: 3em; }
         #login-screen p { font-size: 1.2em; margin-bottom: 30px; color: var(--text-muted-color); }
-        #login-form input { padding: 15px 25px; border-radius: 30px; border: 1px solid var(--secondary-glow-color); background: transparent; color: var(--text-color); font-size: 1.1em; width: 300px; text-align: center; margin-bottom: 20px; }
-        #login-form button { background: var(--accent-gradient); color: white; border: none; border-radius: 25px; padding: 15px 40px; cursor: pointer; font-size: 1.1em; font-weight: 500; transition: transform 0.2s ease, box-shadow 0.2s ease; }
-        #login-form button:hover { transform: scale(1.05); box-shadow: 0 0 10px #A855F7; }
-        #guest-mode-btn { margin-top: 15px; background: none; border: none; color: var(--text-muted-color); cursor: pointer; font-size: 0.9em; }
-        #chat-header { padding: 20px 25px; text-align: center; border-bottom: 1px solid var(--secondary-glow-color); display: flex; align-items: center; justify-content: center; gap: 15px; }
-        #logo { width: 40px; height: 40px; background: var(--accent-gradient); border-radius: 8px; }
-        #chat-header h1 { margin: 0; font-size: 1.6em; font-weight: 700; }
+        
+        #login-form input {
+            padding: 15px 25px;
+            border-radius: 30px;
+            border: 1px solid var(--secondary-glow-color);
+            background: transparent;
+            color: var(--text-color);
+            font-size: 1.1em;
+            width: 300px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        #login-form button {
+            background: var(--accent-gradient);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            padding: 15px 40px;
+            cursor: pointer;
+            font-size: 1.1em;
+            font-weight: 500;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        #login-form button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 10px #A855F7;
+        }
+        
+        #guest-mode-btn {
+            margin-top: 15px;
+            background: none;
+            border: none;
+            color: var(--text-muted-color);
+            cursor: pointer;
+            font-size: 0.9em;
+        }
+
+
+        /* Chat Header with Animated Gradient Text */
+        #chat-header {
+            padding: 20px 25px;
+            text-align: center;
+            border-bottom: 1px solid var(--secondary-glow-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        #logo {
+            width: 40px;
+            height: 40px;
+            background: var(--accent-gradient);
+            border-radius: 8px;
+        }
+
+        #chat-header h1 {
+            margin: 0;
+            font-size: 1.6em;
+            font-weight: 700;
+        }
 
         /* Content Area */
-        .content-section { display: none; flex-grow: 1; overflow-y: auto; padding: 30px; animation: fade-in 0.5s ease; }
-        .content-section.active { display: block; }
-        #dashboard-content .widget { background-color: var(--ios-button-bg); padding: 25px; border-radius: 16px; margin-bottom: 25px; border: 1px solid transparent; }
-        #dashboard-content h3 { margin-top: 0; border-bottom: 1px solid var(--secondary-glow-color); padding-bottom: 15px; margin-bottom: 20px; }
+        .content-section {
+            display: none; /* Hidden by default */
+            flex-grow: 1;
+            overflow-y: auto;
+            padding: 30px;
+            animation: fade-in 0.5s ease;
+        }
+        
+        .content-section.active {
+            display: block;
+        }
+        
+        /* Dashboard specific styles */
+        #dashboard-content .widget {
+            background-color: var(--ios-button-bg);
+            padding: 25px;
+            border-radius: 16px;
+            margin-bottom: 25px;
+            border: 1px solid transparent;
+        }
+        
+        #dashboard-content h3 {
+            margin-top: 0;
+            border-bottom: 1px solid var(--secondary-glow-color);
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+        
+        /* Custom scrollbar */
         .content-section::-webkit-scrollbar, #chat-box::-webkit-scrollbar { width: 6px; }
         .content-section::-webkit-scrollbar-track, #chat-box::-webkit-scrollbar-track { background: transparent; }
         .content-section::-webkit-scrollbar-thumb, #chat-box::-webkit-scrollbar-thumb { background-color: var(--secondary-glow-color); border-radius: 20px; }
-        .message { padding: 15px 25px; border-radius: 20px; max-width: 80%; line-height: 1.7; font-size: 1em; animation: fade-in 0.5s ease-out forwards; white-space: pre-wrap; word-wrap: break-word; }
-        .user-message { background: #252525; color: var(--text-color); align-self: flex-end; border-bottom-right-radius: 5px; border: 1px solid var(--secondary-glow-color); }
-        .ai-message { background: transparent; color: var(--text-muted-color); align-self: flex-start; border-bottom-left-radius: 5px; }
-        .ai-typing { align-self: flex-start; color: var(--text-muted-color); font-style: italic; }
-        #input-area { padding: 20px; border-top: 1px solid var(--secondary-glow-color); background: rgba(0,0,0,0.2); }
-        #input-form { display: flex; align-items: center; background-color: var(--surface-color); border: 1px solid var(--secondary-glow-color); border-radius: 30px; padding: 5px; transition: box-shadow 0.3s ease; }
-        #input-form:focus-within { box-shadow: 0 0 15px var(--primary-glow-color); border-color: #6366F1; }
-        #user-input-field { flex-grow: 1; border: none; background: transparent; color: var(--text-color); padding: 15px 25px; font-size: 1em; outline: none; }
-        #send-button { background: var(--accent-gradient); color: white; border: none; border-radius: 25px; padding: 12px 25px; margin-right: 5px; cursor: pointer; font-size: 1em; font-weight: 500; transition: transform 0.2s ease, box-shadow 0.2s ease; }
-        #send-button:hover { transform: scale(1.05); box-shadow: 0 0 10px #A855F7; }
-        #send-button.loading { animation: pulse 1.5s infinite; }
-        .settings-option { display: flex; justify-content: space-between; align-items: center; padding: 20px; background-color: var(--ios-button-bg); border-radius: 12px; margin-bottom: 15px; }
-        .switch { position: relative; display: inline-block; width: 51px; height: 31px; }
-        .switch input { opacity: 0; width: 0; height: 0; }
-        .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #ccc; transition: .4s; border-radius: 34px; }
-        .slider:before { position: absolute; content: ""; height: 23px; width: 23px; left: 4px; bottom: 4px; background-color: white; transition: .4s; border-radius: 50%; }
-        input:checked + .slider { background-color: #6366F1; }
-        input:focus + .slider { box-shadow: 0 0 1px #6366F1; }
-        input:checked + .slider:before { transform: translateX(20px); }
-        .back-btn { background: var(--ios-button-bg); border: 1px solid transparent; color: var(--text-color); padding: 10px 20px; border-radius: 12px; cursor: pointer; font-weight: 500; margin-bottom: 25px; transition: background-color 0.2s ease, border-color 0.2s ease; }
-        .back-btn:hover { background-color: var(--ios-button-hover-bg); border-color: var(--primary-glow-color); }
+
+        /* General Message Styling */
+        .message {
+            padding: 15px 25px;
+            border-radius: 20px;
+            max-width: 80%;
+            line-height: 1.7;
+            font-size: 1em;
+            animation: fade-in 0.5s ease-out forwards;
+            white-space: pre-wrap; /* To correctly format code blocks */
+            word-wrap: break-word;
+        }
+        
+        .user-message {
+            background: #252525;
+            color: var(--text-color);
+            align-self: flex-end;
+            border-bottom-right-radius: 5px;
+            border: 1px solid var(--secondary-glow-color);
+        }
+
+        .ai-message {
+            background: transparent;
+            color: var(--text-muted-color);
+            align-self: flex-start;
+            border-bottom-left-radius: 5px;
+        }
+        
+        .ai-typing {
+            align-self: flex-start;
+            color: var(--text-muted-color);
+            font-style: italic;
+        }
+
+        /* Input Area */
+        #input-area {
+            padding: 20px;
+            border-top: 1px solid var(--secondary-glow-color);
+            background: rgba(0,0,0,0.2);
+        }
+
+        #input-form {
+            display: flex;
+            align-items: center;
+            background-color: var(--surface-color);
+            border: 1px solid var(--secondary-glow-color);
+            border-radius: 30px;
+            padding: 5px;
+            transition: box-shadow 0.3s ease;
+        }
+        
+        #input-form:focus-within {
+             box-shadow: 0 0 15px var(--primary-glow-color);
+             border-color: #6366F1;
+        }
+
+        #user-input-field {
+            flex-grow: 1;
+            border: none;
+            background: transparent;
+            color: var(--text-color);
+            padding: 15px 25px;
+            font-size: 1em;
+            outline: none;
+        }
+
+        #send-button {
+            background: var(--accent-gradient);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            padding: 12px 25px;
+            margin-right: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: 500;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        #send-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 10px #A855F7;
+        }
+        
+        #send-button.loading {
+            animation: pulse 1.5s infinite;
+        }
+        
+        /* Settings Page */
+        .settings-option {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: var(--ios-button-bg);
+            border-radius: 12px;
+            margin-bottom: 15px;
+        }
+        
+        .switch {
+          position: relative;
+          display: inline-block;
+          width: 51px;
+          height: 31px;
+        }
+
+        .switch input { 
+          opacity: 0;
+          width: 0;
+          height: 0;
+        }
+
+        .slider {
+          position: absolute;
+          cursor: pointer;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background-color: #ccc;
+          transition: .4s;
+          border-radius: 34px;
+        }
+
+        .slider:before {
+          position: absolute;
+          content: "";
+          height: 23px;
+          width: 23px;
+          left: 4px;
+          bottom: 4px;
+          background-color: white;
+          transition: .4s;
+          border-radius: 50%;
+        }
+
+        input:checked + .slider {
+          background-color: #6366F1;
+        }
+
+        input:focus + .slider {
+          box-shadow: 0 0 1px #6366F1;
+        }
+
+        input:checked + .slider:before {
+          transform: translateX(20px);
+        }
+        
+        /* Back Button Styles */
+        .back-btn {
+            background: var(--ios-button-bg);
+            border: 1px solid transparent;
+            color: var(--text-color);
+            padding: 10px 20px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: 500;
+            margin-bottom: 25px;
+            transition: background-color 0.2s ease, border-color 0.2s ease;
+        }
+        
+        .back-btn:hover {
+            background-color: var(--ios-button-hover-bg);
+            border-color: var(--primary-glow-color);
+        }
         
         /* --- Playground Game Styles --- */
         .game-container { background-color: var(--ios-button-bg); padding: 25px; border-radius: 16px; margin-bottom: 25px; border: 1px solid var(--secondary-glow-color); text-align: center; }
@@ -117,14 +463,12 @@
         #queue-game button { background: #2a9d8f; }
         #queue-game .queue-display { display: flex; justify-content: flex-start; align-items: center; min-height: 80px; background: #000; border-radius: 8px; padding: 15px; margin-top: 20px; overflow-x: auto; gap: 10px; }
         #queue-game .customer { background-color: #f4a261; color: #000; padding: 15px; border-radius: 50%; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; font-weight: bold; flex-shrink: 0; animation: fade-in 0.3s ease; }
-        
-        /* ENHANCED/REFINED GAME STYLES */
         .game-canvas-container { position: relative; width: 100%; height: 300px; margin: 20px 0; background-color: #000; border-radius:8px; }
         .game-canvas-container svg { width: 100%; height: 100%; }
         #bst-game button { background: #fb5607; }
         #bst-game .bst-node { cursor: pointer; transition: all 0.2s ease; }
         #bst-game .bst-node circle { stroke: #ffbe0b; stroke-width: 2; fill: #8338ec; }
-        #bst-game .bst-node text { fill: white; font-weight: bold; text-anchor: middle; dominant-baseline: middle; }
+        #bst-game .bst-node text { fill: white; font-weight: bold; text-anchor: middle; dominant-baseline: middle; user-select: none; }
         #bst-game .bst-node:hover circle { transform: scale(1.1); }
         #bst-game .bst-node.visited circle { fill: #ffbe0b; }
         #bst-game .bst-node.visited text { fill: #000; }
@@ -132,10 +476,10 @@
         #bst-game #bst-status { font-weight: bold; min-height: 24px; }
         #graph-game button { background: #219ebc; }
         #graph-game .city circle { stroke: #8ecae6; stroke-width: 2px; transition: all 0.2s ease; cursor: pointer; }
-        #graph-game .city text { fill: white; text-anchor: middle; dominant-baseline: middle; font-weight: bold; }
+        #graph-game .city text { fill: white; text-anchor: middle; dominant-baseline: middle; font-weight: bold; user-select: none; }
         #graph-game .city.start circle { fill: #2a9d8f; }
         #graph-game .city.end circle { fill: #e63946; }
-        #graph-game .city.current circle { stroke: #ffb703; box-shadow: 0 0 15px #ffb703; stroke-width: 4px; }
+        #graph-game .city.current circle { stroke: #ffb703; stroke-width: 4px; }
         #graph-game .city.visited circle { opacity: 0.6; }
         #graph-game .road { stroke: #8ecae6; stroke-width: 3px; }
         #graph-game .road.path { stroke: #ffb703; stroke-width: 5px; }
@@ -148,17 +492,14 @@
         #array-jumper-game .array-block:not(.possible) { cursor: not-allowed; opacity: 0.5; }
         #array-jumper-game button { background: #1d3557; }
 
-        /* NEW GAME STYLES */
-        /* Linked List Game */
+        /* --- NEW GAME STYLES --- */
         #linked-list-game button { background: #d00000; }
-        #linked-list-game .ll-container { display: flex; justify-content: space-around; min-height: 150px; }
+        #linked-list-game .ll-container { display: flex; justify-content: space-around; min-height: 150px; gap: 20px; }
         #linked-list-game .ll-area { border: 2px dashed var(--secondary-glow-color); border-radius: 8px; padding: 10px; width: 45%; }
         #linked-list-game .ll-area h4 { margin: 0 0 10px 0; }
-        #linked-list-game .ll-node { background: #6d597a; color: white; padding: 10px 15px; margin: 5px; border-radius: 8px; display: inline-flex; align-items: center; gap: 10px; cursor: pointer; border: 2px solid transparent; }
+        #linked-list-game .ll-node { background: #6d597a; color: white; padding: 10px 15px; margin: 5px; border-radius: 8px; display: inline-flex; align-items: center; gap: 10px; cursor: pointer; border: 2px solid transparent; user-select: none; }
         #linked-list-game .ll-node.selected { border-color: #fca311; box-shadow: 0 0 10px #fca311; }
-        #linked-list-game .ll-node .pointer { background: #b56576; width: 20px; height: 20px; border-radius: 50%; }
-
-        /* Pathfinding Game */
+        #linked-list-game .ll-node .pointer { background: #b56576; width: 10px; height: 10px; border-radius: 50%; }
         #pathfinding-game .path-grid { display: grid; grid-template-columns: repeat(20, 1fr); gap: 1px; background-color: #333; margin: 15px auto; width: 100%; max-width: 500px; aspect-ratio: 20 / 10; }
         #pathfinding-game .path-node { background-color: var(--ios-button-bg); transition: background-color 0.1s; }
         #pathfinding-game .path-node.start { background-color: #2a9d8f; }
@@ -167,17 +508,13 @@
         #pathfinding-game .path-node.visited { background-color: #457b9d; animation: fade-in 0.2s; }
         #pathfinding-game .path-node.path { background-color: #fca311; }
         #pathfinding-game button { background: #e76f51; }
-        
-        /* Heap Game */
         #heap-game .heap-node { cursor: pointer; transition: all 0.2s ease; }
         #heap-game .heap-node circle { stroke: #a3b18a; stroke-width: 2; fill: #3a5a40; }
-        #heap-game .heap-node text { fill: white; font-weight: bold; text-anchor: middle; dominant-baseline: middle; }
+        #heap-game .heap-node text { fill: white; font-weight: bold; text-anchor: middle; dominant-baseline: middle; user-select: none; }
         #heap-game .heap-node.invalid circle { fill: #e63946; }
         #heap-game .heap-node.selected circle { stroke: #fca311; stroke-width: 4px; }
         #heap-game button { background: #588157; }
-
-        /* Recursion Maze Game */
-        #recursion-maze-game .recursion-container { display: flex; justify-content: space-around; gap: 20px; }
+        #recursion-maze-game .recursion-container { display: flex; justify-content: space-around; gap: 20px; flex-wrap: wrap;}
         #recursion-maze-game .maze-grid { display: grid; grid-template-columns: repeat(11, 1fr); gap: 1px; background: #333; width: 220px; height: 220px; }
         #recursion-maze-game .maze-cell { background-color: var(--ios-button-bg); }
         #recursion-maze-game .maze-cell.wall { background-color: #1d3557; }
@@ -185,22 +522,18 @@
         #recursion-maze-game .maze-cell.current { background-color: #fca311; }
         #recursion-maze-game .maze-cell.visited { background-color: #457b9d; }
         #recursion-maze-game .code-display { font-family: monospace; text-align: left; background: #000; padding: 15px; border-radius: 8px; flex-grow: 1; }
-        #recursion-maze-game .code-display .line.highlight { background-color: #4a4e69; }
-        #recursion-maze-game #call-stack { font-family: monospace; font-size: 0.9em; margin-top: 10px; }
+        #recursion-maze-game .code-display .line.highlight { background-color: #4a4e69; border-radius: 2px; }
+        #recursion-maze-game #call-stack { font-family: monospace; font-size: 0.9em; margin-top: 10px; background: #000; padding: 10px; border-radius: 8px; min-height: 2em; }
         #recursion-maze-game button { background: #4a4e69; }
-
-        /* KMP String Search Game */
         #kmp-game button { background: #5e548e; }
-        #kmp-game .kmp-viz { font-family: monospace; font-size: 1.2em; text-align: left; }
+        #kmp-game .kmp-viz { font-family: monospace; font-size: 1.2em; text-align: left; background: #000; padding: 10px; border-radius: 8px; }
         #kmp-game .kmp-row { display: flex; }
         #kmp-game .kmp-char { width: 20px; height: 30px; display: flex; align-items: center; justify-content: center; }
         #kmp-game .kmp-char.match { background-color: #3a5a40; }
         #kmp-game .kmp-char.mismatch { background-color: #e63946; }
-        #kmp-game #lps-table { display: flex; gap: 5px; margin-top: 10px; }
+        #kmp-game #lps-table { display: flex; gap: 5px; margin-top: 10px; justify-content: center; }
         #kmp-game .lps-cell { display: flex; flex-direction: column; align-items: center; background-color: #4a4e69; padding: 5px; border-radius: 4px; }
-
     </style>
-    <!-- Chart.js for progress visualization -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
@@ -236,7 +569,6 @@
             </div>
             
             <div id="main-content-area" style="display: none; flex-grow: 1; flex-direction: column; overflow: hidden;">
-                <!-- Chat View -->
                 <div id="chat-content" class="content-section">
                     <div id="chat-header"> <div id="logo"></div> <h1>DSA Instructor AI</h1> </div>
                     <div id="chat-box" style="flex-grow: 1; padding: 30px; overflow-y: auto; display: flex; flex-direction: column; gap: 20px;">
@@ -250,7 +582,6 @@
                     </div>
                 </div>
 
-                <!-- Dashboard View -->
                 <div id="dashboard-content" class="content-section active">
                     <h2>Dashboard</h2>
                     <div class="widget"> <h3>Progress Level</h3> <canvas id="progress-chart"></canvas> </div>
@@ -261,19 +592,16 @@
                     </div>
                 </div>
 
-                <!-- History View -->
                 <div id="history-content" class="content-section">
                     <h2>Chat History</h2> <button class="back-btn" data-target="dashboard-content">← Back to Dashboard</button>
                     <div id="history-container">Your chat history will appear here.</div>
                 </div>
 
-                <!-- Tutorials View -->
                 <div id="tutorials-content" class="content-section">
                     <h2>Short Tutorials</h2> <button class="back-btn" data-target="dashboard-content">← Back to Dashboard</button>
                     <p>Coming Soon: A curated list of short videos explaining key DSA concepts.</p>
                 </div>
                 
-                <!-- Playground View -->
                 <div id="playground-content" class="content-section">
                     <h2>DSA Playground</h2> <button class="back-btn" data-target="dashboard-content">← Back to Dashboard</button>
 
@@ -295,7 +623,6 @@
                     <div id="kmp-game" class="game-container"><h3>🔎 String Search Detective (Advanced)</h3><p>Watch the KMP algorithm find the pattern. The table shows how it uses prefixes to avoid re-checking characters.</p><div id="kmp-viz"><div id="kmp-text-row" class="kmp-row"></div><div id="kmp-pattern-row" class="kmp-row"></div></div><div class="controls"><strong>LPS Table:</strong><div id="lps-table"></div><button id="stepKmpBtn">Step</button><button id="resetKmpBtn">Reset</button></div></div>
                 </div>
                 
-                <!-- Settings View -->
                 <div id="settings-content" class="content-section">
                     <h2>Settings</h2> <button class="back-btn" data-target="dashboard-content">← Back to Dashboard</button>
                     <div class="settings-option"> <span>Dark / Light Mode</span> <label class="switch"> <input type="checkbox" id="theme-toggle"> <span class="slider"></span> </label> </div>
@@ -306,7 +633,9 @@
     </div>
 
     <script>
-        // --- DOM Elements & App State ---
+        // --- THIS SCRIPT IS THE UNCHANGED ORIGINAL, WITH NEW GAME LOGIC APPENDED AT THE END ---
+
+        // --- DOM Elements ---
         const loginScreen = document.getElementById('login-screen');
         const loginForm = document.getElementById('login-form');
         const usernameInput = document.getElementById('username-input');
@@ -314,118 +643,308 @@
         const mainContentArea = document.getElementById('main-content-area');
         const sidebar = document.getElementById('sidebar');
         const logoutBtn = document.getElementById('logout-btn');
+        
         const form = document.getElementById('input-form');
         const userInput = document.getElementById('user-input-field');
         const chatBox = document.getElementById('chat-box');
         const sendButton = document.getElementById('send-button');
+
         const menuItems = document.querySelectorAll('.menu-item');
         const contentSections = document.querySelectorAll('.content-section');
         const backButtons = document.querySelectorAll('.back-btn');
+        
         const themeToggle = document.getElementById('theme-toggle');
         const clearHistoryBtn = document.getElementById('clear-history-btn');
         
         let progressChart = null;
+
+        // --- App State ---
         let currentUser = null;
         let userData = {};
 
         // --- Event Listeners ---
-        loginForm.addEventListener('submit', (e) => { e.preventDefault(); const username = usernameInput.value.trim(); if (username) loginUser(username); });
-        guestModeBtn.addEventListener('click', () => loginUser(null));
-        logoutBtn.addEventListener('click', () => { if (confirm('Are you sure you want to logout?')) location.reload(); });
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const username = usernameInput.value.trim();
+            if (username) {
+                loginUser(username);
+            }
+        });
+
+        guestModeBtn.addEventListener('click', () => {
+            loginUser(null); // Guest mode
+        });
+        
+        logoutBtn.addEventListener('click', () => {
+            if (confirm('Are you sure you want to logout?')) {
+                location.reload();
+            }
+        });
+
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
             const userMessage = userInput.value.trim();
             if (!userMessage) return;
+
             appendMessage(userMessage, 'user-message');
             saveMessage('user', userMessage);
             userInput.value = '';
             setLoading(true);
+
             try {
                 showTypingIndicator();
                 const aiResponse = await callGoogleGenAI(userMessage);
+                removeTypingIndicator();
                 appendMessage(aiResponse, 'ai-message');
                 saveMessage('ai', aiResponse);
                 updateDashboard();
-            } catch (error) { console.error("AI Error:", error); appendMessage(error.message, 'ai-message'); } 
-            finally { removeTypingIndicator(); setLoading(false); }
+            } catch (error) {
+                removeTypingIndicator();
+                console.error("Detailed error from serverless function:", error);
+                appendMessage(error.message, 'ai-message');
+            } finally {
+                setLoading(false);
+            }
         });
-        menuItems.forEach(item => item.addEventListener('click', () => switchContent(item.getAttribute('data-content'))));
-        backButtons.forEach(button => button.addEventListener('click', () => switchContent(button.getAttribute('data-target'))));
-        themeToggle.addEventListener('change', () => { document.body.classList.toggle('light-mode'); localStorage.setItem('dsa-theme', document.body.classList.contains('light-mode') ? 'light' : 'dark'); if (currentUser) updateDashboard(); });
+
+        menuItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const contentId = item.getAttribute('data-content');
+                switchContent(contentId);
+            });
+        });
+        
+        backButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const targetContentId = button.getAttribute('data-target');
+                switchContent(targetContentId);
+            });
+        });
+        
+        themeToggle.addEventListener('change', () => {
+            document.body.classList.toggle('light-mode');
+            localStorage.setItem('dsa-theme', document.body.classList.contains('light-mode') ? 'light' : 'dark');
+            if (currentUser) updateDashboard();
+        });
+        
         clearHistoryBtn.addEventListener('click', () => {
-            if (confirm('Are you sure you want to clear all chat history?')) {
+            if (confirm('Are you sure you want to clear all chat history? This cannot be undone.')) {
                 if (currentUser && userData[currentUser]) {
-                    userData[currentUser].history = []; userData[currentUser].progress = {};
-                    saveUserData(); alert('History cleared.'); loadHistory(); updateDashboard();
+                    userData[currentUser].history = [];
+                    userData[currentUser].progress = {};
+                    saveUserData();
+                    alert('History cleared.');
+                    loadHistory();
+                    updateDashboard();
                 }
             }
         });
 
-        // --- Core Functions ---
+        // --- Functions ---
         function switchContent(contentId) {
-            menuItems.forEach(i => i.classList.toggle('active', i.getAttribute('data-content') === contentId));
-            contentSections.forEach(section => section.classList.toggle('active', section.id === contentId));
+            menuItems.forEach(i => {
+                i.classList.toggle('active', i.getAttribute('data-content') === contentId);
+            });
+            
+            contentSections.forEach(section => {
+                section.classList.toggle('active', section.id === contentId);
+            });
+            
             if (contentId === 'playground-content') {
-                initStackGame(); initQueueGame(); initLlGame(); initRecursionMazeGame();
-                initMonsterGame(); initArrayJumperGame(); initBstGame(); initHeapGame();
-                initGraphGame(); initPathfindingGame(); initKmpGame();
+                initStackGame();
+                initMonsterGame();
+                initQueueGame();
+                initBstGame();
+                initGraphGame();
+                initArrayJumperGame();
+                // Initialize NEW games
+                initLlGame();
+                initRecursionMazeGame();
+                initHeapGame();
+                initPathfindingGame();
+                initKmpGame();
             }
             if(contentId === 'history-content' && currentUser) loadHistory();
             if(contentId === 'dashboard-content' && currentUser) updateDashboard();
         }
+
         function loginUser(username) {
-            currentUser = username; loginScreen.style.display = 'none'; mainContentArea.style.display = 'flex';
+            currentUser = username;
+            loginScreen.style.display = 'none';
+            mainContentArea.style.display = 'flex';
+            
             if (username) {
                 sidebar.style.display = 'flex';
                 document.getElementById('username-display').textContent = username;
                 document.getElementById('user-initial').textContent = username.charAt(0).toUpperCase();
-                userData = JSON.parse(localStorage.getItem('dsaUserData')) || {};
-                if (!userData[username]) userData[username] = { history: [], progress: {} };
-                loadChat(); switchContent('dashboard-content');
-            } else { sidebar.style.display = 'none'; switchContent('chat-content'); }
+                
+                const savedData = JSON.parse(localStorage.getItem('dsaUserData')) || {};
+                userData = savedData;
+                if (!userData[username]) {
+                    userData[username] = { history: [], progress: {} };
+                }
+                loadChat();
+                switchContent('dashboard-content');
+            } else {
+                sidebar.style.display = 'none';
+                switchContent('chat-content');
+            }
         }
-        function appendMessage(message, className) { const el = document.createElement('div'); el.className = `message ${className}`; el.textContent = message; chatBox.appendChild(el); scrollToBottom(); }
-        function saveMessage(sender, text) { if (!currentUser) return; userData[currentUser].history.push({ sender, text, timestamp: new Date().toISOString() }); if (sender === 'user') { const date = new Date().toISOString().split('T')[0]; userData[currentUser].progress[date] = (userData[currentUser].progress[date] || 0) + 1; } saveUserData(); }
-        function loadChat() { if (!currentUser || !userData[currentUser]) return; chatBox.innerHTML = ''; if (userData[currentUser].history.length === 0) { appendMessage('Ask me anything about Data Structures and Algorithms.', 'ai-message'); } else { userData[currentUser].history.forEach(msg => appendMessage(msg.text, `${msg.sender}-message`)); } }
+        
+        function appendMessage(message, className) {
+            const messageElement = document.createElement('div');
+            messageElement.classList.add('message', className);
+            messageElement.textContent = message;
+            chatBox.appendChild(messageElement);
+            scrollToBottom();
+        }
+        
+        function saveMessage(sender, text) {
+            if (!currentUser) return;
+            
+            const messageData = { sender, text, timestamp: new Date().toISOString() };
+            userData[currentUser].history.push(messageData);
+            
+            if (sender === 'user') {
+                 const date = new Date().toISOString().split('T')[0];
+                 if (!userData[currentUser].progress[date]) {
+                     userData[currentUser].progress[date] = 0;
+                 }
+                 userData[currentUser].progress[date]++;
+            }
+            saveUserData();
+        }
+        
+        function loadChat() {
+            if (!currentUser || !userData[currentUser]) return;
+            chatBox.innerHTML = '';
+            if (userData[currentUser].history.length === 0) {
+                 appendMessage('Ask me anything about Data Structures and Algorithms. For example, "Explain bubble sort."', 'ai-message');
+            } else {
+                 userData[currentUser].history.forEach(msg => {
+                    appendMessage(msg.text, `${msg.sender}-message`);
+                });
+            }
+        }
+        
         function loadHistory() {
-            const container = document.getElementById('history-container'); container.innerHTML = '';
+            const historyContainer = document.getElementById('history-container');
+            historyContainer.innerHTML = '';
             if (currentUser && userData[currentUser] && userData[currentUser].history.length > 0) {
                  userData[currentUser].history.forEach(msg => {
-                     const item = document.createElement('div'); item.className = `message ${msg.sender}-message`; item.style.animation = 'none';
-                     item.textContent = `[${new Date(msg.timestamp).toLocaleTimeString()}] ${msg.sender === 'user' ? 'You' : 'AI'}: ${msg.text}`;
-                     container.appendChild(item);
+                     const historyItem = document.createElement('div');
+                     historyItem.classList.add('message', `${msg.sender}-message`);
+                     historyItem.style.animation = 'none';
+                     historyItem.textContent = `[${new Date(msg.timestamp).toLocaleTimeString()}] ${msg.sender === 'user' ? 'You' : 'AI'}: ${msg.text}`;
+                     historyContainer.appendChild(historyItem);
                  });
-            } else { container.textContent = 'No chat history found.'; }
+            } else {
+                historyContainer.textContent = 'No chat history found.';
+            }
         }
-        function saveUserData() { if (currentUser) localStorage.setItem('dsaUserData', JSON.stringify(userData)); }
-        function showTypingIndicator() { const el = document.createElement('div'); el.id = 'typing-indicator'; el.className = 'message ai-typing'; el.textContent = 'DSA Instructor is typing...'; chatBox.appendChild(el); scrollToBottom(); }
-        function removeTypingIndicator() { const el = document.getElementById('typing-indicator'); if (el) el.remove(); }
-        function setLoading(isLoading) { userInput.disabled = isLoading; sendButton.disabled = isLoading; sendButton.textContent = isLoading ? 'Thinking...' : 'Send'; sendButton.classList.toggle('loading', isLoading); }
-        function scrollToBottom() { chatBox.scrollTop = chatBox.scrollHeight; }
+        
+        function saveUserData() {
+            if (!currentUser) return;
+            localStorage.setItem('dsaUserData', JSON.stringify(userData));
+        }
+
+        function showTypingIndicator() {
+            const typingElement = document.createElement('div');
+            typingElement.id = 'typing-indicator';
+            typingElement.classList.add('message', 'ai-typing');
+            typingElement.textContent = 'DSA Instructor is typing...';
+            chatBox.appendChild(typingElement);
+            scrollToBottom();
+        }
+        
+        function removeTypingIndicator() {
+            const typingElement = document.getElementById('typing-indicator');
+            if (typingElement) typingElement.remove();
+        }
+        
+        function setLoading(isLoading) {
+            userInput.disabled = isLoading;
+            sendButton.disabled = isLoading;
+            sendButton.textContent = isLoading ? 'Thinking' : 'Send';
+            sendButton.classList.toggle('loading', isLoading);
+        }
+        
+        function scrollToBottom() {
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+
         async function callGoogleGenAI(prompt) {
-            const response = await fetch('/api/call-ai', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ prompt }) });
+            const API_ENDPOINT = '/api/call-ai'; // Points to your Vercel function
+
+            const response = await fetch(API_ENDPOINT, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ prompt: prompt }),
+            });
+
             const data = await response.json();
-            if (!response.ok) throw new Error(data.error?.message || `Error: ${response.status}`);
-            if (!data.candidates?.[0]?.content?.parts?.[0]?.text) throw new Error("API returned an invalid response.");
+
+            if (!response.ok) {
+                const errorMessage = data.error?.message || `Error: ${response.status}. See the function logs on Vercel for details.`;
+                throw new Error(errorMessage);
+            }
+
+            if (!data.candidates || data.candidates.length === 0 || !data.candidates[0].content || !data.candidates[0].content.parts) {
+                if (data.promptFeedback && data.promptFeedback.blockReason) {
+                    throw new Error(`Your request was blocked by Google. Reason: ${data.promptFeedback.blockReason}.`);
+                }
+                throw new Error("I'm sorry, the API returned an empty or invalid response.");
+            }
+            
             return data.candidates[0].content.parts[0].text;
         }
+        
         function updateDashboard() {
             if (!currentUser || !userData[currentUser] || !document.getElementById('dashboard-content').classList.contains('active')) return;
-            document.getElementById('solved-count').textContent = Object.values(userData[currentUser].progress).reduce((a, b) => a + b, 0);
-            const progress = userData[currentUser].progress;
-            const labels = Object.keys(progress).sort().slice(-30);
-            const data = labels.map(date => progress[date]);
+            
+            const totalSolved = Object.values(userData[currentUser].progress).reduce((sum, count) => sum + count, 0);
+            document.getElementById('solved-count').textContent = totalSolved;
+            
+            const progressData = userData[currentUser].progress;
+            const sortedDates = Object.keys(progressData).sort();
+            
+            const chartLabels = sortedDates.slice(-30);
+            const chartDataPoints = chartLabels.map(date => progressData[date]);
+            
             const isLight = document.body.classList.contains('light-mode');
-            const gridColor = isLight ? 'rgba(0,0,0,0.1)' : 'rgba(255,255,255,0.1)';
+            const gridColor = isLight ? 'rgba(0, 0, 0, 0.1)' : 'rgba(255, 255, 255, 0.1)';
             const textColor = isLight ? '#1c1c1e' : '#f0f0f0';
+
             const ctx = document.getElementById('progress-chart').getContext('2d');
             if(progressChart) progressChart.destroy();
-            progressChart = new Chart(ctx, { type: 'line', data: { labels, datasets: [{ label: 'Questions Solved', data, fill: true, backgroundColor: 'rgba(99,102,241,0.2)', borderColor: '#6366F1', tension: 0.3 }] }, options: { responsive: true, scales: { y: { beginAtZero: true, grid: { color: gridColor }, ticks: { color: textColor, stepSize: 1 } }, x: { grid: { color: gridColor }, ticks: { color: textColor } } }, plugins: { legend: { labels: { color: textColor } } } } });
+            
+            progressChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: chartLabels,
+                    datasets: [{
+                        label: 'Questions Solved per Day',
+                        data: chartDataPoints,
+                        fill: true,
+                        backgroundColor: 'rgba(99, 102, 241, 0.2)',
+                        borderColor: '#6366F1',
+                        tension: 0.3
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: { beginAtZero: true, grid: { color: gridColor }, ticks: { color: textColor, stepSize: 1 } },
+                        x: { grid: { color: gridColor }, ticks: { color: textColor } }
+                    },
+                    plugins: { legend: { labels: { color: textColor } } }
+                }
+            });
         }
         
-        // --- Game Logic ---
+        // --- Game Logic (Original + Appended New Games) ---
         const SVG_NS = "http://www.w3.org/2000/svg";
-        
+
         // --- Game 1: Stack ---
         const undoStack = []; const redoStack = []; let stackGameInitialized = false;
         function initStackGame() { if (stackGameInitialized) return; const input = document.getElementById('actionInput'); document.getElementById('submitActionBtn').addEventListener('click', addStackAction); input.addEventListener('keydown', e => { if(e.key === 'Enter') addStackAction(); }); document.addEventListener("keydown", e => { if(!document.getElementById('playground-content').classList.contains('active')) return; if (e.ctrlKey && e.key.toLowerCase() === 'z') { e.preventDefault(); if (undoStack.length) redoStack.push(undoStack.pop()); updateStackLog(); } if (e.ctrlKey && e.key.toLowerCase() === 'y') { e.preventDefault(); if (redoStack.length) undoStack.push(redoStack.pop()); updateStackLog(); } }); stackGameInitialized = true; }
@@ -456,7 +975,7 @@
         function handleBlockClick(index, isPossible) { if (!isPossible) { alert("You can't jump that far!"); return; } playerPos = index; jumperPath.push(index); renderArrayJumper(); if (playerPos === jumperArray.length - 1) setTimeout(() => alert('🎉 You reached the end!'), 100); }
 
         // --- Helper to create SVG elements ---
-        function createSvgElement(tag, attributes) { const el = document.createElementNS(SVG_NS, tag); for (const key in attributes) el.setAttribute(key, attributes[key]); return el; }
+        function createSvgElement(tag, attributes, textContent) { const el = document.createElementNS(SVG_NS, tag); for (const key in attributes) el.setAttribute(key, attributes[key]); if (textContent) el.textContent = textContent; return el; }
 
         // --- Game 5: BST Treasure Hunt ---
         let bstGameInitialized = false; let bstRoot = null; let bstTreasure = null;
@@ -467,13 +986,13 @@
         function renderBst() {
             const svg = document.getElementById('bst-svg-container'); svg.innerHTML = '';
             function setNodePosition(node, x, y, xOffset) { if (!node) return; node.x = x; node.y = y; setNodePosition(node.left, x - xOffset, y + 60, xOffset / 2); setNodePosition(node.right, x + xOffset, y + 60, xOffset / 2); }
-            setNodePosition(bstRoot, 50, 15, 25);
+            setNodePosition(bstRoot, 250, 40, 120); // Using pixels for better control
             function drawTree(node) {
                 if (!node) return;
-                if (node.left) svg.appendChild(createSvgElement('line', { x1: `${node.x}%`, y1: `${node.y}%`, x2: `${node.left.x}%`, y2: `${node.left.y}%`, stroke: 'var(--text-muted-color)' }));
-                if (node.right) svg.appendChild(createSvgElement('line', { x1: `${node.x}%`, y1: `${node.y}%`, x2: `${node.right.x}%`, y2: `${node.right.y}%`, stroke: 'var(--text-muted-color)' }));
+                if (node.left) svg.appendChild(createSvgElement('line', { x1: node.x, y1: node.y, x2: node.left.x, y2: node.left.y, stroke: 'var(--text-muted-color)' }));
+                if (node.right) svg.appendChild(createSvgElement('line', { x1: node.x, y1: node.y, x2: node.right.x, y2: node.right.y, stroke: 'var(--text-muted-color)' }));
                 drawTree(node.left); drawTree(node.right);
-                const g = createSvgElement('g', { class: 'bst-node', transform: `translate(${node.x}%, ${node.y}%)` });
+                const g = createSvgElement('g', { class: 'bst-node', transform: `translate(${node.x}, ${node.y})` });
                 g.onclick = () => handleBstNodeClick(g, node.value);
                 g.appendChild(createSvgElement('circle', { r: '20' }));
                 g.appendChild(createSvgElement('text', { dy: ".3em" }, node.value));
@@ -486,11 +1005,11 @@
         // --- Game 6: Graph Traveler ---
         let graphGameInitialized = false; let graph = {}; let graphPositions = {}; let graphPath = [];
         function initGraphGame() { if (graphGameInitialized) return; setupGraphGame(); document.getElementById('resetGraphBtn').addEventListener('click', setupGraphGame); graphGameInitialized = true; }
-        function setupGraphGame() { graph = { A: ['B', 'C'], B: ['A', 'D', 'E'], C: ['A', 'F'], D: ['B'], E: ['B', 'F'], F: ['C', 'E'] }; graphPositions = { A: {x: 50, y: 15}, B: {x: 25, y: 40}, C: {x: 75, y: 40}, D: {x: 15, y: 80}, E: {x: 50, y: 80}, F: {x: 85, y: 80} }; graphPath = ['A']; renderGraph(); }
+        function setupGraphGame() { graph = { A: ['B', 'C'], B: ['A', 'D', 'E'], C: ['A', 'F'], D: ['B'], E: ['B', 'F'], F: ['C', 'E'] }; graphPositions = { A: {x: 250, y: 50}, B: {x: 125, y: 120}, C: {x: 375, y: 120}, D: {x: 75, y: 240}, E: {x: 250, y: 240}, F: {x: 425, y: 240} }; graphPath = ['A']; renderGraph(); }
         function renderGraph() {
             const svg = document.getElementById('graph-svg-container'); svg.innerHTML = '';
-            Object.keys(graph).forEach(city => { graph[city].forEach(neighbor => { if (city < neighbor) { const c1 = graphPositions[city]; const c2 = graphPositions[neighbor]; const isPath = (graphPath.includes(city) && graphPath[graphPath.indexOf(neighbor) - 1] === city) || (graphPath.includes(neighbor) && graphPath[graphPath.indexOf(city) - 1] === neighbor); svg.appendChild(createSvgElement('line', { x1: `${c1.x}%`, y1: `${c1.y}%`, x2: `${c2.x}%`, y2: `${c2.y}%`, class: isPath ? 'road path' : 'road' })); } }); });
-            Object.keys(graphPositions).forEach(city => { const pos = graphPositions[city]; const g = createSvgElement('g', { class: `city ${city==='A'?'start':''} ${city==='F'?'end':''} ${graphPath.includes(city)?'visited':''} ${graphPath[graphPath.length - 1] === city ? 'current': ''}`, transform: `translate(${pos.x}%, ${pos.y}%)` }); g.onclick = () => handleCityClick(city); g.appendChild(createSvgElement('circle', { r: '20' })); g.appendChild(createSvgElement('text', { dy: ".3em" }, city)); svg.appendChild(g); });
+            Object.keys(graph).forEach(city => { graph[city].forEach(neighbor => { if (city < neighbor) { const c1 = graphPositions[city]; const c2 = graphPositions[neighbor]; const isPath = (graphPath.includes(city) && graphPath[graphPath.indexOf(neighbor) - 1] === city) || (graphPath.includes(neighbor) && graphPath[graphPath.indexOf(city) - 1] === neighbor); svg.insertBefore(createSvgElement('line', { x1: c1.x, y1: c1.y, x2: c2.x, y2: c2.y, class: isPath ? 'road path' : 'road' }), svg.firstChild); } }); });
+            Object.keys(graphPositions).forEach(city => { const pos = graphPositions[city]; const g = createSvgElement('g', { class: `city ${city==='A'?'start':''} ${city==='F'?'end':''} ${graphPath.includes(city)?'visited':''} ${graphPath[graphPath.length - 1] === city ? 'current': ''}`, transform: `translate(${pos.x}, ${pos.y})` }); g.onclick = () => handleCityClick(city); g.appendChild(createSvgElement('circle', { r: '25' })); g.appendChild(createSvgElement('text', { dy: ".3em" }, city)); svg.appendChild(g); });
         }
         function handleCityClick(city) { const currentCity = graphPath[graphPath.length - 1]; if (graph[currentCity].includes(city) && !graphPath.includes(city)) { graphPath.push(city); renderGraph(); if (city === 'F') setTimeout(() => alert('🎉 You reached the destination!'), 100); } else if (graphPath.includes(city)) { alert("You've already visited this city!"); } else { alert("Can't travel there from your current location."); } }
 
@@ -501,31 +1020,22 @@
         function renderLlGame() {
             const unlinkedArea = document.getElementById('ll-unlinked-area');
             const linkedArea = document.getElementById('ll-linked-area');
-            unlinkedArea.innerHTML = '';
-            linkedArea.innerHTML = '';
+            unlinkedArea.innerHTML = ''; linkedArea.innerHTML = '';
             llUnlinked.forEach(node => unlinkedArea.appendChild(createLlNodeEl(node, 'unlinked')));
             let current = llHead;
             while(current) { linkedArea.appendChild(createLlNodeEl(current, 'linked')); current = current.next; }
-            if (llUnlinked.length === 0 && llHead) {
-                let sorted = true, curr = llHead; while(curr.next){ if(curr.val > curr.next.val) sorted = false; curr = curr.next; }
-                if(sorted) setTimeout(() => alert("🎉 You built a sorted Linked List!"), 100);
-            }
+            if (llUnlinked.length === 0 && llHead) { let sorted = true, curr = llHead; while(curr.next){ if(curr.val > curr.next.val) {sorted = false; break;} curr = curr.next; } if(sorted) setTimeout(() => alert("🎉 You built a sorted Linked List!"), 100); else setTimeout(() => alert("List is built, but not sorted. Try again!"), 100); }
         }
         function createLlNodeEl(node, area) {
-            const el = document.createElement('div');
-            el.className = 'll-node';
-            if(node === llSelected) el.classList.add('selected');
-            el.textContent = node.val;
-            el.appendChild(document.createElement('div'));
-            el.onclick = () => handleLlNodeClick(node, area);
-            return el;
+            const el = document.createElement('div'); el.className = 'll-node'; if(node === llSelected) el.classList.add('selected');
+            el.textContent = node.val; el.appendChild(document.createElement('div')); el.onclick = () => handleLlNodeClick(node); return el;
         }
-        function handleLlNodeClick(node, area) {
+        function handleLlNodeClick(node) {
             if (!llSelected) { llSelected = node; } 
             else {
                 if(llSelected !== node) {
-                    if (area === 'unlinked' && !llHead) { llHead = llSelected; llUnlinked = llUnlinked.filter(n => n !== llSelected); }
-                    if (llSelected.next === null) { llSelected.next = node; llUnlinked = llUnlinked.filter(n => n !== node); }
+                    if (!llHead) { llHead = llSelected; llUnlinked = llUnlinked.filter(n => n !== llSelected); }
+                    if (llSelected.next === null && llUnlinked.includes(node)) { llSelected.next = node; llUnlinked = llUnlinked.filter(n => n !== node); }
                 }
                 llSelected = null;
             }
@@ -541,50 +1051,46 @@
             clearInterval(mazeInterval);
             mazeSolver.render();
         }
-        class MazeSolver { /* ... (class definition below) ... */ }
+        class MazeSolver { constructor(grid, r, c) { this.grid = grid.map(row => [...row]); this.rows = grid.length; this.cols = grid[0].length; this.stack = [{r, c, path: [[r, c]]}]; this.visited = new Set([`${r},${c}`]); this.found = false; this.code = ["function solve(r, c):", "  if (r,c) is goal: return true", "  mark (r,c) as visited", "  for each neighbor (nr, nc):", "    if solve(nr, nc) is true:", "      return true", "  return false"]; }
+            step() { if (this.found || this.stack.length === 0) { clearInterval(mazeInterval); return; } const {r, c, path, state=0, dir=0} = this.stack.pop(); if (r === this.rows-2 && c === this.cols-2) { this.found = true; this.path = path; this.render(path, 1); return; } const dirs = [[0,1], [1,0], [0,-1], [-1,0]]; if (state === 0) { this.grid[r][c] = 2; this.stack.push({r,c,path,state:1}); this.render(path, 2); return; } if (dir < dirs.length) { const [dr, dc] = dirs[dir]; const nr = r+dr, nc = c+dc; this.stack.push({r,c,path,state:1,dir:dir+1}); this.render(path, 3); if(nr>=0 && nr<this.rows && nc>=0 && nc<this.cols && this.grid[nr][nc]===0 && !this.visited.has(`${nr},${nc}`)) { this.visited.add(`${nr},${nc}`); this.stack.push({r:nr, c:nc, path:path.concat([[nr,nc]])}); this.render(path.concat([[nr,nc]]), 4); return; } } else { this.render(path.slice(0,-1), 6); } }
+            render(path=[], line=0) { const gridEl = document.getElementById('recursion-maze-grid'); gridEl.innerHTML = ''; this.grid.forEach((row, r) => row.forEach((cell, c) => { const el = document.createElement('div'); let className = 'maze-cell'; if(cell === 1) className += ' wall'; if(cell === 2) className += ' visited'; if(this.found && this.path.some(([pr,pc])=>pr===r && pc===c)) className += ' path'; if(path.length > 0 && path[path.length-1][0]===r && path[path.length-1][1]===c) className += ' current'; el.className = className; gridEl.appendChild(el); })); document.getElementById('recursion-code-display').innerHTML = this.code.map((c,i) => `<div class="line ${i===line?'highlight':''}">${c}</div>`).join(''); document.getElementById('call-stack').innerHTML = `<strong>Call Stack:</strong> ${this.stack.map(s => `f(${s.r},${s.c})`).join(' &rarr; ')}`; }
+        }
 
         // --- Game 9: Min-Heap Organizer ---
-        let heapGameInitialized = false; let heapData = [];
+        let heapGameInitialized = false; let heapData = []; let heapSelected = null;
         function initHeapGame() { if(heapGameInitialized) return; setupHeapGame(); document.getElementById('resetHeapBtn').addEventListener('click', setupHeapGame); heapGameInitialized = true; }
-        function setupHeapGame() { heapData = [null, 90, 40, 80, 20, 10, 60, 70, 30, 50]; renderHeap(); }
+        function setupHeapGame() { heapData = [null, 90, 40, 80, 20, 10, 60, 70, 30, 50, 100]; heapSelected = null; renderHeap(); }
         function renderHeap() {
             const svg = document.getElementById('heap-svg-container'); svg.innerHTML = '';
-            const positions = [null, {x:50,y:15}, {x:30,y:40}, {x:70,y:40}, {x:20,y:65}, {x:40,y:65}, {x:60,y:65}, {x:80,y:65}, {x:15,y:90}, {x:25,y:90} ];
-            for(let i = 1; i < heapData.length; i++) {
-                const p = Math.floor(i/2); if(p > 0) svg.appendChild(createSvgElement('line', { x1:`${positions[i].x}%`, y1:`${positions[i].y}%`, x2:`${positions[p].x}%`, y2:`${positions[p].y}%`, stroke:'var(--text-muted-color)' }));
-            }
-            for(let i = 1; i < heapData.length; i++) {
-                const pos = positions[i]; const g = createSvgElement('g', { class:'heap-node', transform:`translate(${pos.x}%, ${pos.y}%)` });
-                const left=2*i, right=2*i+1;
-                if((heapData[left] && heapData[i] > heapData[left]) || (heapData[right] && heapData[i] > heapData[right])) g.classList.add('invalid');
-                g.onclick = () => handleHeapClick(i); g.appendChild(createSvgElement('circle', { r: '20' })); g.appendChild(createSvgElement('text', { dy: ".3em" }, heapData[i])); svg.appendChild(g);
-            }
+            const positions = [null, {x:250,y:40}, {x:150,y:100}, {x:350,y:100}, {x:100,y:160}, {x:200,y:160}, {x:300,y:160}, {x:400,y:160}, {x:75,y:220}, {x:125,y:220}, {x:175,y:220}];
+            for(let i = 1; i < heapData.length; i++) { const p = Math.floor(i/2); if(p > 0) svg.appendChild(createSvgElement('line', { x1:positions[i].x, y1:positions[i].y, x2:positions[p].x, y2:positions[p].y, stroke:'var(--text-muted-color)' })); }
+            for(let i = 1; i < heapData.length; i++) { const g = createSvgElement('g', { class:'heap-node', transform:`translate(${positions[i].x}, ${positions[i].y})` }); const left=2*i, right=2*i+1; if((heapData[left] && heapData[i] > heapData[left]) || (heapData[right] && heapData[i] > heapData[right])) g.classList.add('invalid'); g.onclick = () => handleHeapClick(i); g.appendChild(createSvgElement('circle', { r: '20' })); g.appendChild(createSvgElement('text', { dy: ".3em" }, heapData[i])); svg.appendChild(g); }
             if(!document.querySelector('#heap-game .invalid')) setTimeout(() => alert("🎉 Heap is valid!"), 100);
         }
-        let heapSelected = null;
-        function handleHeapClick(idx) {
-            if (!heapSelected) { heapSelected = idx; } else {
-                const p1 = Math.floor(heapSelected/2), p2 = Math.floor(idx/2);
-                if ((p1 === idx && heapData[idx] > heapData[heapSelected]) || (p2 === heapSelected && heapData[heapSelected] > heapData[idx])) {
-                    [heapData[heapSelected], heapData[idx]] = [heapData[idx], heapData[heapSelected]];
-                }
-                heapSelected = null;
-            }
-            renderHeap();
-            if(heapSelected) document.querySelectorAll('#heap-game .heap-node')[heapSelected-1].classList.add('selected');
-        }
+        function handleHeapClick(idx) { if (!heapSelected) { heapSelected = idx; } else { const p1 = Math.floor(heapSelected/2), p2 = Math.floor(idx/2); if ((p1 === idx && heapData[idx] > heapData[heapSelected]) || (p2 === heapSelected && heapData[heapSelected] > heapData[idx])) { [heapData[heapSelected], heapData[idx]] = [heapData[idx], heapData[heapSelected]]; } heapSelected = null; } renderHeap(); if(heapSelected) svg.querySelectorAll('.heap-node')[heapSelected-1].classList.add('selected'); }
 
         // --- Game 10: Pathfinding Visualizer ---
         let pathfindingGameInitialized = false; let pfGrid = [], pfRows = 10, pfCols = 20, pfStartNode, pfEndNode, pfDrawMode = 'wall', pfMouseDown = false;
         function initPathfindingGame() { if(pathfindingGameInitialized) return; setupPathfindingGame(); document.getElementById('runPathfindingBtn').addEventListener('click', runDijkstra); document.getElementById('clearPathfindingBtn').addEventListener('click', setupPathfindingGame); document.querySelectorAll('input[name="draw-mode"]').forEach(r => r.onchange = (e) => pfDrawMode = e.target.value); pathfindingGameInitialized = true; }
-        function setupPathfindingGame() { pfGrid = []; const container = document.getElementById('pathfinding-grid'); container.innerHTML = ''; for(let r=0; r<pfRows; r++) { const row = []; for(let c=0; c<pfCols; c++) { const node = { r, c, isStart:false, isEnd:false, isWall:false, distance:Infinity, visited:false, prev:null, el: document.createElement('div')}; node.el.className = 'path-node'; node.el.onmousedown = (e) => { e.preventDefault(); pfMouseDown = true; handlePfNodeClick(node); }; node.el.onmouseenter = () => { if(pfMouseDown) handlePfNodeClick(node); }; node.el.onmouseup = () => pfMouseDown = false; container.onmouseleave = () => pfMouseDown = false; container.appendChild(node.el); row.push(node); } pfGrid.push(row); } pfStartNode = pfGrid[5][5]; pfStartNode.isStart = true; pfStartNode.distance = 0; pfEndNode = pfGrid[5][15]; pfEndNode.isEnd = true; renderPfGrid(); }
+        function setupPathfindingGame() { pfGrid = []; const container = document.getElementById('pathfinding-grid'); container.innerHTML = ''; for(let r=0; r<pfRows; r++) { const row = []; for(let c=0; c<pfCols; c++) { const node = { r, c, isStart:false, isEnd:false, isWall:false, distance:Infinity, visited:false, prev:null, el: document.createElement('div')}; node.el.className = 'path-node'; node.el.onmousedown = (e) => { e.preventDefault(); pfMouseDown = true; handlePfNodeClick(node); }; node.el.onmouseenter = () => { if(pfMouseDown) handlePfNodeClick(node); }; document.body.onmouseup = () => pfMouseDown = false; container.appendChild(node.el); row.push(node); } pfGrid.push(row); } pfStartNode = pfGrid[5][5]; pfStartNode.isStart = true; pfStartNode.distance = 0; pfEndNode = pfGrid[5][15]; pfEndNode.isEnd = true; renderPfGrid(); }
         function renderPfGrid() { for(let r=0; r<pfRows; r++) for(let c=0; c<pfCols; c++) { const n = pfGrid[r][c]; n.el.className = `path-node ${n.isStart?'start':''} ${n.isEnd?'end':''} ${n.isWall?'wall':''}`; } }
         function handlePfNodeClick(node) {
             if(pfDrawMode === 'wall') { if(!node.isStart && !node.isEnd) { node.isWall = !node.isWall; node.el.classList.toggle('wall'); } }
             else if(pfDrawMode === 'start') { if(!node.isEnd && !node.isWall) { pfStartNode.isStart=false; pfStartNode=node; pfStartNode.isStart=true; renderPfGrid(); } }
             else if(pfDrawMode === 'end') { if(!node.isStart && !node.isWall) { pfEndNode.isEnd=false; pfEndNode=node; pfEndNode.isEnd=true; renderPfGrid(); } }
         }
-        async function runDijkstra() { /* ... (function definition below) ... */ }
+        async function runDijkstra() {
+            for(let r=0; r<pfRows; r++) for(let c=0; c<pfCols; c++) { const n=pfGrid[r][c]; n.distance = Infinity; n.visited = false; n.prev = null; if(!n.isWall) n.el.className = `path-node ${n.isStart?'start':''} ${n.isEnd?'end':''}`; }
+            pfStartNode.distance = 0; const unvisited = pfGrid.flat().filter(n => !n.isWall);
+            while(unvisited.length) {
+                unvisited.sort((a,b) => a.distance - b.distance); const closest = unvisited.shift();
+                if(closest.distance === Infinity) return alert("No path found!");
+                closest.visited = true; if(!closest.isStart && !closest.isEnd) { closest.el.classList.add('visited'); await new Promise(r => setTimeout(r, 5)); }
+                if(closest === pfEndNode) { let curr = pfEndNode; while(curr) { if(!curr.isStart) curr.el.classList.add('path'); curr = curr.prev; } return; }
+                const neighbors = [[-1,0],[1,0],[0,-1],[0,1]].map(([dr,dc]) => pfGrid[closest.r+dr]?.[closest.c+dc]).filter(n => n && !n.visited && !n.isWall);
+                for(const n of neighbors) { const newDist = closest.distance + 1; if(newDist < n.distance) { n.distance = newDist; n.prev = closest; } }
+            }
+        }
 
         // --- Game 11: KMP String Search ---
         let kmpGameInitialized = false; let kmpText, kmpPattern, kmpLps, kmp_i, kmp_j;
@@ -593,8 +1099,8 @@
         function computeLps(p) { const lps = [0]; let len = 0, i = 1; while(i < p.length) { if(p[i] === p[len]) { len++; lps[i] = len; i++; } else { if(len !== 0) len = lps[len-1]; else { lps[i] = 0; i++; } } } return lps; }
         function renderKmp() {
             const textRow = document.getElementById('kmp-text-row'); const patternRow = document.getElementById('kmp-pattern-row');
-            textRow.innerHTML = ''; patternRow.innerHTML = ''; patternRow.style.paddingLeft = `${kmp_i * 20}px`;
-            for(const char of kmpText) textRow.innerHTML += `<div class="kmp-char">${char}</div>`;
+            textRow.innerHTML = kmpText.split('').map(c => `<div class="kmp-char">${c}</div>`).join('');
+            patternRow.innerHTML = ''; patternRow.style.paddingLeft = `${kmp_i * 20}px`;
             for(let k=0; k<kmpPattern.length; k++) {
                 const el = document.createElement('div'); el.className = 'kmp-char'; el.textContent = kmpPattern[k];
                 if (kmp_j > k) el.classList.add('match');
@@ -604,50 +1110,21 @@
             document.getElementById('lps-table').innerHTML = kmpLps.map((val, i) => `<div class="lps-cell"><div>${kmpPattern[i]}</div><div>${val}</div></div>`).join('');
         }
         function stepKmp() {
-            if (kmp_j === kmpPattern.length) { alert("Pattern found!"); return; }
-            if (kmp_i > kmpText.length - kmpPattern.length) { alert("Pattern not found!"); return; }
+            if (kmp_j === kmpPattern.length) { alert("Pattern found at index " + kmp_i + "!"); return; }
+            if (kmp_i > kmpText.length - kmpPattern.length + kmp_j) { alert("Pattern not found in the remaining text."); return; }
             if (kmpText[kmp_i + kmp_j] === kmpPattern[kmp_j]) { kmp_j++; } 
             else { if (kmp_j !== 0) { kmp_i += kmp_j - kmpLps[kmp_j - 1]; kmp_j = kmpLps[kmp_j - 1]; } else { kmp_i++; } }
             renderKmp();
         }
 
         // --- Initial Load ---
-        function initialize() { const theme = localStorage.getItem('dsa-theme'); document.body.classList.toggle('light-mode', theme === 'light'); themeToggle.checked = theme !== 'light'; }
+        function initialize() {
+            const savedTheme = localStorage.getItem('dsa-theme');
+            if (savedTheme === 'light') { document.body.classList.add('light-mode'); themeToggle.checked = false; } else { document.body.classList.remove('light-mode'); themeToggle.checked = true; }
+        }
+        
         initialize();
 
-        // --- Class definitions placed at the end for clarity ---
-        class MazeSolver {
-            constructor(grid, startR, startC) { this.grid = grid.map(r => [...r]); this.rows = grid.length; this.cols = grid[0].length; this.stack = [{r: startR, c: startC, path: [[startR, startC]]}]; this.visited = new Set([`${startR},${startC}`]); this.found = false; this.code = ["function solve(r, c):", "  if (r,c) is goal: return true", "  mark (r,c) as visited", "  for each neighbor (nr, nc):", "    if solve(nr, nc) is true:", "      return true", "  return false"]; }
-            step() { if (this.found || this.stack.length === 0) return; const {r, c, path, state=0, dir=0} = this.stack.pop();
-                if (r === this.rows-2 && c === this.cols-2) { this.found = true; this.path = path; this.render(path, 4); return; }
-                const dirs = [[0,1], [1,0], [0,-1], [-1,0]];
-                if (state === 0) { this.grid[r][c] = 2; this.stack.push({r,c,path,state:1}); this.render(path, 2); return; }
-                if (dir < dirs.length) { const [dr, dc] = dirs[dir]; const nr = r+dr, nc = c+dc; this.stack.push({r,c,path,state:1,dir:dir+1}); this.render(path, 3);
-                    if(nr>=0 && nr<this.rows && nc>=0 && nc<this.cols && this.grid[nr][nc]===0 && !this.visited.has(`${nr},${nc}`)) { this.visited.add(`${nr},${nc}`); this.stack.push({r:nr, c:nc, path:path.concat([[nr,nc]])}); this.render(path, 4); return; }
-                } else { this.render(path.slice(0,-1), 6); }
-            }
-            render(path=[], line=0) {
-                const gridEl = document.getElementById('recursion-maze-grid'); gridEl.innerHTML = ''; this.grid.forEach((row, r) => row.forEach((cell, c) => { const el = document.createElement('div'); let className = 'maze-cell'; if(cell === 1) className += ' wall'; if(cell === 2) className += ' visited'; if(path.some(([pr,pc])=>pr===r && pc===c)) className += ' path'; if(path.length > 0 && path[path.length-1][0]===r && path[path.length-1][1]===c) className += ' current'; el.className = className; gridEl.appendChild(el); }));
-                document.getElementById('recursion-code-display').innerHTML = this.code.map((c,i) => `<div class="line ${i===line?'highlight':''}">${c}</div>`).join('');
-                document.getElementById('call-stack').innerHTML = `<strong>Call Stack:</strong> ${this.stack.map(s => `f(${s.r},${s.c})`).join(' ')}`;
-            }
-        }
-        async function runDijkstra() {
-            for(let r=0; r<pfRows; r++) for(let c=0; c<pfCols; c++) { pfGrid[r][c].distance = Infinity; pfGrid[r][c].visited = false; pfGrid[r][c].prev = null; if(!pfGrid[r][c].isWall) pfGrid[r][c].el.classList.remove('visited', 'path'); }
-            pfStartNode.distance = 0; const unvisited = pfGrid.flat().filter(n => !n.isWall);
-            while(unvisited.length) {
-                unvisited.sort((a,b) => a.distance - b.distance);
-                const closest = unvisited.shift();
-                if(closest.distance === Infinity) return alert("No path found!");
-                closest.visited = true;
-                if(!closest.isStart && !closest.isEnd) { closest.el.classList.add('visited'); await new Promise(r => setTimeout(r, 5)); }
-                if(closest === pfEndNode) { let curr = pfEndNode; while(curr) { if(!curr.isStart) curr.el.classList.add('path'); curr = curr.prev; } return; }
-                const neighbors = [[-1,0],[1,0],[0,-1],[0,1]].map(([dr,dc]) => pfGrid[closest.r+dr]?.[closest.c+dc]).filter(n => n && !n.visited && !n.isWall);
-                for(const n of neighbors) { const newDist = closest.distance + 1; if(newDist < n.distance) { n.distance = newDist; n.prev = closest; } }
-            }
-        }
-
     </script>
-
 </body>
 </html>
