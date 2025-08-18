@@ -504,6 +504,47 @@
              background: #EC4899;
              box-shadow: 0 0 10px #EC4899;
         }
+        /* START: ADD THE NEW GAME CSS HERE */
+        #queue-game button {
+             padding: 10px 20px;
+             margin: 10px;
+             border: 1px solid var(--secondary-glow-color);
+             background: #2a9d8f;
+             color: white;
+             border-radius: 8px;
+             cursor: pointer;
+             transition: background-color 0.2s;
+        }
+        #queue-game button:hover {
+           background: #264653;
+        }
+        #queue-game .queue-display {
+             display: flex;
+             justify-content: flex-start; /* Align customers to the start */
+             align-items: center;
+             min-height: 80px;
+             background: #000;
+             border-radius: 8px;
+             padding: 15px;
+             margin-top: 20px;
+             overflow-x: auto; /* Allow scrolling if many customers */
+             gap: 10px;
+        }
+        #queue-game .customer {
+              background-color: #f4a261;
+              color: #000;
+              padding: 15px;
+              border-radius: 50%; /* Make them circles */
+              width: 30px;
+              height: 30px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              font-weight: bold;
+              flex-shrink: 0; /* Prevent customers from shrinking */
+              animation: fade-in 0.3s ease;
+         }
+         /* END: NEW GAME CSS */
 
     </style>
     <!-- Chart.js for progress visualization -->
@@ -633,7 +674,21 @@
                         <p>We're building more interactive games to make learning DSA fun and engaging.</p>
                     </div>
                 </div>
-                
+                     <!-- START: ADD THE NEW GAME HTML HERE -->
+                     <div id="queue-game" class="game-container">
+                         <h3>🛒 Queue Quest – Service Counter</h3>
+                         <p>Customers are arriving! Use "Enqueue" to add them to the line and "Dequeue" to serve the customer at the front. Don't let the line get too long!</p>
+                         <button id="enqueueBtn">Enqueue New Customer</button>
+                         <button id="dequeueBtn">Dequeue Next Customer</button>
+                         <div class="queue-display" id="queue-display-box">
+                 <!-- Customers will be added here by JavaScript -->
+                    </div>
+                </div>
+                 <!-- END: NEW GAME HTML -->
+
+                   <div class="game-container" style="background-color: transparent; border: 1px dashed var(--secondary-glow-color);">
+                  <!-- ... -->
+                </div>
                 <!-- Settings View -->
                 <div id="settings-content" class="content-section">
                     <h2>Settings</h2>
@@ -792,6 +847,7 @@
             if (contentId === 'playground-content') {
                 initStackGame();
                 initMonsterGame();
+                initQueueGame();
             }
             if(contentId === 'history-content' && currentUser) loadHistory();
             if(contentId === 'dashboard-content' && currentUser) updateDashboard();
@@ -1051,6 +1107,58 @@
             for (let i = 0; i < monsterValues.length - 1; i++) { if (monsterValues[i] > monsterValues[i + 1]) return; }
             setTimeout(() => alert("🎉 All Monsters Sorted! Great Job!"), 300);
         }
+        // --- START: NEW QUEUE GAME LOGIC ---
+        let customerQueue = [];
+        let nextCustomerId = 1;
+        let queueGameInitialized = false;
+
+        function initQueueGame() {
+             if (queueGameInitialized) return;
+    
+             document.getElementById('enqueueBtn').addEventListener('click', enqueueCustomer);
+             document.getElementById('dequeueBtn').addEventListener('click', dequeueCustomer);
+    
+             setupQueueGame();
+             queueGameInitialized = true;
+        }
+
+        function setupQueueGame() {
+             customerQueue = ['C1', 'C2', 'C3']; // Start with a few customers
+             nextCustomerId = 4;
+             renderQueue();
+        }
+
+        function renderQueue() {
+              const container = document.getElementById('queue-display-box');
+              container.innerHTML = '<strong>Front</strong>'; // Label the front of the queue
+    
+              customerQueue.forEach(customerId => {
+              const el = document.createElement('div');
+              el.className = 'customer';
+              el.innerText = customerId;
+              container.appendChild(el);
+            });
+         }
+
+         function enqueueCustomer() {
+             if (customerQueue.length >= 10) { // Limit the queue size
+               alert("The line is too long! Serve some customers first.");
+               return;
+             }
+             const newCustomer = 'C' + nextCustomerId;
+             customerQueue.push(newCustomer); // Add to the end of the array (enqueue)
+             nextCustomerId++;
+             renderQueue();
+         }
+
+         function dequeueCustomer() {
+             if (customerQueue.length === 0) {
+                   alert("No customers in the line!");
+                   return;
+             }
+             customerQueue.shift(); // Remove from the front of the array (dequeue)
+             renderQueue();
+         }
 
         // --- Initial Load ---
         function initialize() {
