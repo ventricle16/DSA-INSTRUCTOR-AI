@@ -235,6 +235,7 @@
             align-items: center;
             justify-content: center;
             gap: 15px;
+            position: relative; /* For back button positioning */
         }
         
         .header-logo {
@@ -246,6 +247,29 @@
             margin: 0;
             font-size: 1.6em;
             font-weight: 700;
+        }
+        
+        /* UPDATED GUEST BACK BUTTON */
+        #back-to-login-btn {
+            display: none; /* Hidden by default */
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            /* iOS Styles */
+            background: var(--ios-button-bg);
+            border: 1px solid transparent;
+            color: var(--text-color);
+            padding: 10px 20px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background-color 0.2s ease, border-color 0.2s ease;
+            white-space: nowrap; /* Prevent text from wrapping */
+        }
+        #back-to-login-btn:hover {
+            background-color: var(--ios-button-hover-bg);
+            border-color: var(--primary-glow-color);
         }
 
         /* Content Area */
@@ -575,6 +599,7 @@
             <div id="main-content-area" style="display: none; flex-grow: 1; flex-direction: column; overflow: hidden;">
                 <div id="chat-content" class="content-section">
                     <div id="chat-header">
+                        <button id="back-to-login-btn">Login and Learn DSA.</button>
                         <img src="images/dsa-logo.png" alt="DSA Logo" class="header-logo">
                         <h1>DSA Instructor AI</h1>
                     </div>
@@ -659,6 +684,7 @@
         const menuItems = document.querySelectorAll('.menu-item');
         const contentSections = document.querySelectorAll('.content-section');
         const backButtons = document.querySelectorAll('.back-btn');
+        const backToLoginBtn = document.getElementById('back-to-login-btn'); // New button
         
         const themeToggle = document.getElementById('theme-toggle');
         const clearHistoryBtn = document.getElementById('clear-history-btn');
@@ -680,6 +706,10 @@
 
         guestModeBtn.addEventListener('click', () => {
             loginUser(null); // Guest mode
+        });
+        
+        backToLoginBtn.addEventListener('click', () => {
+            location.reload(); // Reload the page to go back to the login screen
         });
         
         logoutBtn.addEventListener('click', () => {
@@ -781,7 +811,9 @@
             mainContentArea.style.display = 'flex';
             
             if (username) {
+                // Logged-in user
                 sidebar.style.display = 'flex';
+                backToLoginBtn.style.display = 'none'; // Hide back button for logged-in users
                 document.getElementById('username-display').textContent = username;
                 document.getElementById('user-initial').textContent = username.charAt(0).toUpperCase();
                 
@@ -793,7 +825,9 @@
                 loadChat();
                 switchContent('dashboard-content');
             } else {
+                // Guest user
                 sidebar.style.display = 'none';
+                backToLoginBtn.style.display = 'block'; // Show back button for guests
                 switchContent('chat-content');
             }
         }
