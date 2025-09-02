@@ -66,7 +66,6 @@
         }
         
         .main-container {
-            position: relative;
             display: flex;
             width: 95%;
             max-width: 1400px;
@@ -77,7 +76,6 @@
             box-shadow: 0 0 50px rgba(0, 0, 0, 0.6), 0 0 20px var(--primary-glow-color);
             overflow: hidden;
             backdrop-filter: blur(12px);
-            transition: all 0.3s ease;
         }
 
         /* Sidebar Styles */
@@ -85,12 +83,9 @@
             width: 280px;
             padding: 25px;
             border-right: 1px solid var(--secondary-glow-color);
-            display: flex; /* Changed from none to flex */
+            display: none; /* Initially hidden */
             flex-direction: column;
             animation: fade-in 0.5s ease;
-            flex-shrink: 0; /* Prevents sidebar from shrinking */
-            transition: transform 0.3s ease-in-out;
-            background-color: var(--surface-color); /* Ensure it has a background for mobile overlay */
         }
         
         #profile-section {
@@ -161,7 +156,6 @@
             display: flex;
             flex-direction: column;
             overflow: hidden;
-            position: relative; /* For positioning mobile menu button */
         }
 
         /* Login Screen */
@@ -173,8 +167,6 @@
             height: 100%;
             text-align: center;
             animation: fade-in 0.5s ease;
-            padding: 20px;
-            box-sizing: border-box;
         }
         
         .login-logo {
@@ -192,13 +184,8 @@
             animation: gradient-animation 5s ease infinite;
         }
         
-        #login-screen h1 { font-size: 2.5em; }
-        #login-screen p { font-size: 1.1em; margin-bottom: 30px; color: var(--text-muted-color); }
-        
-        #login-form {
-             width: 100%;
-             max-width: 320px;
-        }
+        #login-screen h1 { font-size: 3em; }
+        #login-screen p { font-size: 1.2em; margin-bottom: 30px; color: var(--text-muted-color); }
         
         #login-form input {
             padding: 15px 25px;
@@ -207,8 +194,7 @@
             background: transparent;
             color: var(--text-color);
             font-size: 1.1em;
-            width: 100%;
-            box-sizing: border-box;
+            width: 300px;
             text-align: center;
             margin-bottom: 20px;
         }
@@ -240,37 +226,26 @@
         }
 
 
-        /* Chat Header */
+        /* Chat Header with Animated Gradient Text */
         #chat-header {
-            padding: 15px 20px;
+            padding: 20px 25px;
             text-align: center;
             border-bottom: 1px solid var(--secondary-glow-color);
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 15px;
-            position: relative; /* For menu button alignment */
         }
         
         .header-logo {
             width: 40px;
             height: 40px;
-            flex-shrink: 0;
         }
 
         #chat-header h1 {
             margin: 0;
-            font-size: 1.4em;
+            font-size: 1.6em;
             font-weight: 700;
-        }
-        
-        /* General Header for other sections */
-        .content-section h2 {
-            position: relative;
-            text-align: center;
-            padding-bottom: 15px;
-            margin-bottom: 20px;
-            border-bottom: 1px solid var(--secondary-glow-color);
         }
 
         /* Content Area */
@@ -278,7 +253,7 @@
             display: none; /* Hidden by default */
             flex-grow: 1;
             overflow-y: auto;
-            padding: 25px;
+            padding: 30px;
             animation: fade-in 0.5s ease;
         }
         
@@ -289,9 +264,9 @@
         /* Dashboard specific styles */
         #dashboard-content .widget {
             background-color: var(--ios-button-bg);
-            padding: 20px;
+            padding: 25px;
             border-radius: 16px;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             border: 1px solid transparent;
         }
         
@@ -309,10 +284,10 @@
 
         /* General Message Styling */
         .message {
-            padding: 12px 20px;
+            padding: 15px 25px;
             border-radius: 20px;
-            max-width: 85%;
-            line-height: 1.6;
+            max-width: 80%;
+            line-height: 1.7;
             font-size: 1em;
             animation: fade-in 0.5s ease-out forwards;
             white-space: pre-wrap; /* To correctly format code blocks */
@@ -339,19 +314,10 @@
             color: var(--text-muted-color);
             font-style: italic;
         }
-        
-        #chat-box {
-            flex-grow: 1;
-            padding: 20px;
-            overflow-y: auto;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
 
         /* Input Area */
         #input-area {
-            padding: 15px;
+            padding: 20px;
             border-top: 1px solid var(--secondary-glow-color);
             background: rgba(0,0,0,0.2);
         }
@@ -376,7 +342,7 @@
             border: none;
             background: transparent;
             color: var(--text-color);
-            padding: 12px 20px;
+            padding: 15px 25px;
             font-size: 1em;
             outline: none;
         }
@@ -386,7 +352,7 @@
             color: white;
             border: none;
             border-radius: 25px;
-            padding: 10px 20px;
+            padding: 12px 25px;
             margin-right: 5px;
             cursor: pointer;
             font-size: 1em;
@@ -482,108 +448,18 @@
         }
         
         /* --- Playground Game Styles --- */
-        .game-container { background-color: var(--ios-button-bg); padding: 20px; border-radius: 16px; margin-bottom: 20px; border: 1px solid var(--secondary-glow-color); text-align: center; }
+        .game-container { background-color: var(--ios-button-bg); padding: 25px; border-radius: 16px; margin-bottom: 25px; border: 1px solid var(--secondary-glow-color); text-align: center; }
         .game-container h3 { margin-top: 0; padding-bottom: 15px; border-bottom: 1px solid var(--secondary-glow-color); margin-bottom: 20px; }
-        .game-container button { padding: 10px 15px; margin: 10px 5px 0 5px; border-radius: 8px; border: none; color: white; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; font-size: 0.9em;}
+        .game-container button { padding: 10px 20px; margin: 10px 5px 0 5px; border-radius: 8px; border: none; color: white; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; }
         .game-container button:hover { transform: scale(1.05); }
-        .game-container .controls { margin-top:15px; display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 10px; }
+        .game-container .controls { margin-top:15px; }
         .game-container .controls label { margin: 0 10px; }
-        #recursion-maze-game .recursion-container { flex-direction: column; align-items: center; } /* Stack maze and code on mobile */
 
-
-        /* --- MOBILE & RESPONSIVE STYLES --- */
-        .mobile-menu-btn, .sidebar-close-btn {
-            display: none; /* Hidden by default */
-            position: absolute;
-            z-index: 1010;
-            cursor: pointer;
-            background: none;
-            border: none;
-            color: var(--text-muted-color);
-        }
-
-        .mobile-menu-btn {
-            top: 12px;
-            left: 15px;
-            font-size: 28px;
-        }
-        
-        .sidebar-close-btn {
-            top: 15px;
-            right: 20px;
-            font-size: 24px;
-        }
-        
-        #mobile-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.6);
-            z-index: 998;
-        }
-
-        @media (max-width: 768px) {
-            .main-container {
-                width: 100%;
-                height: 100vh;
-                border-radius: 0;
-                box-shadow: none;
-                border: none;
-            }
-            
-            #sidebar {
-                position: fixed; /* Take it out of flow */
-                top: 0;
-                left: 0;
-                height: 100%;
-                z-index: 1000;
-                transform: translateX(-100%); /* Hide off-screen */
-                border-right: 1px solid var(--secondary-glow-color);
-            }
-            
-            #sidebar.visible {
-                transform: translateX(0); /* Show on-screen */
-            }
-
-            .mobile-menu-btn, .sidebar-close-btn {
-                display: block; /* Show buttons on mobile */
-            }
-            
-            #mobile-overlay.visible {
-                display: block;
-            }
-            
-            /* Adjust content padding when sidebar isn't visible */
-            .content-section { padding: 20px; }
-            .content-section h2, #chat-header {
-                padding-left: 40px; /* Make space for hamburger icon */
-            }
-            
-            #login-screen h1 { font-size: 2em; }
-            #login-screen p { font-size: 1em; }
-        }
-        
-        /* Game Specific Mobile Fixes */
-        @media (max-width: 500px) {
-            #linked-list-game .ll-container {
-                flex-direction: column;
-                gap: 10px;
-            }
-            #linked-list-game .ll-area {
-                width: 100%;
-                box-sizing: border-box;
-                min-height: 100px;
-            }
-        }
-        
         /* OLD GAME STYLES */
-        #stack-game input { padding: 10px; margin: 10px; border: 1px solid var(--secondary-glow-color); background: var(--surface-color); color: var(--text-color); border-radius: 8px; width: calc(100% - 20px); box-sizing: border-box;}
+        #stack-game input { padding: 10px; margin: 10px; border: 1px solid var(--secondary-glow-color); background: var(--surface-color); color: var(--text-color); border-radius: 8px; }
         #stack-game button { background: #6366F1; }
         #stack-game .log { margin-top: 20px; font-family: monospace; background: #000; padding: 15px; border-radius: 8px; text-align: left; }
-        #monster-game .monsters { display: flex; justify-content: center; gap: 10px; margin-top: 20px; min-height: 60px; flex-wrap: wrap; }
+        #monster-game .monsters { display: flex; justify-content: center; gap: 10px; margin-top: 20px; min-height: 60px; }
         #monster-game .monster { background: #39a0ed; padding: 15px 25px; border-radius: 8px; cursor: pointer; transition: transform 0.2s ease, background-color 0.2s ease; user-select: none; }
         #monster-game .monster:hover { transform: scale(1.1); }
         #monster-game .monster.selected { background: #EC4899; box-shadow: 0 0 10px #EC4899; }
@@ -611,7 +487,7 @@
         #graph-game .city.visited circle { opacity: 0.6; }
         #graph-game .road { stroke: #8ecae6; stroke-width: 3px; }
         #graph-game .road.path { stroke: #ffb703; stroke-width: 5px; }
-        #array-jumper-game .array-container { display: flex; justify-content: center; gap: 8px; margin: 20px 0; padding: 10px; background-color: #000; border-radius: 8px; flex-wrap: wrap; }
+        #array-jumper-game .array-container { display: flex; justify-content: center; gap: 8px; margin: 20px 0; padding: 10px; background-color: #000; border-radius: 8px; }
         #array-jumper-game .array-block { background-color: #457b9d; color: white; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; font-size: 1.2em; font-weight: bold; border-radius: 8px; cursor: pointer; border: 2px solid transparent; transition: all 0.2s ease; }
         #array-jumper-game .array-block.player { background-color: #fca311; border-color: #e5e5e5; }
         #array-jumper-game .array-block.end { background-color: #6a994e; }
@@ -628,7 +504,7 @@
         #linked-list-game .ll-node { background: #6d597a; color: white; padding: 10px 15px; margin: 5px; border-radius: 8px; display: inline-flex; align-items: center; gap: 10px; cursor: pointer; border: 2px solid transparent; user-select: none; }
         #linked-list-game .ll-node.selected { border-color: #fca311; box-shadow: 0 0 10px #fca311; }
         #linked-list-game .ll-node .pointer { background: #b56576; width: 10px; height: 10px; border-radius: 50%; }
-        #pathfinding-game .path-grid { display: grid; grid-template-columns: repeat(15, 1fr); gap: 1px; background-color: #333; margin: 15px auto; width: 100%; max-width: 450px; aspect-ratio: 15 / 10; }
+        #pathfinding-game .path-grid { display: grid; grid-template-columns: repeat(20, 1fr); gap: 1px; background-color: #333; margin: 15px auto; width: 100%; max-width: 500px; aspect-ratio: 20 / 10; }
         #pathfinding-game .path-node { background-color: var(--ios-button-bg); transition: background-color 0.1s; }
         #pathfinding-game .path-node.start { background-color: #2a9d8f; }
         #pathfinding-game .path-node.end { background-color: #e63946; }
@@ -649,27 +525,26 @@
         #recursion-maze-game .maze-cell.path { background-color: #e5e5e5; }
         #recursion-maze-game .maze-cell.current { background-color: #fca311; }
         #recursion-maze-game .maze-cell.visited { background-color: #457b9d; }
-        #recursion-maze-game .code-display { font-family: monospace; text-align: left; background: #000; padding: 15px; border-radius: 8px; flex-grow: 1; width: 100%; box-sizing: border-box; }
+        #recursion-maze-game .code-display { font-family: monospace; text-align: left; background: #000; padding: 15px; border-radius: 8px; flex-grow: 1; }
         #recursion-maze-game .code-display .line.highlight { background-color: #4a4e69; border-radius: 2px; }
         #recursion-maze-game #call-stack { font-family: monospace; font-size: 0.9em; margin-top: 10px; background: #000; padding: 10px; border-radius: 8px; min-height: 2em; }
         #recursion-maze-game button { background: #4a4e69; }
         #kmp-game button { background: #5e548e; }
-        #kmp-game .kmp-viz { font-family: monospace; font-size: 1em; text-align: left; background: #000; padding: 10px; border-radius: 8px; overflow-x: auto; }
+        #kmp-game .kmp-viz { font-family: monospace; font-size: 1.2em; text-align: left; background: #000; padding: 10px; border-radius: 8px; }
         #kmp-game .kmp-row { display: flex; }
-        #kmp-game .kmp-char { width: 20px; height: 30px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;}
+        #kmp-game .kmp-char { width: 20px; height: 30px; display: flex; align-items: center; justify-content: center; }
         #kmp-game .kmp-char.match { background-color: #3a5a40; }
         #kmp-game .kmp-char.mismatch { background-color: #e63946; }
-        #kmp-game #lps-table { display: flex; gap: 5px; margin-top: 10px; justify-content: center; flex-wrap: wrap; }
+        #kmp-game #lps-table { display: flex; gap: 5px; margin-top: 10px; justify-content: center; }
         #kmp-game .lps-cell { display: flex; flex-direction: column; align-items: center; background-color: #4a4e69; padding: 5px; border-radius: 4px; }
     </style>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-    <div id="mobile-overlay"></div>
+
     <div class="main-container">
         
         <div id="sidebar">
-            <button class="sidebar-close-btn">&times;</button>
             <div id="profile-section">
                 <div class="profile-pic" id="user-initial"></div>
                 <h2 id="username-display"></h2>
@@ -698,15 +573,12 @@
             </div>
             
             <div id="main-content-area" style="display: none; flex-grow: 1; flex-direction: column; overflow: hidden;">
-                <!-- Content gets dynamically shown here -->
-                
                 <div id="chat-content" class="content-section">
                     <div id="chat-header">
-                        <button class="mobile-menu-btn">&#9776;</button>
                         <img src="images/dsa-logo.png" alt="DSA Logo" class="header-logo">
                         <h1>DSA Instructor AI</h1>
                     </div>
-                    <div id="chat-box">
+                    <div id="chat-box" style="flex-grow: 1; padding: 30px; overflow-y: auto; display: flex; flex-direction: column; gap: 20px;">
                         <div class="message ai-message"> Ask me anything about Data Structures and Algorithms. For example, "Explain bubble sort." </div>
                     </div>
                     <div id="input-area">
@@ -718,7 +590,7 @@
                 </div>
 
                 <div id="dashboard-content" class="content-section active">
-                    <h2><button class="mobile-menu-btn">&#9776;</button>Dashboard</h2>
+                    <h2>Dashboard</h2>
                     <div class="widget"> <h3>Progress Level</h3> <canvas id="progress-chart"></canvas> </div>
                     <div class="widget"> <h3>Questions Solved</h3> <p id="solved-count">0</p> </div>
                     <div class="widget">
@@ -728,37 +600,38 @@
                 </div>
 
                 <div id="history-content" class="content-section">
-                    <h2><button class="mobile-menu-btn">&#9776;</button>Chat History</h2>
-                    <button class="back-btn" data-target="dashboard-content">← Back to Dashboard</button>
+                    <h2>Chat History</h2> <button class="back-btn" data-target="dashboard-content">← Back to Dashboard</button>
                     <div id="history-container">Your chat history will appear here.</div>
                 </div>
 
                 <div id="tutorials-content" class="content-section">
-                    <h2><button class="mobile-menu-btn">&#9776;</button>Short Tutorials</h2>
-                    <button class="back-btn" data-target="dashboard-content">← Back to Dashboard</button>
-                    <iframe style="width: 100%; height: 80vh; border: none; border-radius: 16px;" src="https://www.youtube.com/embed/videoseries?list=PLAXnLdrLnQpRcveZTtD644gM9uzYqJCwr" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <h2>Short Tutorials</h2> <button class="back-btn" data-target="dashboard-content">← Back to Dashboard</button>
+                    <iframe style="width: 100%; height: 80%; border: none; border-radius: 16px;" src="https://www.youtube.com/embed/videoseries?list=PLAXnLdrLnQpRcveZTtD644gM9uzYqJCwr" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
                 
                 <div id="playground-content" class="content-section">
-                    <h2><button class="mobile-menu-btn">&#9776;</button>DSA Playground</h2>
-                    <button class="back-btn" data-target="dashboard-content">← Back to Dashboard</button>
-                    <!-- ALL GAME CONTAINERS -->
+                    <h2>DSA Playground</h2> <button class="back-btn" data-target="dashboard-content">← Back to Dashboard</button>
+
+                    <!-- EASY LEVEL -->
                     <div id="stack-game" class="game-container"> <h3>🌀 Stack Simulator (Easy)</h3> <p>Simulate Undo/Redo. Type an action and press Submit. Use <strong>Ctrl+Z</strong> to Undo and <strong>Ctrl+Y</strong> to Redo.</p> <input id="actionInput" placeholder="Type an action..." /> <button id="submitActionBtn">Submit</button> <div class="log" id="stack-log"><p><strong>Undo Stack:</strong> []</p><p><strong>Redo Stack:</strong> []</p></div> </div>
-                    <div id="queue-game" class="game-container"> <h3>🛒 Queue Quest (Easy)</h3> <p>Manage a service line. Use "Enqueue" to add customers and "Dequeue" to serve them from the front.</p> <div class="controls"><button id="enqueueBtn">Enqueue New</button> <button id="dequeueBtn">Dequeue Next</button></div> <div class="queue-display" id="queue-display-box"></div> </div>
+                    <div id="queue-game" class="game-container"> <h3>🛒 Queue Quest (Easy)</h3> <p>Manage a service line. Use "Enqueue" to add customers and "Dequeue" to serve them from the front.</p> <button id="enqueueBtn">Enqueue New Customer</button> <button id="dequeueBtn">Dequeue Next Customer</button> <div class="queue-display" id="queue-display-box"></div> </div>
                     <div id="linked-list-game" class="game-container"> <h3>🔗 Linked List Chain Builder (Easy)</h3> <p>The nodes must be linked in ascending order. Click a node, then click another to form a `next` pointer.</p> <div class="ll-container"> <div class="ll-area"><h4>Unlinked Nodes</h4><div id="ll-unlinked-area"></div></div> <div class="ll-area"><h4>Your Linked List</h4><div id="ll-linked-area"></div></div> </div> <button id="resetLlBtn">Reset</button> </div>
                     <div id="recursion-maze-game" class="game-container"><h3>🌀 Recursion Maze Solver (Easy)</h3><p>Watch how recursion explores a maze. The call stack shows the function's memory as it dives deep and backtracks.</p><div class="recursion-container"><div class="maze-grid" id="recursion-maze-grid"></div><div><div class="code-display" id="recursion-code-display"></div><div id="call-stack"><strong>Call Stack:</strong></div></div></div><div class="controls"><button id="stepRecursionBtn">Step</button><button id="runRecursionBtn">Run</button><button id="resetRecursionBtn">Reset</button></div></div>
+                    
+                    <!-- INTERMEDIATE LEVEL -->
                     <div id="monster-game" class="game-container"> <h3>🐉 Sort the Monsters (Intermediate)</h3> <p>A hands-on Bubble Sort. Click two adjacent monsters to compare and swap if needed. Sort them in ascending order.</p> <div class="monsters" id="monsters-container"></div> <button id="resetMonstersBtn">Reset</button> </div>
                     <div id="array-jumper-game" class="game-container"><h3>🤸 Array Jumper (Intermediate)</h3> <p>From your orange block, jump up to the number of steps shown. Reach the green block to win!</p> <div class="array-container" id="array-jumper-container"></div> <button id="resetArrayJumperBtn">Reset Puzzle</button> </div>
                     <div id="bst-game" class="game-container"> <h3>🌳 BST Treasure Hunt (Intermediate)</h3> <p id="bst-instruction">Find the treasure! If your guess is wrong, I'll tell you to go higher (right) or lower (left).</p> <p id="bst-status"></p> <div class="game-canvas-container"><svg id="bst-svg-container"></svg></div> <button id="resetBstBtn">New Game</button> </div>
                     <div id="heap-game" class="game-container"><h3>🔥 Min-Heap Organizer (Intermediate)</h3><p>This tree violates the Min-Heap rule (parent > child). Click invalid parents and their smaller children to swap them until the heap is fixed.</p><div class="game-canvas-container"><svg id="heap-svg-container"></svg></div><button id="resetHeapBtn">Reset Heap</button></div>
+                    
+                    <!-- ADVANCED LEVEL -->
                     <div id="graph-game" class="game-container"> <h3>🗺️ Graph Traveler (Advanced)</h3> <p>Find a path from Green (Start) to Red (End). You can only travel between connected cities.</p> <div class="game-canvas-container"><svg id="graph-svg-container"></svg></div> <button id="resetGraphBtn">Reset Journey</button> </div>
-                    <div id="pathfinding-game" class="game-container"><h3>🛰️ Pathfinding Visualizer (Advanced)</h3><p>Dijkstra's Algorithm in action! Draw walls, then watch the algorithm find the shortest path from Green to Red.</p><div class="controls"><label><input type="radio" name="draw-mode" value="wall" checked> Walls</label><label><input type="radio" name="draw-mode" value="start"> Start</label><label><input type="radio" name="draw-mode" value="end"> End</label></div><div class="path-grid" id="pathfinding-grid"></div><div class="controls"><button id="runPathfindingBtn">Find Path</button><button id="clearPathfindingBtn">Clear</button></div></div>
+                    <div id="pathfinding-game" class="game-container"><h3>🛰️ Pathfinding Visualizer (Advanced)</h3><p>Dijkstra's Algorithm in action! Draw walls, then watch the algorithm find the shortest path from Green to Red.</p><div class="controls"><label><input type="radio" name="draw-mode" value="wall" checked> Draw Walls</label><label><input type="radio" name="draw-mode" value="start"> Move Start</label><label><input type="radio" name="draw-mode" value="end"> Move End</label></div><div class="path-grid" id="pathfinding-grid"></div><button id="runPathfindingBtn">Find Path</button><button id="clearPathfindingBtn">Clear Board</button></div>
                     <div id="kmp-game" class="game-container"><h3>🔎 String Search Detective (Advanced)</h3><p>Watch the KMP algorithm find the pattern. The table shows how it uses prefixes to avoid re-checking characters.</p><div id="kmp-viz"><div id="kmp-text-row" class="kmp-row"></div><div id="kmp-pattern-row" class="kmp-row"></div></div><div class="controls"><strong>LPS Table:</strong><div id="lps-table"></div><button id="stepKmpBtn">Step</button><button id="resetKmpBtn">Reset</button></div></div>
                 </div>
                 
                 <div id="settings-content" class="content-section">
-                    <h2><button class="mobile-menu-btn">&#9776;</button>Settings</h2>
-                    <button class="back-btn" data-target="dashboard-content">← Back to Dashboard</button>
+                    <h2>Settings</h2> <button class="back-btn" data-target="dashboard-content">← Back to Dashboard</button>
                     <div class="settings-option"> <span>Dark / Light Mode</span> <label class="switch"> <input type="checkbox" id="theme-toggle"> <span class="slider"></span> </label> </div>
                     <div class="settings-option"> <span>Clear Chat History</span> <button id="clear-history-btn" style="background: #e53e3e; color: white; border: none; padding: 10px 20px; border-radius: 12px; cursor: pointer;">Clear Now</button> </div>
                 </div>
@@ -768,7 +641,7 @@
 
     <script>
         // --- THIS SCRIPT IS THE UNCHANGED ORIGINAL, WITH NEW GAME LOGIC APPENDED AT THE END ---
-        
+
         // --- DOM Elements ---
         const loginScreen = document.getElementById('login-screen');
         const loginForm = document.getElementById('login-form');
@@ -777,38 +650,54 @@
         const mainContentArea = document.getElementById('main-content-area');
         const sidebar = document.getElementById('sidebar');
         const logoutBtn = document.getElementById('logout-btn');
+        
         const form = document.getElementById('input-form');
         const userInput = document.getElementById('user-input-field');
         const chatBox = document.getElementById('chat-box');
         const sendButton = document.getElementById('send-button');
+
         const menuItems = document.querySelectorAll('.menu-item');
         const contentSections = document.querySelectorAll('.content-section');
         const backButtons = document.querySelectorAll('.back-btn');
+        
         const themeToggle = document.getElementById('theme-toggle');
         const clearHistoryBtn = document.getElementById('clear-history-btn');
         
-        // --- Mobile Menu Elements ---
-        const mobileMenuButtons = document.querySelectorAll('.mobile-menu-btn');
-        const sidebarCloseBtn = document.querySelector('.sidebar-close-btn');
-        const mobileOverlay = document.getElementById('mobile-overlay');
-
         let progressChart = null;
+
+        // --- App State ---
         let currentUser = null;
         let userData = {};
 
         // --- Event Listeners ---
-        loginForm.addEventListener('submit', (e) => { e.preventDefault(); const username = usernameInput.value.trim(); if (username) { loginUser(username); } });
-        guestModeBtn.addEventListener('click', () => { loginUser(null); });
-        logoutBtn.addEventListener('click', () => { if (confirm('Are you sure you want to logout?')) { location.reload(); } });
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const username = usernameInput.value.trim();
+            if (username) {
+                loginUser(username);
+            }
+        });
+
+        guestModeBtn.addEventListener('click', () => {
+            loginUser(null); // Guest mode
+        });
+        
+        logoutBtn.addEventListener('click', () => {
+            if (confirm('Are you sure you want to logout?')) {
+                location.reload();
+            }
+        });
 
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
             const userMessage = userInput.value.trim();
             if (!userMessage) return;
+
             appendMessage(userMessage, 'user-message');
             saveMessage('user', userMessage);
             userInput.value = '';
             setLoading(true);
+
             try {
                 showTypingIndicator();
                 const aiResponse = await callGoogleGenAI(userMessage);
@@ -820,14 +709,15 @@
                 removeTypingIndicator();
                 console.error("Detailed error from serverless function:", error);
                 appendMessage(error.message, 'ai-message');
-            } finally { setLoading(false); }
+            } finally {
+                setLoading(false);
+            }
         });
 
         menuItems.forEach(item => {
             item.addEventListener('click', () => {
                 const contentId = item.getAttribute('data-content');
                 switchContent(contentId);
-                closeSidebar(); // Close sidebar after selection on mobile
             });
         });
         
@@ -856,28 +746,30 @@
                 }
             }
         });
-        
-        // --- Mobile Menu Listeners ---
-        function openSidebar() {
-            sidebar.classList.add('visible');
-            mobileOverlay.classList.add('visible');
-        }
-        function closeSidebar() {
-            sidebar.classList.remove('visible');
-            mobileOverlay.classList.remove('visible');
-        }
-        mobileMenuButtons.forEach(btn => btn.addEventListener('click', openSidebar));
-        sidebarCloseBtn.addEventListener('click', closeSidebar);
-        mobileOverlay.addEventListener('click', closeSidebar);
-
 
         // --- Functions ---
         function switchContent(contentId) {
-            menuItems.forEach(i => i.classList.toggle('active', i.getAttribute('data-content') === contentId));
-            contentSections.forEach(section => section.classList.toggle('active', section.id === contentId));
+            menuItems.forEach(i => {
+                i.classList.toggle('active', i.getAttribute('data-content') === contentId);
+            });
+            
+            contentSections.forEach(section => {
+                section.classList.toggle('active', section.id === contentId);
+            });
+            
             if (contentId === 'playground-content') {
-                initStackGame(); initMonsterGame(); initQueueGame(); initBstGame(); initGraphGame(); initArrayJumperGame();
-                initLlGame(); initRecursionMazeGame(); initHeapGame(); initPathfindingGame(); initKmpGame();
+                initStackGame();
+                initMonsterGame();
+                initQueueGame();
+                initBstGame();
+                initGraphGame();
+                initArrayJumperGame();
+                // Initialize NEW games
+                initLlGame();
+                initRecursionMazeGame();
+                initHeapGame();
+                initPathfindingGame();
+                initKmpGame();
             }
             if(contentId === 'history-content' && currentUser) loadHistory();
             if(contentId === 'dashboard-content' && currentUser) updateDashboard();
@@ -887,9 +779,12 @@
             currentUser = username;
             loginScreen.style.display = 'none';
             mainContentArea.style.display = 'flex';
+            
             if (username) {
+                sidebar.style.display = 'flex';
                 document.getElementById('username-display').textContent = username;
                 document.getElementById('user-initial').textContent = username.charAt(0).toUpperCase();
+                
                 const savedData = JSON.parse(localStorage.getItem('dsaUserData')) || {};
                 userData = savedData;
                 if (!userData[username]) {
@@ -898,9 +793,7 @@
                 loadChat();
                 switchContent('dashboard-content');
             } else {
-                sidebar.style.display = 'none'; // Completely hide for guest mode
-                document.querySelectorAll('.mobile-menu-btn').forEach(b => b.style.display = 'none');
-                document.querySelectorAll('.content-section h2, #chat-header').forEach(h => h.style.paddingLeft = '0');
+                sidebar.style.display = 'none';
                 switchContent('chat-content');
             }
         }
@@ -915,8 +808,10 @@
         
         function saveMessage(sender, text) {
             if (!currentUser) return;
+            
             const messageData = { sender, text, timestamp: new Date().toISOString() };
             userData[currentUser].history.push(messageData);
+            
             if (sender === 'user') {
                  const date = new Date().toISOString().split('T')[0];
                  if (!userData[currentUser].progress[date]) {
@@ -933,7 +828,9 @@
             if (userData[currentUser].history.length === 0) {
                  appendMessage('Ask me anything about Data Structures and Algorithms. For example, "Explain bubble sort."', 'ai-message');
             } else {
-                 userData[currentUser].history.forEach(msg => appendMessage(msg.text, `${msg.sender}-message`));
+                 userData[currentUser].history.forEach(msg => {
+                    appendMessage(msg.text, `${msg.sender}-message`);
+                });
             }
         }
         
@@ -948,10 +845,15 @@
                      historyItem.textContent = `[${new Date(msg.timestamp).toLocaleTimeString()}] ${msg.sender === 'user' ? 'You' : 'AI'}: ${msg.text}`;
                      historyContainer.appendChild(historyItem);
                  });
-            } else { historyContainer.textContent = 'No chat history found.'; }
+            } else {
+                historyContainer.textContent = 'No chat history found.';
+            }
         }
         
-        function saveUserData() { if (!currentUser) return; localStorage.setItem('dsaUserData', JSON.stringify(userData)); }
+        function saveUserData() {
+            if (!currentUser) return;
+            localStorage.setItem('dsaUserData', JSON.stringify(userData));
+        }
 
         function showTypingIndicator() {
             const typingElement = document.createElement('div');
@@ -962,7 +864,10 @@
             scrollToBottom();
         }
         
-        function removeTypingIndicator() { const typingElement = document.getElementById('typing-indicator'); if (typingElement) typingElement.remove(); }
+        function removeTypingIndicator() {
+            const typingElement = document.getElementById('typing-indicator');
+            if (typingElement) typingElement.remove();
+        }
         
         function setLoading(isLoading) {
             userInput.disabled = isLoading;
@@ -971,101 +876,258 @@
             sendButton.classList.toggle('loading', isLoading);
         }
         
-        function scrollToBottom() { chatBox.scrollTop = chatBox.scrollHeight; }
+        function scrollToBottom() {
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
 
         async function callGoogleGenAI(prompt) {
-            // Placeholder for your API call
-            return new Promise(resolve => setTimeout(() => resolve(`This is an AI response about: "${prompt}"`), 1000));
+            const API_ENDPOINT = '/api/call-ai'; // Points to your Vercel function
+
+            const response = await fetch(API_ENDPOINT, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ prompt: prompt }),
+            });
+
+            const data = await response.json();
+
+            if (!response.ok) {
+                const errorMessage = data.error?.message || `Error: ${response.status}. See the function logs on Vercel for details.`;
+                throw new Error(errorMessage);
+            }
+
+            if (!data.candidates || data.candidates.length === 0 || !data.candidates[0].content || !data.candidates[0].content.parts) {
+                if (data.promptFeedback && data.promptFeedback.blockReason) {
+                    throw new Error(`Your request was blocked by Google. Reason: ${data.promptFeedback.blockReason}.`);
+                }
+                throw new Error("I'm sorry, the API returned an empty or invalid response.");
+            }
+            
+            return data.candidates[0].content.parts[0].text;
         }
         
         function updateDashboard() {
             if (!currentUser || !userData[currentUser] || !document.getElementById('dashboard-content').classList.contains('active')) return;
+            
             const totalSolved = Object.values(userData[currentUser].progress).reduce((sum, count) => sum + count, 0);
             document.getElementById('solved-count').textContent = totalSolved;
+            
             const progressData = userData[currentUser].progress;
             const sortedDates = Object.keys(progressData).sort();
+            
             const chartLabels = sortedDates.slice(-30);
             const chartDataPoints = chartLabels.map(date => progressData[date]);
+            
             const isLight = document.body.classList.contains('light-mode');
             const gridColor = isLight ? 'rgba(0, 0, 0, 0.1)' : 'rgba(255, 255, 255, 0.1)';
             const textColor = isLight ? '#1c1c1e' : '#f0f0f0';
+
             const ctx = document.getElementById('progress-chart').getContext('2d');
             if(progressChart) progressChart.destroy();
+            
             progressChart = new Chart(ctx, {
-                type: 'line', data: { labels: chartLabels, datasets: [{ label: 'Questions Solved per Day', data: chartDataPoints, fill: true, backgroundColor: 'rgba(99, 102, 241, 0.2)', borderColor: '#6366F1', tension: 0.3 }] },
-                options: { responsive: true, maintainAspectRatio: false, scales: { y: { beginAtZero: true, grid: { color: gridColor }, ticks: { color: textColor, stepSize: 1 } }, x: { grid: { color: gridColor }, ticks: { color: textColor } } }, plugins: { legend: { labels: { color: textColor } } } }
+                type: 'line',
+                data: {
+                    labels: chartLabels,
+                    datasets: [{
+                        label: 'Questions Solved per Day',
+                        data: chartDataPoints,
+                        fill: true,
+                        backgroundColor: 'rgba(99, 102, 241, 0.2)',
+                        borderColor: '#6366F1',
+                        tension: 0.3
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: { beginAtZero: true, grid: { color: gridColor }, ticks: { color: textColor, stepSize: 1 } },
+                        x: { grid: { color: gridColor }, ticks: { color: textColor } }
+                    },
+                    plugins: { legend: { labels: { color: textColor } } }
+                }
             });
         }
         
-        // --- Game Logic (Unchanged) ---
+        // --- Game Logic (Original + Appended New Games) ---
         const SVG_NS = "http://www.w3.org/2000/svg";
+
+        // --- Game 1: Stack ---
         const undoStack = []; const redoStack = []; let stackGameInitialized = false;
         function initStackGame() { if (stackGameInitialized) return; const input = document.getElementById('actionInput'); document.getElementById('submitActionBtn').addEventListener('click', addStackAction); input.addEventListener('keydown', e => { if(e.key === 'Enter') addStackAction(); }); document.addEventListener("keydown", e => { if(!document.getElementById('playground-content').classList.contains('active')) return; if (e.ctrlKey && e.key.toLowerCase() === 'z') { e.preventDefault(); if (undoStack.length) redoStack.push(undoStack.pop()); updateStackLog(); } if (e.ctrlKey && e.key.toLowerCase() === 'y') { e.preventDefault(); if (redoStack.length) undoStack.push(redoStack.pop()); updateStackLog(); } }); stackGameInitialized = true; }
         function addStackAction() { const input = document.getElementById('actionInput'); const action = input.value; if (action) { undoStack.push(action); redoStack.length = 0; updateStackLog(); input.value = ''; } }
         function updateStackLog() { document.getElementById("stack-log").innerHTML = `<p><strong>Undo Stack:</strong> ${JSON.stringify(undoStack)}</p><p><strong>Redo Stack:</strong> ${JSON.stringify(redoStack)}</p>`; }
+        
+        // --- Game 2: Queue ---
         let customerQueue = []; let nextCustomerId = 1; let queueGameInitialized = false;
         function initQueueGame() { if (queueGameInitialized) return; setupQueueGame(); document.getElementById('enqueueBtn').addEventListener('click', enqueueCustomer); document.getElementById('dequeueBtn').addEventListener('click', dequeueCustomer); queueGameInitialized = true; }
         function setupQueueGame() { customerQueue = ['C1', 'C2', 'C3']; nextCustomerId = 4; renderQueue(); }
         function renderQueue() { const container = document.getElementById('queue-display-box'); if (!container) return; container.innerHTML = '<strong>Front</strong>'; customerQueue.forEach(id => { const el = document.createElement('div'); el.className = 'customer'; el.innerText = id; container.appendChild(el); }); }
         function enqueueCustomer() { if (customerQueue.length >= 8) { alert("The line is too long!"); return; } customerQueue.push('C' + nextCustomerId++); renderQueue(); }
         function dequeueCustomer() { if (customerQueue.length === 0) { alert("No customers in line!"); return; } customerQueue.shift(); renderQueue(); }
+
+        // --- Game 3: Monster Sort ---
         let monsterValues = []; let selectedMonsters = []; let monsterGameInitialized = false;
         function initMonsterGame() { if(monsterGameInitialized) return; setupMonsterGame(); document.getElementById('resetMonstersBtn').addEventListener('click', setupMonsterGame); monsterGameInitialized = true; }
         function setupMonsterGame() { monsterValues = [40, 10, 30, 50, 20]; selectedMonsters = []; renderMonsters(); }
         function renderMonsters() { const container = document.getElementById('monsters-container'); container.innerHTML = ''; monsterValues.forEach((val, i) => { const el = document.createElement('div'); el.className = 'monster'; el.innerText = val; if (selectedMonsters.includes(i)) el.classList.add('selected'); el.onclick = () => selectMonster(i); container.appendChild(el); }); }
         function selectMonster(index) { if (selectedMonsters.includes(index)) { selectedMonsters = selectedMonsters.filter(i => i !== index); } else if (selectedMonsters.length < 2) { selectedMonsters.push(index); } renderMonsters(); if (selectedMonsters.length === 2) { const [i, j] = selectedMonsters.sort((a,b) => a - b); if (j === i + 1) { if (monsterValues[i] > monsterValues[j]) { [monsterValues[i], monsterValues[j]] = [monsterValues[j], monsterValues[i]]; } } else { alert("In Bubble Sort, you only compare adjacent elements!"); } selectedMonsters = []; setTimeout(() => { renderMonsters(); checkSorted(); }, 300); } }
         function checkSorted() { for (let i = 0; i < monsterValues.length - 1; i++) { if (monsterValues[i] > monsterValues[i + 1]) return; } setTimeout(() => alert("🎉 All Monsters Sorted!"), 300); }
+        
+        // --- Game 4: Array Jumper ---
         let arrayJumperInitialized = false; let jumperArray = []; let playerPos = 0; let jumperPath = [];
         function initArrayJumperGame() { if (arrayJumperInitialized) return; setupArrayJumperGame(); document.getElementById('resetArrayJumperBtn').addEventListener('click', setupArrayJumperGame); arrayJumperInitialized = true; }
         function setupArrayJumperGame() { jumperArray = [2, 3, 1, 1, 4, 1, 2]; playerPos = 0; jumperPath = [0]; renderArrayJumper(); }
         function renderArrayJumper() { const container = document.getElementById('array-jumper-container'); container.innerHTML = ''; const jumpValue = jumperArray[playerPos]; jumperArray.forEach((val, i) => { const el = document.createElement('div'); el.className = 'array-block'; el.textContent = val; if (i === playerPos) el.classList.add('player'); if (i === jumperArray.length - 1) el.classList.add('end'); if(jumperPath.includes(i) && i !== playerPos) el.classList.add('path-taken'); const isPossible = i > playerPos && i <= playerPos + jumpValue; if (isPossible) el.classList.add('possible'); el.onclick = () => handleBlockClick(i, isPossible); container.appendChild(el); }); }
         function handleBlockClick(index, isPossible) { if (!isPossible) { alert("You can't jump that far!"); return; } playerPos = index; jumperPath.push(index); renderArrayJumper(); if (playerPos === jumperArray.length - 1) setTimeout(() => alert('🎉 You reached the end!'), 100); }
+
+        // --- Helper to create SVG elements ---
         function createSvgElement(tag, attributes, textContent) { const el = document.createElementNS(SVG_NS, tag); for (const key in attributes) el.setAttribute(key, attributes[key]); if (textContent) el.textContent = textContent; return el; }
+
+        // --- Game 5: BST Treasure Hunt ---
         let bstGameInitialized = false; let bstRoot = null; let bstTreasure = null;
         class BstNode { constructor(value) { this.value = value; this.left = null; this.right = null; this.x = 0; this.y = 0; } }
         function initBstGame() { if (bstGameInitialized) return; setupBstGame(); document.getElementById('resetBstBtn').addEventListener('click', setupBstGame); bstGameInitialized = true; }
         function setupBstGame() { bstRoot = new BstNode(50); const values = [30, 70, 20, 40, 60, 80, 15, 25, 35, 45]; values.forEach(v => insertBstNode(bstRoot, v)); bstTreasure = values.concat(50)[Math.floor(Math.random() * (values.length + 1))]; document.getElementById('bst-instruction').textContent = `Find the treasure! It's a number between 15 and 80.`; document.getElementById('bst-status').textContent = 'Click the root node (50) to begin.'; renderBst(); }
         function insertBstNode(node, value) { if (value < node.value) { if (node.left === null) node.left = new BstNode(value); else insertBstNode(node.left, value); } else { if (node.right === null) node.right = new BstNode(value); else insertBstNode(node.right, value); } }
-        function renderBst() { const svg = document.getElementById('bst-svg-container'); svg.innerHTML = ''; function setNodePosition(node, x, y, xOffset) { if (!node) return; node.x = x; node.y = y; setNodePosition(node.left, x - xOffset, y + 60, xOffset / 2); setNodePosition(node.right, x + xOffset, y + 60, xOffset / 2); } setNodePosition(bstRoot, svg.clientWidth / 2, 40, svg.clientWidth / 4); function drawTree(node) { if (!node) return; if (node.left) svg.appendChild(createSvgElement('line', { x1: node.x, y1: node.y, x2: node.left.x, y2: node.left.y, stroke: 'var(--text-muted-color)' })); if (node.right) svg.appendChild(createSvgElement('line', { x1: node.x, y1: node.y, x2: node.right.x, y2: node.right.y, stroke: 'var(--text-muted-color)' })); drawTree(node.left); drawTree(node.right); const g = createSvgElement('g', { class: 'bst-node', transform: `translate(${node.x}, ${node.y})` }); g.onclick = () => handleBstNodeClick(g, node.value); g.appendChild(createSvgElement('circle', { r: '20' })); g.appendChild(createSvgElement('text', { dy: ".3em" }, node.value)); svg.appendChild(g); } drawTree(bstRoot); }
+        function renderBst() {
+            const svg = document.getElementById('bst-svg-container'); svg.innerHTML = '';
+            function setNodePosition(node, x, y, xOffset) { if (!node) return; node.x = x; node.y = y; setNodePosition(node.left, x - xOffset, y + 60, xOffset / 2); setNodePosition(node.right, x + xOffset, y + 60, xOffset / 2); }
+            setNodePosition(bstRoot, 250, 40, 120); // Using pixels for better control
+            function drawTree(node) {
+                if (!node) return;
+                if (node.left) svg.appendChild(createSvgElement('line', { x1: node.x, y1: node.y, x2: node.left.x, y2: node.left.y, stroke: 'var(--text-muted-color)' }));
+                if (node.right) svg.appendChild(createSvgElement('line', { x1: node.x, y1: node.y, x2: node.right.x, y2: node.right.y, stroke: 'var(--text-muted-color)' }));
+                drawTree(node.left); drawTree(node.right);
+                const g = createSvgElement('g', { class: 'bst-node', transform: `translate(${node.x}, ${node.y})` });
+                g.onclick = () => handleBstNodeClick(g, node.value);
+                g.appendChild(createSvgElement('circle', { r: '20' }));
+                g.appendChild(createSvgElement('text', { dy: ".3em" }, node.value));
+                svg.appendChild(g);
+            }
+            drawTree(bstRoot);
+        }
         function handleBstNodeClick(el, value) { el.classList.add('visited'); const status = document.getElementById('bst-status'); if (value === bstTreasure) { status.textContent = `🎉 You found the treasure: ${bstTreasure}!`; el.classList.add('found'); document.querySelectorAll('#bst-game .bst-node').forEach(n => n.onclick = null); } else if (value > bstTreasure) { status.textContent = `${value} is too high. Go Left!`; } else { status.textContent = `${value} is too low. Go Right!`; } }
+        
+        // --- Game 6: Graph Traveler ---
         let graphGameInitialized = false; let graph = {}; let graphPositions = {}; let graphPath = [];
         function initGraphGame() { if (graphGameInitialized) return; setupGraphGame(); document.getElementById('resetGraphBtn').addEventListener('click', setupGraphGame); graphGameInitialized = true; }
-        function setupGraphGame() { graph = { A: ['B', 'C'], B: ['A', 'D', 'E'], C: ['A', 'F'], D: ['B'], E: ['B', 'F'], F: ['C', 'E'] }; graphPositions = { A: {x: 50, y: 10}, B: {x: 25, y: 40}, C: {x: 75, y: 40}, D: {x: 15, y: 80}, E: {x: 50, y: 80}, F: {x: 85, y: 80} }; graphPath = ['A']; renderGraph(); }
-        function renderGraph() { const svg = document.getElementById('graph-svg-container'); const w = svg.clientWidth; const h = svg.clientHeight; svg.innerHTML = ''; Object.keys(graph).forEach(city => { graph[city].forEach(neighbor => { if (city < neighbor) { const c1 = graphPositions[city]; const c2 = graphPositions[neighbor]; const isPath = (graphPath.includes(city) && graphPath[graphPath.indexOf(neighbor) - 1] === city) || (graphPath.includes(neighbor) && graphPath[graphPath.indexOf(city) - 1] === neighbor); svg.insertBefore(createSvgElement('line', { x1: `${c1.x}%`, y1: `${c1.y}%`, x2: `${c2.x}%`, y2: `${c2.y}%`, class: isPath ? 'road path' : 'road' }), svg.firstChild); } }); }); Object.keys(graphPositions).forEach(city => { const pos = graphPositions[city]; const g = createSvgElement('g', { class: `city ${city==='A'?'start':''} ${city==='F'?'end':''} ${graphPath.includes(city)?'visited':''} ${graphPath[graphPath.length - 1] === city ? 'current': ''}`, transform: `translate(${pos.x/100*w}, ${pos.y/100*h})` }); g.onclick = () => handleCityClick(city); g.appendChild(createSvgElement('circle', { r: '25' })); g.appendChild(createSvgElement('text', { dy: ".3em" }, city)); svg.appendChild(g); }); }
+        function setupGraphGame() { graph = { A: ['B', 'C'], B: ['A', 'D', 'E'], C: ['A', 'F'], D: ['B'], E: ['B', 'F'], F: ['C', 'E'] }; graphPositions = { A: {x: 250, y: 50}, B: {x: 125, y: 120}, C: {x: 375, y: 120}, D: {x: 75, y: 240}, E: {x: 250, y: 240}, F: {x: 425, y: 240} }; graphPath = ['A']; renderGraph(); }
+        function renderGraph() {
+            const svg = document.getElementById('graph-svg-container'); svg.innerHTML = '';
+            Object.keys(graph).forEach(city => { graph[city].forEach(neighbor => { if (city < neighbor) { const c1 = graphPositions[city]; const c2 = graphPositions[neighbor]; const isPath = (graphPath.includes(city) && graphPath[graphPath.indexOf(neighbor) - 1] === city) || (graphPath.includes(neighbor) && graphPath[graphPath.indexOf(city) - 1] === neighbor); svg.insertBefore(createSvgElement('line', { x1: c1.x, y1: c1.y, x2: c2.x, y2: c2.y, class: isPath ? 'road path' : 'road' }), svg.firstChild); } }); });
+            Object.keys(graphPositions).forEach(city => { const pos = graphPositions[city]; const g = createSvgElement('g', { class: `city ${city==='A'?'start':''} ${city==='F'?'end':''} ${graphPath.includes(city)?'visited':''} ${graphPath[graphPath.length - 1] === city ? 'current': ''}`, transform: `translate(${pos.x}, ${pos.y})` }); g.onclick = () => handleCityClick(city); g.appendChild(createSvgElement('circle', { r: '25' })); g.appendChild(createSvgElement('text', { dy: ".3em" }, city)); svg.appendChild(g); });
+        }
         function handleCityClick(city) { const currentCity = graphPath[graphPath.length - 1]; if (graph[currentCity].includes(city) && !graphPath.includes(city)) { graphPath.push(city); renderGraph(); if (city === 'F') setTimeout(() => alert('🎉 You reached the destination!'), 100); } else if (graphPath.includes(city)) { alert("You've already visited this city!"); } else { alert("Can't travel there from your current location."); } }
+
+        // --- Game 7: Linked List Builder ---
         let llGameInitialized = false; let llUnlinked = [], llHead = null, llSelected = null;
         function initLlGame() { if(llGameInitialized) return; setupLlGame(); document.getElementById('resetLlBtn').addEventListener('click', setupLlGame); llGameInitialized = true; }
         function setupLlGame() { llUnlinked = [42, 10, 85, 25, 61].map(v => ({val:v, next:null})); llHead = null; llSelected = null; renderLlGame(); }
-        function renderLlGame() { const unlinkedArea = document.getElementById('ll-unlinked-area'); const linkedArea = document.getElementById('ll-linked-area'); unlinkedArea.innerHTML = ''; linkedArea.innerHTML = ''; llUnlinked.forEach(node => unlinkedArea.appendChild(createLlNodeEl(node, 'unlinked'))); let current = llHead; while(current) { linkedArea.appendChild(createLlNodeEl(current, 'linked')); current = current.next; } if (llUnlinked.length === 0 && llHead) { let sorted = true, curr = llHead; while(curr.next){ if(curr.val > curr.next.val) {sorted = false; break;} curr = curr.next; } if(sorted) setTimeout(() => alert("🎉 You built a sorted Linked List!"), 100); else setTimeout(() => alert("List is built, but not sorted. Try again!"), 100); } }
-        function createLlNodeEl(node, area) { const el = document.createElement('div'); el.className = 'll-node'; if(node === llSelected) el.classList.add('selected'); el.textContent = node.val; el.appendChild(document.createElement('div')); el.onclick = () => handleLlNodeClick(node); return el; }
-        function handleLlNodeClick(node) { if (!llSelected) { llSelected = node; } else { if(llSelected !== node) { if (!llHead) { llHead = llSelected; llUnlinked = llUnlinked.filter(n => n !== llSelected); } if (llSelected.next === null && llUnlinked.includes(node)) { llSelected.next = node; llUnlinked = llUnlinked.filter(n => n !== node); } } llSelected = null; } renderLlGame(); }
+        function renderLlGame() {
+            const unlinkedArea = document.getElementById('ll-unlinked-area');
+            const linkedArea = document.getElementById('ll-linked-area');
+            unlinkedArea.innerHTML = ''; linkedArea.innerHTML = '';
+            llUnlinked.forEach(node => unlinkedArea.appendChild(createLlNodeEl(node, 'unlinked')));
+            let current = llHead;
+            while(current) { linkedArea.appendChild(createLlNodeEl(current, 'linked')); current = current.next; }
+            if (llUnlinked.length === 0 && llHead) { let sorted = true, curr = llHead; while(curr.next){ if(curr.val > curr.next.val) {sorted = false; break;} curr = curr.next; } if(sorted) setTimeout(() => alert("🎉 You built a sorted Linked List!"), 100); else setTimeout(() => alert("List is built, but not sorted. Try again!"), 100); }
+        }
+        function createLlNodeEl(node, area) {
+            const el = document.createElement('div'); el.className = 'll-node'; if(node === llSelected) el.classList.add('selected');
+            el.textContent = node.val; el.appendChild(document.createElement('div')); el.onclick = () => handleLlNodeClick(node); return el;
+        }
+        function handleLlNodeClick(node) {
+            if (!llSelected) { llSelected = node; } 
+            else {
+                if(llSelected !== node) {
+                    if (!llHead) { llHead = llSelected; llUnlinked = llUnlinked.filter(n => n !== llSelected); }
+                    if (llSelected.next === null && llUnlinked.includes(node)) { llSelected.next = node; llUnlinked = llUnlinked.filter(n => n !== node); }
+                }
+                llSelected = null;
+            }
+            renderLlGame();
+        }
+        
+        // --- Game 8: Recursion Maze ---
         let recursionMazeInitialized = false; let mazeGrid, mazeSolver, mazeInterval;
         function initRecursionMazeGame() { if(recursionMazeInitialized) return; setupRecursionMaze(); document.getElementById('resetRecursionBtn').addEventListener('click', setupRecursionMaze); document.getElementById('stepRecursionBtn').addEventListener('click', () => mazeSolver.step()); document.getElementById('runRecursionBtn').addEventListener('click', () => { clearInterval(mazeInterval); mazeInterval = setInterval(() => mazeSolver.step(), 100); }); recursionMazeInitialized = true; }
-        function setupRecursionMaze() { mazeGrid = [ [1,1,1,1,1,1,1,1,1,1,1], [1,0,1,0,1,0,1,0,0,0,1], [1,0,1,0,1,0,1,0,1,0,1], [1,0,0,0,0,0,0,0,1,0,1], [1,0,1,1,1,1,1,1,1,0,1], [1,0,0,0,0,0,0,0,0,0,1], [1,0,1,1,1,1,1,1,1,0,1], [1,0,1,0,0,0,0,0,0,0,1], [1,0,1,0,1,1,1,1,1,0,1], [1,0,0,0,0,0,0,0,1,0,1], [1,1,1,1,1,1,1,1,1,1,1] ]; mazeSolver = new MazeSolver(mazeGrid, 1, 1); clearInterval(mazeInterval); mazeSolver.render(); }
-        class MazeSolver { constructor(grid, r, c) { this.grid = grid.map(row => [...row]); this.rows = grid.length; this.cols = grid[0].length; this.stack = [{r, c, path: [[r, c]]}]; this.visited = new Set([`${r},${c}`]); this.found = false; this.code = ["function solve(r, c):", "  if (r,c) is goal: return true", "  mark (r,c) as visited", "  for each neighbor (nr, nc):", "    if solve(nr, nc) is true:", "      return true", "  return false"]; } step() { if (this.found || this.stack.length === 0) { clearInterval(mazeInterval); return; } const {r, c, path, state=0, dir=0} = this.stack.pop(); if (r === this.rows-2 && c === this.cols-2) { this.found = true; this.path = path; this.render(path, 1); return; } const dirs = [[0,1], [1,0], [0,-1], [-1,0]]; if (state === 0) { this.grid[r][c] = 2; this.stack.push({r,c,path,state:1}); this.render(path, 2); return; } if (dir < dirs.length) { const [dr, dc] = dirs[dir]; const nr = r+dr, nc = c+dc; this.stack.push({r,c,path,state:1,dir:dir+1}); this.render(path, 3); if(nr>=0 && nr<this.rows && nc>=0 && nc<this.cols && this.grid[nr][nc]===0 && !this.visited.has(`${nr},${nc}`)) { this.visited.add(`${nr},${nc}`); this.stack.push({r:nr, c:nc, path:path.concat([[nr,nc]])}); this.render(path.concat([[nr,nc]]), 4); return; } } else { this.render(path.slice(0,-1), 6); } } render(path=[], line=0) { const gridEl = document.getElementById('recursion-maze-grid'); gridEl.innerHTML = ''; this.grid.forEach((row, r) => row.forEach((cell, c) => { const el = document.createElement('div'); let className = 'maze-cell'; if(cell === 1) className += ' wall'; if(cell === 2) className += ' visited'; if(this.found && this.path.some(([pr,pc])=>pr===r && pc===c)) className += ' path'; if(path.length > 0 && path[path.length-1][0]===r && path[path.length-1][1]===c) className += ' current'; el.className = className; gridEl.appendChild(el); })); document.getElementById('recursion-code-display').innerHTML = this.code.map((c,i) => `<div class="line ${i===line?'highlight':''}">${c}</div>`).join(''); document.getElementById('call-stack').innerHTML = `<strong>Call Stack:</strong> ${this.stack.map(s => `f(${s.r},${s.c})`).join(' &rarr; ')}`; } }
+        function setupRecursionMaze() {
+            mazeGrid = [ [1,1,1,1,1,1,1,1,1,1,1], [1,0,1,0,1,0,1,0,0,0,1], [1,0,1,0,1,0,1,0,1,0,1], [1,0,0,0,0,0,0,0,1,0,1], [1,0,1,1,1,1,1,1,1,0,1], [1,0,0,0,0,0,0,0,0,0,1], [1,0,1,1,1,1,1,1,1,0,1], [1,0,1,0,0,0,0,0,0,0,1], [1,0,1,0,1,1,1,1,1,0,1], [1,0,0,0,0,0,0,0,1,0,1], [1,1,1,1,1,1,1,1,1,1,1] ];
+            mazeSolver = new MazeSolver(mazeGrid, 1, 1);
+            clearInterval(mazeInterval);
+            mazeSolver.render();
+        }
+        class MazeSolver { constructor(grid, r, c) { this.grid = grid.map(row => [...row]); this.rows = grid.length; this.cols = grid[0].length; this.stack = [{r, c, path: [[r, c]]}]; this.visited = new Set([`${r},${c}`]); this.found = false; this.code = ["function solve(r, c):", "  if (r,c) is goal: return true", "  mark (r,c) as visited", "  for each neighbor (nr, nc):", "    if solve(nr, nc) is true:", "      return true", "  return false"]; }
+            step() { if (this.found || this.stack.length === 0) { clearInterval(mazeInterval); return; } const {r, c, path, state=0, dir=0} = this.stack.pop(); if (r === this.rows-2 && c === this.cols-2) { this.found = true; this.path = path; this.render(path, 1); return; } const dirs = [[0,1], [1,0], [0,-1], [-1,0]]; if (state === 0) { this.grid[r][c] = 2; this.stack.push({r,c,path,state:1}); this.render(path, 2); return; } if (dir < dirs.length) { const [dr, dc] = dirs[dir]; const nr = r+dr, nc = c+dc; this.stack.push({r,c,path,state:1,dir:dir+1}); this.render(path, 3); if(nr>=0 && nr<this.rows && nc>=0 && nc<this.cols && this.grid[nr][nc]===0 && !this.visited.has(`${nr},${nc}`)) { this.visited.add(`${nr},${nc}`); this.stack.push({r:nr, c:nc, path:path.concat([[nr,nc]])}); this.render(path.concat([[nr,nc]]), 4); return; } } else { this.render(path.slice(0,-1), 6); } }
+            render(path=[], line=0) { const gridEl = document.getElementById('recursion-maze-grid'); gridEl.innerHTML = ''; this.grid.forEach((row, r) => row.forEach((cell, c) => { const el = document.createElement('div'); let className = 'maze-cell'; if(cell === 1) className += ' wall'; if(cell === 2) className += ' visited'; if(this.found && this.path.some(([pr,pc])=>pr===r && pc===c)) className += ' path'; if(path.length > 0 && path[path.length-1][0]===r && path[path.length-1][1]===c) className += ' current'; el.className = className; gridEl.appendChild(el); })); document.getElementById('recursion-code-display').innerHTML = this.code.map((c,i) => `<div class="line ${i===line?'highlight':''}">${c}</div>`).join(''); document.getElementById('call-stack').innerHTML = `<strong>Call Stack:</strong> ${this.stack.map(s => `f(${s.r},${s.c})`).join(' &rarr; ')}`; }
+        }
+
+        // --- Game 9: Min-Heap Organizer ---
         let heapGameInitialized = false; let heapData = []; let heapSelected = null;
         function initHeapGame() { if(heapGameInitialized) return; setupHeapGame(); document.getElementById('resetHeapBtn').addEventListener('click', setupHeapGame); heapGameInitialized = true; }
         function setupHeapGame() { heapData = [null, 90, 40, 80, 20, 10, 60, 70, 30, 50, 100]; heapSelected = null; renderHeap(); }
-        function renderHeap() { const svg = document.getElementById('heap-svg-container'); const w = svg.clientWidth; const h = svg.clientHeight; svg.innerHTML = ''; const positions = [null,{x:50,y:15},{x:25,y:35},{x:75,y:35},{x:12.5,y:55},{x:37.5,y:55},{x:62.5,y:55},{x:87.5,y:55},{x:6,y:75},{x:18,y:75},{x:31,y:75}]; for(let i=1;i<heapData.length;i++){const p=Math.floor(i/2);if(p>0)svg.appendChild(createSvgElement('line',{x1:`${positions[i].x}%`,y1:`${positions[i].y}%`,x2:`${positions[p].x}%`,y2:`${positions[p].y}%`,stroke:'var(--text-muted-color)'}));} for(let i=1;i<heapData.length;i++){const g=createSvgElement('g',{class:'heap-node',transform:`translate(${positions[i].x/100*w}, ${positions[i].y/100*h})`});const left=2*i,right=2*i+1;if((heapData[left]&&heapData[i]>heapData[left])||(heapData[right]&&heapData[i]>heapData[right]))g.classList.add('invalid');g.onclick=()=>handleHeapClick(i);g.appendChild(createSvgElement('circle',{r:'20'}));g.appendChild(createSvgElement('text',{dy:".3em"},heapData[i]));svg.appendChild(g);} if(!document.querySelector('#heap-game .invalid'))setTimeout(()=>alert("🎉 Heap is valid!"),100); if(heapSelected) svg.querySelectorAll('.heap-node')[heapSelected-1].classList.add('selected'); }
-        function handleHeapClick(idx) { if (!heapSelected) { heapSelected = idx; } else { const p1 = Math.floor(heapSelected/2), p2 = Math.floor(idx/2); if ((p1 === idx && heapData[idx] > heapData[heapSelected]) || (p2 === heapSelected && heapData[heapSelected] > heapData[idx])) { [heapData[heapSelected], heapData[idx]] = [heapData[idx], heapData[heapSelected]]; } heapSelected = null; } renderHeap(); }
-        let pathfindingGameInitialized = false; let pfGrid = [], pfRows = 10, pfCols = 15, pfStartNode, pfEndNode, pfDrawMode = 'wall', pfMouseDown = false;
+        function renderHeap() {
+            const svg = document.getElementById('heap-svg-container'); svg.innerHTML = '';
+            const positions = [null, {x:250,y:40}, {x:150,y:100}, {x:350,y:100}, {x:100,y:160}, {x:200,y:160}, {x:300,y:160}, {x:400,y:160}, {x:75,y:220}, {x:125,y:220}, {x:175,y:220}];
+            for(let i = 1; i < heapData.length; i++) { const p = Math.floor(i/2); if(p > 0) svg.appendChild(createSvgElement('line', { x1:positions[i].x, y1:positions[i].y, x2:positions[p].x, y2:positions[p].y, stroke:'var(--text-muted-color)' })); }
+            for(let i = 1; i < heapData.length; i++) { const g = createSvgElement('g', { class:'heap-node', transform:`translate(${positions[i].x}, ${positions[i].y})` }); const left=2*i, right=2*i+1; if((heapData[left] && heapData[i] > heapData[left]) || (heapData[right] && heapData[i] > heapData[right])) g.classList.add('invalid'); g.onclick = () => handleHeapClick(i); g.appendChild(createSvgElement('circle', { r: '20' })); g.appendChild(createSvgElement('text', { dy: ".3em" }, heapData[i])); svg.appendChild(g); }
+            if(!document.querySelector('#heap-game .invalid')) setTimeout(() => alert("🎉 Heap is valid!"), 100);
+        }
+        function handleHeapClick(idx) { if (!heapSelected) { heapSelected = idx; } else { const p1 = Math.floor(heapSelected/2), p2 = Math.floor(idx/2); if ((p1 === idx && heapData[idx] > heapData[heapSelected]) || (p2 === heapSelected && heapData[heapSelected] > heapData[idx])) { [heapData[heapSelected], heapData[idx]] = [heapData[idx], heapData[heapSelected]]; } heapSelected = null; } renderHeap(); if(heapSelected) svg.querySelectorAll('.heap-node')[heapSelected-1].classList.add('selected'); }
+
+        // --- Game 10: Pathfinding Visualizer ---
+        let pathfindingGameInitialized = false; let pfGrid = [], pfRows = 10, pfCols = 20, pfStartNode, pfEndNode, pfDrawMode = 'wall', pfMouseDown = false;
         function initPathfindingGame() { if(pathfindingGameInitialized) return; setupPathfindingGame(); document.getElementById('runPathfindingBtn').addEventListener('click', runDijkstra); document.getElementById('clearPathfindingBtn').addEventListener('click', setupPathfindingGame); document.querySelectorAll('input[name="draw-mode"]').forEach(r => r.onchange = (e) => pfDrawMode = e.target.value); pathfindingGameInitialized = true; }
-        function setupPathfindingGame() { pfGrid = []; const container = document.getElementById('pathfinding-grid'); container.innerHTML = ''; for(let r=0; r<pfRows; r++) { const row = []; for(let c=0; c<pfCols; c++) { const node = { r, c, isStart:false, isEnd:false, isWall:false, distance:Infinity, visited:false, prev:null, el: document.createElement('div')}; node.el.className = 'path-node'; node.el.onmousedown = (e) => { e.preventDefault(); pfMouseDown = true; handlePfNodeClick(node); }; node.el.onmouseenter = () => { if(pfMouseDown) handlePfNodeClick(node); }; document.body.onmouseup = () => pfMouseDown = false; container.appendChild(node.el); row.push(node); } pfGrid.push(row); } pfStartNode = pfGrid[5][3]; pfStartNode.isStart = true; pfStartNode.distance = 0; pfEndNode = pfGrid[5][11]; pfEndNode.isEnd = true; renderPfGrid(); }
+        function setupPathfindingGame() { pfGrid = []; const container = document.getElementById('pathfinding-grid'); container.innerHTML = ''; for(let r=0; r<pfRows; r++) { const row = []; for(let c=0; c<pfCols; c++) { const node = { r, c, isStart:false, isEnd:false, isWall:false, distance:Infinity, visited:false, prev:null, el: document.createElement('div')}; node.el.className = 'path-node'; node.el.onmousedown = (e) => { e.preventDefault(); pfMouseDown = true; handlePfNodeClick(node); }; node.el.onmouseenter = () => { if(pfMouseDown) handlePfNodeClick(node); }; document.body.onmouseup = () => pfMouseDown = false; container.appendChild(node.el); row.push(node); } pfGrid.push(row); } pfStartNode = pfGrid[5][5]; pfStartNode.isStart = true; pfStartNode.distance = 0; pfEndNode = pfGrid[5][15]; pfEndNode.isEnd = true; renderPfGrid(); }
         function renderPfGrid() { for(let r=0; r<pfRows; r++) for(let c=0; c<pfCols; c++) { const n = pfGrid[r][c]; n.el.className = `path-node ${n.isStart?'start':''} ${n.isEnd?'end':''} ${n.isWall?'wall':''}`; } }
-        function handlePfNodeClick(node) { if(pfDrawMode === 'wall') { if(!node.isStart && !node.isEnd) { node.isWall = !node.isWall; node.el.classList.toggle('wall'); } } else if(pfDrawMode === 'start') { if(!node.isEnd && !node.isWall) { pfStartNode.isStart=false; pfStartNode=node; pfStartNode.isStart=true; renderPfGrid(); } } else if(pfDrawMode === 'end') { if(!node.isStart && !node.isWall) { pfEndNode.isEnd=false; pfEndNode=node; pfEndNode.isEnd=true; renderPfGrid(); } } }
-        async function runDijkstra() { for(let r=0; r<pfRows; r++) for(let c=0; c<pfCols; c++) { const n=pfGrid[r][c]; n.distance = Infinity; n.visited = false; n.prev = null; if(!n.isWall) n.el.className = `path-node ${n.isStart?'start':''} ${n.isEnd?'end':''}`; } pfStartNode.distance = 0; const unvisited = pfGrid.flat().filter(n => !n.isWall); while(unvisited.length) { unvisited.sort((a,b) => a.distance - b.distance); const closest = unvisited.shift(); if(closest.distance === Infinity) return alert("No path found!"); closest.visited = true; if(!closest.isStart && !closest.isEnd) { closest.el.classList.add('visited'); await new Promise(r => setTimeout(r, 10)); } if(closest === pfEndNode) { let curr = pfEndNode; while(curr) { if(!curr.isStart) curr.el.classList.add('path'); curr = curr.prev; } return; } const neighbors = [[-1,0],[1,0],[0,-1],[0,1]].map(([dr,dc]) => pfGrid[closest.r+dr]?.[closest.c+dc]).filter(n => n && !n.visited && !n.isWall); for(const n of neighbors) { const newDist = closest.distance + 1; if(newDist < n.distance) { n.distance = newDist; n.prev = closest; } } } }
+        function handlePfNodeClick(node) {
+            if(pfDrawMode === 'wall') { if(!node.isStart && !node.isEnd) { node.isWall = !node.isWall; node.el.classList.toggle('wall'); } }
+            else if(pfDrawMode === 'start') { if(!node.isEnd && !node.isWall) { pfStartNode.isStart=false; pfStartNode=node; pfStartNode.isStart=true; renderPfGrid(); } }
+            else if(pfDrawMode === 'end') { if(!node.isStart && !node.isWall) { pfEndNode.isEnd=false; pfEndNode=node; pfEndNode.isEnd=true; renderPfGrid(); } }
+        }
+        async function runDijkstra() {
+            for(let r=0; r<pfRows; r++) for(let c=0; c<pfCols; c++) { const n=pfGrid[r][c]; n.distance = Infinity; n.visited = false; n.prev = null; if(!n.isWall) n.el.className = `path-node ${n.isStart?'start':''} ${n.isEnd?'end':''}`; }
+            pfStartNode.distance = 0; const unvisited = pfGrid.flat().filter(n => !n.isWall);
+            while(unvisited.length) {
+                unvisited.sort((a,b) => a.distance - b.distance); const closest = unvisited.shift();
+                if(closest.distance === Infinity) return alert("No path found!");
+                closest.visited = true; if(!closest.isStart && !closest.isEnd) { closest.el.classList.add('visited'); await new Promise(r => setTimeout(r, 5)); }
+                if(closest === pfEndNode) { let curr = pfEndNode; while(curr) { if(!curr.isStart) curr.el.classList.add('path'); curr = curr.prev; } return; }
+                const neighbors = [[-1,0],[1,0],[0,-1],[0,1]].map(([dr,dc]) => pfGrid[closest.r+dr]?.[closest.c+dc]).filter(n => n && !n.visited && !n.isWall);
+                for(const n of neighbors) { const newDist = closest.distance + 1; if(newDist < n.distance) { n.distance = newDist; n.prev = closest; } }
+            }
+        }
+
+        // --- Game 11: KMP String Search ---
         let kmpGameInitialized = false; let kmpText, kmpPattern, kmpLps, kmp_i, kmp_j;
         function initKmpGame() { if(kmpGameInitialized) return; setupKmpGame(); document.getElementById('stepKmpBtn').addEventListener('click', stepKmp); document.getElementById('resetKmpBtn').addEventListener('click', setupKmpGame); kmpGameInitialized = true; }
         function setupKmpGame() { kmpText = "ABABDABACDABABCABAB"; kmpPattern = "ABABCABAB"; kmpLps = computeLps(kmpPattern); kmp_i = 0; kmp_j = 0; renderKmp(); }
         function computeLps(p) { const lps = [0]; let len = 0, i = 1; while(i < p.length) { if(p[i] === p[len]) { len++; lps[i] = len; i++; } else { if(len !== 0) len = lps[len-1]; else { lps[i] = 0; i++; } } } return lps; }
-        function renderKmp() { const textRow = document.getElementById('kmp-text-row'); const patternRow = document.getElementById('kmp-pattern-row'); textRow.innerHTML = kmpText.split('').map(c => `<div class="kmp-char">${c}</div>`).join(''); patternRow.innerHTML = ''; patternRow.style.paddingLeft = `${kmp_i * 20}px`; for(let k=0; k<kmpPattern.length; k++) { const el = document.createElement('div'); el.className = 'kmp-char'; el.textContent = kmpPattern[k]; if (kmp_j > k) el.classList.add('match'); patternRow.appendChild(el); } if (kmp_j < kmpPattern.length && kmpText[kmp_i + kmp_j] !== kmpPattern[kmp_j]) patternRow.children[kmp_j]?.classList.add('mismatch'); document.getElementById('lps-table').innerHTML = kmpLps.map((val, i) => `<div class="lps-cell"><div>${kmpPattern[i]}</div><div>${val}</div></div>`).join(''); }
-        function stepKmp() { if (kmp_j === kmpPattern.length) { alert("Pattern found at index " + kmp_i + "!"); return; } if (kmp_i > kmpText.length - kmpPattern.length + kmp_j) { alert("Pattern not found in the remaining text."); return; } if (kmpText[kmp_i + kmp_j] === kmpPattern[kmp_j]) { kmp_j++; } else { if (kmp_j !== 0) { kmp_i += kmp_j - kmpLps[kmp_j - 1]; kmp_j = kmpLps[kmp_j - 1]; } else { kmp_i++; } } renderKmp(); }
-        
+        function renderKmp() {
+            const textRow = document.getElementById('kmp-text-row'); const patternRow = document.getElementById('kmp-pattern-row');
+            textRow.innerHTML = kmpText.split('').map(c => `<div class="kmp-char">${c}</div>`).join('');
+            patternRow.innerHTML = ''; patternRow.style.paddingLeft = `${kmp_i * 20}px`;
+            for(let k=0; k<kmpPattern.length; k++) {
+                const el = document.createElement('div'); el.className = 'kmp-char'; el.textContent = kmpPattern[k];
+                if (kmp_j > k) el.classList.add('match');
+                patternRow.appendChild(el);
+            }
+            if (kmp_j < kmpPattern.length && kmpText[kmp_i + kmp_j] !== kmpPattern[kmp_j]) patternRow.children[kmp_j]?.classList.add('mismatch');
+            document.getElementById('lps-table').innerHTML = kmpLps.map((val, i) => `<div class="lps-cell"><div>${kmpPattern[i]}</div><div>${val}</div></div>`).join('');
+        }
+        function stepKmp() {
+            if (kmp_j === kmpPattern.length) { alert("Pattern found at index " + kmp_i + "!"); return; }
+            if (kmp_i > kmpText.length - kmpPattern.length + kmp_j) { alert("Pattern not found in the remaining text."); return; }
+            if (kmpText[kmp_i + kmp_j] === kmpPattern[kmp_j]) { kmp_j++; } 
+            else { if (kmp_j !== 0) { kmp_i += kmp_j - kmpLps[kmp_j - 1]; kmp_j = kmpLps[kmp_j - 1]; } else { kmp_i++; } }
+            renderKmp();
+        }
+
         // --- Initial Load ---
         function initialize() {
             const savedTheme = localStorage.getItem('dsa-theme');
-            if (savedTheme === 'light') { document.body.classList.add('light-mode'); themeToggle.checked = false; }
-            else { document.body.classList.remove('light-mode'); themeToggle.checked = true; }
+            if (savedTheme === 'light') { document.body.classList.add('light-mode'); themeToggle.checked = false; } else { document.body.classList.remove('light-mode'); themeToggle.checked = true; }
         }
         
         initialize();
