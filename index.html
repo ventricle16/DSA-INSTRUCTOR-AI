@@ -169,6 +169,12 @@
             animation: fade-in 0.5s ease;
         }
         
+        .login-logo {
+            width: 120px;
+            height: 120px;
+            margin-bottom: 20px;
+        }
+        
         #login-screen h1, #login-screen p {
             background: var(--accent-gradient);
             background-size: 200% 200%;
@@ -231,11 +237,9 @@
             gap: 15px;
         }
         
-        #logo {
+        .header-logo {
             width: 40px;
             height: 40px;
-            background: var(--accent-gradient);
-            border-radius: 8px;
         }
 
         #chat-header h1 {
@@ -558,7 +562,7 @@
 
         <div id="chat-container">
             <div id="login-screen">
-                <div id="logo" style="width: 80px; height: 80px; border-radius: 16px; margin-bottom: 20px;"></div>
+                <img src="https://i.postimg.cc/138L1f2Z/dsa-logo.png" alt="DSA Instructor AI Logo" class="login-logo">
                 <h1>DSA Instructor AI</h1>
                 <p>Your personal guide to mastering Data Structures & Algorithms.</p>
                 <form id="login-form">
@@ -570,7 +574,10 @@
             
             <div id="main-content-area" style="display: none; flex-grow: 1; flex-direction: column; overflow: hidden;">
                 <div id="chat-content" class="content-section">
-                    <div id="chat-header"> <div id="logo"></div> <h1>DSA Instructor AI</h1> </div>
+                    <div id="chat-header">
+                        <img src="https://i.postimg.cc/138L1f2Z/dsa-logo.png" alt="DSA Logo" class="header-logo">
+                        <h1>DSA Instructor AI</h1>
+                    </div>
                     <div id="chat-box" style="flex-grow: 1; padding: 30px; overflow-y: auto; display: flex; flex-direction: column; gap: 20px;">
                         <div class="message ai-message"> Ask me anything about Data Structures and Algorithms. For example, "Explain bubble sort." </div>
                     </div>
