@@ -13,8 +13,8 @@ export default async function handler(request, response) {
   // Get the secret API key from your Vercel Environment Variables
   const API_KEY = process.env.GOOGLE_API_KEY;
   const MODEL_NAME = "gemini-1.5-flash-latest";
-  const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/${MODEL_NAME}:generateContent?key=${API_KEY}`;
-
+  const API_URL = `https://generativelanguage.googleapis.com/v1/models/${MODEL_NAME}:generateContent?key=${API_KEY}`;
+  
   const requestBody = {
       "contents": [{ "parts": [{ "text": prompt }] }],
       "systemInstruction": { "parts": [{ "text": "You are a DSA Instructor. You must only reply to questions related to Data Structures and Algorithms. Provide simple, polite explanations with code examples. If the user asks a non-DSA question, you must reply rudely. For example, if asked 'How are you?', reply with 'Dumb question. Focus on algorithms.' Be creative with rude responses for off-topic questions." }] }
