@@ -12,8 +12,8 @@ export default async function handler(request, response) {
   
   // Get the secret API key from your Vercel Environment Variables
   const API_KEY = process.env.GOOGLE_API_KEY;
-  const MODEL_NAME = "gemini-1.5-flash-latest";
-  const API_URL = `https://generativelanguage.googleapis.com/v1/models/${MODEL_NAME}:generateContent?key=${API_KEY}`;
+  const MODEL_NAME = "gemini-2.5-flash";
+  const API_URL =`https://generativelanguage.googleapis.com/v1/models/${MODEL_NAME}:generateContent?key=${API_KEY}`;
   
   const requestBody = {
   contents: [
