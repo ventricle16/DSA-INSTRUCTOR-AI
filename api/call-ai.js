@@ -16,9 +16,27 @@ export default async function handler(request, response) {
   const API_URL = `https://generativelanguage.googleapis.com/v1/models/${MODEL_NAME}:generateContent?key=${API_KEY}`;
   
   const requestBody = {
-      "contents": [{ "parts": [{ "text": prompt }] }],
-      "systemInstruction": { "parts": [{ "text": "You are a DSA Instructor. You must only reply to questions related to Data Structures and Algorithms. Provide simple, polite explanations with code examples. If the user asks a non-DSA question, you must reply rudely. For example, if asked 'How are you?', reply with 'Dumb question. Focus on algorithms.' Be creative with rude responses for off-topic questions." }] }
-  };
+  contents: [
+    {
+      parts: [
+        {
+          text: `
+You are DSA Instructor AI.
+
+Only answer questions related to Data Structures and Algorithms.
+
+Explain concepts clearly.
+Provide code examples when appropriate.
+If the question is unrelated to DSA, politely say that you only answer DSA-related questions.
+
+User question:
+${prompt}
+`
+        }
+      ]
+    }
+  ]
+};
 
   try {
     const googleResponse = await fetch(API_URL, {
